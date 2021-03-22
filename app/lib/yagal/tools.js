@@ -38,6 +38,8 @@ var yagal_tools = (function() {
     Array.prototype.splice.apply(array, args);    
   }
 
+  //function setStart()
+
   function selRandom(k, individuals) {
     var r = [];
     for (var i = 0; i < k; i++) {

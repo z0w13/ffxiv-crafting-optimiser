@@ -11,6 +11,7 @@ ALGORITHMS['eaComplex'] = {
     toolbox.register("selectParents", yagal_tools.selTournament, 7);
     toolbox.register("selectOffspring", yagal_tools.selBest);
     toolbox.register("selectSurvivors", yagal_tools.selBest);
+    //toolbox.register("setInitialGuess", yagal_tools.setStart);
 
     // evaluate fitness of starting population
     var fitnessesValues = toolbox.map(toolbox.evaluate, population);
