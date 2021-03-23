@@ -424,17 +424,17 @@
         maxLength: 50,
         specifySeed: false,
         seed: 1337,
-        monteCarloMode: 'macro',
-        useConditions: true,
+        monteCarloMode: 'advanced',
+        useConditions: false,
         conditionalActionHandling: 'skipUnusable',
         debug: false
       };
 
       $scope.solver = {
-        algorithm: 'eaSimple',
+        algorithm: 'eaComplex',
         penaltyWeight: 10000,
-        population: 300,
-        generations: 100
+        population: 12000,
+        generations: 750
       };
 
       $scope.macroOptions = {
