@@ -271,6 +271,7 @@ function ApplyModifiers(s, action, condition) {
      if (isActionEq(action, AllActions.standardTouch)) {
         if (s.action === AllActions.basicTouch.shortName) {
             cpCost = 18;
+            s.wastedActions -= 0.05;
         }
         if (s.action === AllActions.standardTouch.shortName) {
             s.wastedActions += 0.1;
@@ -1271,7 +1272,7 @@ function evalSeq(individual, mySynth, penaltyWeight) {
 
     // Sum the constraint violations
     // experiment: wastedactions change
-    penalties += result.wastedActions / 10;
+    penalties += result.wastedActions / 20;
 
     // Check for feasibility violations
     var chk = result.checkViolations();
@@ -1305,6 +1306,7 @@ function evalSeq(individual, mySynth, penaltyWeight) {
 
     fitness += result.qualityState;
     fitness -= penaltyWeight * penalties;
+    fitness -= result.cpState*0.5 // Penalizes wasted CP
     fitnessProg += result.progressState;
 
     return [fitness, fitnessProg, result.cpState, individual.length];

@@ -23,9 +23,54 @@ ALGORITHMS['eaComplex'] = {
       hof.update(population);
     }
   },
-  gen: function (population, toolbox, hof) {
-    // Split population in 4
+  gen: function (population, toolbox, hof, stagnationCounter) {
 
+    function isFitnessInvalid(ind) {
+      return !ind.fitness.valid();
+    }
+
+    // Split population in 4
+    // The population gets divided into this many segments.
+    var popDivider = 4;
+    var nextPop = [];
+
+    for (var i = 0; i < popDivider; i++) {
+      
+      console.log(i)
+      var subPop = population.slice(i * population.length / popDivider, (i +1) * population.length / popDivider)
+      console.log(subPop.length)
+
+      // select parents
+      var parents = toolbox.selectParents(subPop.length / 2, subPop);
+      console.log("parents length:")
+      console.log(parents.length)
+
+      // breed offspring
+      var offspring = yagal_algorithms.varAnd(parents, toolbox, 0.5, 0.2);
+      console.log("offspring 1 length:")
+      console.log(offspring.length)
+
+      // evaluate offspring with invalid fitness
+      var invalidInd = offspring.filter(isFitnessInvalid);
+      var fitnessesValues = toolbox.map(toolbox.evaluate, invalidInd);
+      for (var j = 0; j < invalidInd.length; j++) {
+        invalidInd[j].fitness.setValues(fitnessesValues[j]);
+      }
+
+      // select offspring
+      offspring = toolbox.selectOffspring(offspring.length / 2, offspring);
+      console.log("offspring 2 length:")
+      console.log(offspring.length)
+      // select survivors
+      var survivors = toolbox.selectSurvivors(subPop.length - offspring.length, subPop);
+      nextPop = nextPop.concat(survivors);
+      console.log("nextpop length:")
+      console.log(nextPop.length)
+      
+    }
+
+
+    /*
     var pop1 = population.slice(population.length / 2)
     var pop2 = pop1.splice(pop1.length / 2)
     var pop3 = population.slice(0, population.length / 2)
@@ -43,9 +88,6 @@ ALGORITHMS['eaComplex'] = {
     var offspring3 = yagal_algorithms.varAnd(parents3, toolbox, 0.5, 0.2);
     var offspring4 = yagal_algorithms.varAnd(parents4, toolbox, 0.5, 0.2);
 
-    function isFitnessInvalid(ind) {
-      return !ind.fitness.valid();
-    }
 
     // My code is bad
     // evaluate offspring with invalid fitness 1
@@ -90,12 +132,11 @@ ALGORITHMS['eaComplex'] = {
     nextPop = nextPop.concat(offspring2.concat(survivors2));
     nextPop = nextPop.concat(offspring3.concat(survivors3));
     nextPop = nextPop.concat(offspring4.concat(survivors4));
-    //what have I done
-
+    nextPop[0] = population[0]; // Preserve n1 for reset lmaoshitcode
+    //what have I done */
     if (hof !== undefined) {
       hof.update(nextPop);
     }
-
     return nextPop;
   }
 };
