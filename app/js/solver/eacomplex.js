@@ -31,24 +31,17 @@ ALGORITHMS['eaComplex'] = {
 
     // Split population in 4
     // The population gets divided into this many segments.
-    var popDivider = 4;
+    var popDivider = 1;
     var nextPop = [];
 
     for (var i = 0; i < popDivider; i++) {
-      
-      console.log(i)
       var subPop = population.slice(i * population.length / popDivider, (i +1) * population.length / popDivider)
-      console.log(subPop.length)
 
       // select parents
       var parents = toolbox.selectParents(subPop.length / 2, subPop);
-      console.log("parents length:")
-      console.log(parents.length)
 
       // breed offspring
       var offspring = yagal_algorithms.varAnd(parents, toolbox, 0.5, 0.2);
-      console.log("offspring 1 length:")
-      console.log(offspring.length)
 
       // evaluate offspring with invalid fitness
       var invalidInd = offspring.filter(isFitnessInvalid);
@@ -59,14 +52,12 @@ ALGORITHMS['eaComplex'] = {
 
       // select offspring
       offspring = toolbox.selectOffspring(offspring.length / 2, offspring);
-      console.log("offspring 2 length:")
-      console.log(offspring.length)
+
       // select survivors
       var survivors = toolbox.selectSurvivors(subPop.length - offspring.length, subPop);
+      nextPop = nextPop.concat(offspring);
       nextPop = nextPop.concat(survivors);
-      console.log("nextpop length:")
-      console.log(nextPop.length)
-      
+
     }
 
 
