@@ -49,7 +49,7 @@ ALGORITHMS['eaComplex'] = {
       if(state.stagnationCounters[i] >= 20 && (state.lastFitnesses[i] !== maxFitness || state.stagnationCounters[i] >= 80)) {
         state.stagnationCounters[i] = 0;
         subPop.fill(state.iniGuess);
-        state.logOutput.write('Subpopulation %s has been wiped due to stagnation. \n'.sprintf(i))
+        state.logOutput.write('Subpopulation %s has been wiped due to stagnation. \n'.sprintf(i));
       }
 
       // select parents
