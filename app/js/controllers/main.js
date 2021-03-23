@@ -418,7 +418,7 @@
 
       $scope.sequenceSettings = {
         maxTricksUses: 0,
-        maxMontecarloRuns: 500,
+        maxMontecarloRuns: 400,
         reliabilityPercent: 100,
         maxLengthEnabled: false,
         maxLength: 50,
@@ -427,7 +427,7 @@
         monteCarloMode: 'advanced',
         useConditions: false,
         conditionalActionHandling: 'skipUnusable',
-        debug: false
+        debug: true
       };
 
       $scope.solver = {
