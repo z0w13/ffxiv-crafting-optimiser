@@ -98,8 +98,8 @@ ALGORITHMS['eaComplex'] = {
 
     }
     console.log('Winning subpop: %s'.sprintf(winningSub));
-    console.log(state.lastFitnesses);
-    console.log(state.stagnationCounters);
+    console.log('Last fitnesses: %s'.sprintf(state.lastFitnesses));
+    console.log('Stagnation incr: %s'.sprintf(state.stagnationCounters));
 
     if (hof !== undefined) {
       hof.update(nextPop);
