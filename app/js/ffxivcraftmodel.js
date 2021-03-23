@@ -272,6 +272,9 @@ function ApplyModifiers(s, action, condition) {
         if (s.action === AllActions.basicTouch.shortName) {
             cpCost = 18;
         }
+        if (s.action === AllActions.standardTouch.shortName) {
+            s.wastedActions += 0.1;
+        }
     }
 
     // Effects modifying durability cost
@@ -1267,7 +1270,8 @@ function evalSeq(individual, mySynth, penaltyWeight) {
     var fitnessProg = 0;
 
     // Sum the constraint violations
-    penalties += result.wastedActions / 100;
+    // experiment: wastedactions change
+    penalties += result.wastedActions / 10;
 
     // Check for feasibility violations
     var chk = result.checkViolations();

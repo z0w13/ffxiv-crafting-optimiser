@@ -26,6 +26,12 @@ var yagal_algorithms = (function() {
         if (Math.random() < 0.5) {
           mutated = toolbox.mutate(mutated[0]);
         }
+        if (Math.random() < 0.5) {
+          mutated = toolbox.mutate(mutated[0]);
+        }
+        if (Math.random() < 0.5) {
+          mutated = toolbox.mutate(mutated[0]);
+        }
         // end experiment 
         mutated[0].fitness.clearValues();
         offspring[j] = mutated[0];
