@@ -23,19 +23,34 @@ ALGORITHMS['eaComplex'] = {
       hof.update(population);
     }
   },
-  gen: function (population, toolbox, hof, stagnationCounter) {
+  gen: function (population, toolbox, hof, state) {
 
     function isFitnessInvalid(ind) {
       return !ind.fitness.valid();
     }
+    
+    function indComp(a, b) {
+      return b.fitness.compare(a.fitness);
+    }
 
     // Split population in 4
     // The population gets divided into this many segments.
-    var popDivider = 1;
+    var popDivider = 6;
     var nextPop = [];
+    var highestFitness = 0;
+    var winningSub = 0;
 
     for (var i = 0; i < popDivider; i++) {
       var subPop = population.slice(i * population.length / popDivider, (i +1) * population.length / popDivider)
+
+      // If this subpopulation has stagnated for too long, wipe it back to the starting guess
+      // UNLESS they are the current highest, still wipe that one if they're super stuck though.
+      var maxFitness = Math.max(...state.lastFitnesses)
+      if(state.stagnationCounters[i] >= 20 && (state.lastFitnesses[i] !== maxFitness || state.stagnationCounters[i] >= 80)) {
+        state.stagnationCounters[i] = 0;
+        subPop.fill(state.iniGuess);
+        state.logOutput.write('Subpopulation %s has been wiped due to stagnation. \n'.sprintf(i))
+      }
 
       // select parents
       var parents = toolbox.selectParents(subPop.length / 2, subPop);
@@ -55,76 +70,37 @@ ALGORITHMS['eaComplex'] = {
 
       // select survivors
       var survivors = toolbox.selectSurvivors(subPop.length - offspring.length, subPop);
-      nextPop = nextPop.concat(offspring);
+      survivors = survivors.concat(offspring);
       nextPop = nextPop.concat(survivors);
+      
+      // After saving the data, sort it by fitness
+      survivors.sort(indComp);
+
+      // If the last highest fitness of this subpopulation didn't change, increase the counter
+      if(state.lastFitnesses[i] == survivors[0].fitness.weightedValues()[0]) {
+        if(isNaN(state.stagnationCounters[i])) {
+          state.stagnationCounters[i] = 0;
+        }
+        state.stagnationCounters[i] += 1;
+      }
+      else {
+        // Otherwise set it to zero
+        state.stagnationCounters[i] = 0;
+      }
+
+      // Save the last highest fitness of this subpop
+      state.lastFitnesses[i] = survivors[0].fitness.weightedValues()[0];
+      if(survivors[0].fitness.weightedValues()[0] > highestFitness) {
+        highestFitness = survivors[0].fitness.weightedValues()[0]
+        winningSub = i; // funny logging meme
+      }
+      
 
     }
+    console.log('Winning subpop: %s'.sprintf(winningSub));
+    console.log(state.lastFitnesses);
+    console.log(state.stagnationCounters);
 
-
-    /*
-    var pop1 = population.slice(population.length / 2)
-    var pop2 = pop1.splice(pop1.length / 2)
-    var pop3 = population.slice(0, population.length / 2)
-    var pop4 = pop3.splice(pop3.length / 2)
-
-    // select parents
-    var parents1 = toolbox.selectParents(pop1.length / 2, pop1);
-    var parents2 = toolbox.selectParents(pop2.length / 2, pop2);
-    var parents3 = toolbox.selectParents(pop3.length / 2, pop3);
-    var parents4 = toolbox.selectParents(pop4.length / 2, pop4);
-
-    // breed offspring
-    var offspring1 = yagal_algorithms.varAnd(parents1, toolbox, 0.5, 0.2);
-    var offspring2 = yagal_algorithms.varAnd(parents2, toolbox, 0.5, 0.2);
-    var offspring3 = yagal_algorithms.varAnd(parents3, toolbox, 0.5, 0.2);
-    var offspring4 = yagal_algorithms.varAnd(parents4, toolbox, 0.5, 0.2);
-
-
-    // My code is bad
-    // evaluate offspring with invalid fitness 1
-    var invalidInd1 = offspring1.filter(isFitnessInvalid);
-    var fitnessesValues1 = toolbox.map(toolbox.evaluate, invalidInd1);
-    for (var j = 0; j < invalidInd1.length; j++) {
-      invalidInd1[j].fitness.setValues(fitnessesValues1[j]);
-    }
-    // My code is bad
-    // evaluate offspring with invalid fitness 2
-    var invalidInd2 = offspring2.filter(isFitnessInvalid);
-    var fitnessesValues2 = toolbox.map(toolbox.evaluate, invalidInd2);
-    for (var j = 0; j < invalidInd2.length; j++) {
-      invalidInd2[j].fitness.setValues(fitnessesValues2[j]);
-    }// My code is bad
-    // evaluate offspring with invalid fitness 3
-    var invalidInd3 = offspring3.filter(isFitnessInvalid);
-    var fitnessesValues3 = toolbox.map(toolbox.evaluate, invalidInd3);
-    for (var j = 0; j < invalidInd3.length; j++) {
-      invalidInd3[j].fitness.setValues(fitnessesValues3[j]);
-    }// My code is bad
-    // evaluate offspring with invalid fitness 4
-    var invalidInd4 = offspring4.filter(isFitnessInvalid);
-    var fitnessesValues4 = toolbox.map(toolbox.evaluate, invalidInd4);
-    for (var j = 0; j < invalidInd4.length; j++) {
-      invalidInd4[j].fitness.setValues(fitnessesValues4[j]);
-    }
-
-    // select offspring
-    offspring1 = toolbox.selectOffspring(offspring1.length / 2, offspring1);
-    offspring2 = toolbox.selectOffspring(offspring2.length / 2, offspring2);
-    offspring3 = toolbox.selectOffspring(offspring3.length / 2, offspring3);
-    offspring4 = toolbox.selectOffspring(offspring4.length / 2, offspring4);
-
-    // select survivors
-    var survivors1 = toolbox.selectSurvivors(pop1.length - offspring1.length, pop1);
-    var survivors2 = toolbox.selectSurvivors(pop2.length - offspring2.length, pop2);
-    var survivors3 = toolbox.selectSurvivors(pop3.length - offspring3.length, pop3);
-    var survivors4 = toolbox.selectSurvivors(pop4.length - offspring4.length, pop4);
-
-    var nextPop = offspring1.concat(survivors1);
-    nextPop = nextPop.concat(offspring2.concat(survivors2));
-    nextPop = nextPop.concat(offspring3.concat(survivors3));
-    nextPop = nextPop.concat(offspring4.concat(survivors4));
-    nextPop[0] = population[0]; // Preserve n1 for reset lmaoshitcode
-    //what have I done */
     if (hof !== undefined) {
       hof.update(nextPop);
     }

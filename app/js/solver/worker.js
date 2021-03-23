@@ -258,9 +258,9 @@ Settings:\n\
     hof: hof,
     maxGen: settings.solver.generations,
     gen: 0,
-    lastFitness: 0,
-    hasCulled: 0,
-    stagnationCounter: 0
+    lastFitnesses: [],
+    stagnationCounters: [],
+    iniGuess: iniGuess
   };
 
   runOneGen();
@@ -268,20 +268,13 @@ Settings:\n\
 
 function runOneGen() {
   state.gen += 1;
-  state.pop = state.algorithm.gen(state.pop, state.toolbox, state.hof, state.stagnationCounter);
+  state.pop = state.algorithm.gen(state.pop, state.toolbox, state.hof, state);
 
   if (state.settings.debug) {
     var fitness = evalSeq(state.hof.entries[0], state.synth, state.settings.penaltyWeight);
-    if (fitness[0] == state.lastFitness)  {
-      state.stagnationCounter += 1;
-    }
-    else {
-      state.stagnationCounter = 0;
-    }
-    state.lastFitness = fitness[0];
     var popDiversity = calcPopDiversity(state.pop);
     var popLength = state.pop.length;
-    state.logOutput.write('%d: best fitness=[%s]  pop diversity=[%s]  pop size=[%s] stagnation: [%s] has_culled: [%s]\n'.sprintf(state.gen, numArrayToString(fitness), numArrayToString(popDiversity), popLength, state.stagnationCounter, state.hasCulled));
+    state.logOutput.write('%d: best fitness=[%s]  pop diversity=[%s]  pop size=[%s]\n'.sprintf(state.gen, numArrayToString(fitness), numArrayToString(popDiversity), popLength));
   }
 
   postProgress(state.gen, state.maxGen, state.hof.entries[0], state.synthNoConditions);
