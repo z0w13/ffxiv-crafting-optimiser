@@ -211,9 +211,12 @@ Settings:\n\
   toolbox.register("population", yagal_tools.initRepeat, Array, toolbox.individual);
   toolbox.register("evaluate", evalSeqWrapper, synth, settings.solver.penaltyWeight);
 
-  var pop = toolbox.population(settings.solver.population-1);
+  // var pop = toolbox.population(settings.solver.population-1);
+  var pop = toolbox.population(1);
   var iniGuess = creator.Individual.apply(null, sequence);
-  pop.push(iniGuess);
+  for (var i = 0; i < settings.solver.population-1; i++) {
+    pop.push(iniGuess);
+   }
 
   var hof = new yagal_tools.HallOfFame(1);
 
@@ -254,7 +257,10 @@ Settings:\n\
     toolbox: toolbox,
     hof: hof,
     maxGen: settings.solver.generations,
-    gen: 0
+    gen: 0,
+    lastFitnesses: [],
+    stagnationCounters: [],
+    iniGuess: iniGuess
   };
 
   runOneGen();
@@ -262,12 +268,13 @@ Settings:\n\
 
 function runOneGen() {
   state.gen += 1;
-  state.pop = state.algorithm.gen(state.pop, state.toolbox, state.hof);
+  state.pop = state.algorithm.gen(state.pop, state.toolbox, state.hof, state);
 
   if (state.settings.debug) {
     var fitness = evalSeq(state.hof.entries[0], state.synth, state.settings.penaltyWeight);
     var popDiversity = calcPopDiversity(state.pop);
-    state.logOutput.write('%d: best fitness=[%s]  pop diversity=[%s]\n'.sprintf(state.gen, numArrayToString(fitness), numArrayToString(popDiversity)));
+    var popLength = state.pop.length;
+    state.logOutput.write('%d: best fitness=[%s]  pop diversity=[%s]  pop size=[%s]\n'.sprintf(state.gen, numArrayToString(fitness), numArrayToString(popDiversity), popLength));
   }
 
   postProgress(state.gen, state.maxGen, state.hof.entries[0], state.synthNoConditions);

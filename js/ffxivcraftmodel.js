@@ -267,6 +267,17 @@ function ApplyModifiers(s, action, condition) {
     }
     successProbability = Math.min(successProbability, 1);
 
+    // Add combo bonus following Basic Touch
+     if (isActionEq(action, AllActions.standardTouch)) {
+        if (s.action === AllActions.basicTouch.shortName) {
+            cpCost = 18;
+            s.wastedActions -= 0.05;
+        }
+        if (s.action === AllActions.standardTouch.shortName) {
+            s.wastedActions += 0.1;
+        }
+    }
+
     // Effects modifying durability cost
     var durabilityCost = action.durabilityCost;
     if ((AllActions.wasteNot.shortName in s.effects.countDowns) || (AllActions.wasteNot2.shortName in s.effects.countDowns)) {
@@ -1260,7 +1271,8 @@ function evalSeq(individual, mySynth, penaltyWeight) {
     var fitnessProg = 0;
 
     // Sum the constraint violations
-    penalties += result.wastedActions / 100;
+    // experiment: wastedactions change
+    penalties += result.wastedActions / 20;
 
     // Check for feasibility violations
     var chk = result.checkViolations();
@@ -1294,6 +1306,7 @@ function evalSeq(individual, mySynth, penaltyWeight) {
 
     fitness += result.qualityState;
     fitness -= penaltyWeight * penalties;
+    fitness -= result.cpState*0.5 // Penalizes wasted CP
     fitnessProg += result.progressState;
 
     return [fitness, fitnessProg, result.cpState, individual.length];
