@@ -7,7 +7,8 @@ ALGORITHMS['eaComplex'] = {
     toolbox.register("mate", yagal_tools.cxRandomSubSeq, 3);
     toolbox.register("mutate1", yagal_tools.mutRandomSubSeq, 3, toolbox.randomActionSeq);
     toolbox.register("mutate2", yagal_tools.mutSwap);
-    toolbox.register("mutate", yagal_tools.randomMutation, [toolbox.mutate1, toolbox.mutate2]);
+    toolbox.register("mutate3", yagal_tools.mutReverse);
+    toolbox.register("mutate", yagal_tools.randomMutation, [toolbox.mutate1, toolbox.mutate2, toolbox.mutate3]);
     toolbox.register("selectParents", yagal_tools.selTournament, 7);
     toolbox.register("selectOffspring", yagal_tools.selBest);
     toolbox.register("selectSurvivors", yagal_tools.selBest);
