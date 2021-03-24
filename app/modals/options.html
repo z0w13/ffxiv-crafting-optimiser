@@ -159,6 +159,26 @@
                 </div>
               </div>
 
+              <div class="control-group" ng-class="{error: solverOptionsForm.subpopulations.$invalid}">
+                <label class="control-label">Subpopulations</label>
+
+                <div class="controls">
+                  <input class="input-small" type="number" name="subpopulations" ng-model="solver.subPopulations" min="1" required
+                         tooltip="Amount of groups to divide the population within the solver into."
+                         tooltip-placement="left"/>
+                </div>
+              </div>
+
+              <div class="control-group" ng-class="{error: solverOptionsForm.maxStagnationCounter.$invalid}">
+                <label class="control-label">Max Stagnation Counter</label>
+
+                <div class="controls">
+                  <input class="input-small" type="number" name="maxStagnationCounter" ng-model="solver.maxStagnationCounter" min="1" required
+                         tooltip="After this many  generations pass, the subpopulation gets wiped back to the initial guess state. This number is multiplied by 5 for the current leading subpopulation, so it has a chance to roll rare mutations. You can hit F12 and view console to view stats about the current subpopulations while the solver is running."
+                         tooltip-placement="left"/>
+                </div>
+              </div>
+
               <div class="control-group" ng-class="{error: solverOptionsForm.generations.$invalid}">
                 <label class="control-label">{{ 'GENERATIONS_OPTIONS' | translate }}</label>
 

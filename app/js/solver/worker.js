@@ -257,6 +257,8 @@ Settings:\n\
     toolbox: toolbox,
     hof: hof,
     maxGen: settings.solver.generations,
+    subPopulations: settings.solver.subPopulations,
+    maxStagnationCounter: settings.solver.maxStagnationCounter,
     gen: 0,
     lastFitnesses: [],
     stagnationCounters: [],
