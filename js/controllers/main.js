@@ -434,6 +434,8 @@
         algorithm: 'eaComplex',
         penaltyWeight: 10000,
         population: 12000,
+        subPopulations: 6,
+        maxStagnationCounter: 20,
         generations: 750
       };
 
