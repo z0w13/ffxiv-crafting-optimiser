@@ -7,7 +7,8 @@ ALGORITHMS['eaComplex'] = {
     toolbox.register("mate", yagal_tools.cxRandomSubSeq, 3);
     toolbox.register("mutate1", yagal_tools.mutRandomSubSeq, 3, toolbox.randomActionSeq);
     toolbox.register("mutate2", yagal_tools.mutSwap);
-    toolbox.register("mutate", yagal_tools.randomMutation, [toolbox.mutate1, toolbox.mutate2]);
+    toolbox.register("mutate3", yagal_tools.mutReverse);
+    toolbox.register("mutate", yagal_tools.randomMutation, [toolbox.mutate1, toolbox.mutate2, toolbox.mutate3]);
     toolbox.register("selectParents", yagal_tools.selTournament, 7);
     toolbox.register("selectOffspring", yagal_tools.selBest);
     toolbox.register("selectSurvivors", yagal_tools.selBest);
@@ -48,7 +49,7 @@ ALGORITHMS['eaComplex'] = {
       // If this subpopulation has stagnated for too long, wipe it back to the starting guess
       // UNLESS they are the current highest, still wipe that one if they're super stuck though.
       var maxFitness = Math.max(...state.lastFitnesses)
-      if(state.stagnationCounters[i] >= state.maxStagnationCounter && (state.lastFitnesses[i] !== maxFitness || state.stagnationCounters[i] >= state.toolboxmaxStagnationCounter*5)) {
+      if(state.stagnationCounters[i] >= state.maxStagnationCounter && (state.lastFitnesses[i] !== maxFitness || state.stagnationCounters[i] >= state.maxStagnationCounter*5)) {
         state.stagnationCounters[i] = 0;
         subPop.fill(state.iniGuess);
         state.logOutput.write('Subpopulation %s has been wiped due to stagnation. \n'.sprintf(i));

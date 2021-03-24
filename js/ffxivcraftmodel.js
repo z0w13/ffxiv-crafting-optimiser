@@ -1306,7 +1306,7 @@ function evalSeq(individual, mySynth, penaltyWeight) {
 
     fitness += result.qualityState;
     fitness -= penaltyWeight * penalties;
-    fitness -= result.cpState*0.5 // Penalizes wasted CP
+    //fitness -= result.cpState*0.5 // Penalizes wasted CP
     fitnessProg += result.progressState;
 
     return [fitness, fitnessProg, result.cpState, individual.length];
