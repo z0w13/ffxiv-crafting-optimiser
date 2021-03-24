@@ -48,7 +48,7 @@ ALGORITHMS['eaComplex'] = {
       // If this subpopulation has stagnated for too long, wipe it back to the starting guess
       // UNLESS they are the current highest, still wipe that one if they're super stuck though.
       var maxFitness = Math.max(...state.lastFitnesses)
-      if(state.stagnationCounters[i] >= state.maxStagnationCounter && (state.lastFitnesses[i] !== maxFitness || state.stagnationCounters[i] >= state.toolboxmaxStagnationCounter*5)) {
+      if(state.stagnationCounters[i] >= state.maxStagnationCounter && (state.lastFitnesses[i] !== maxFitness || state.stagnationCounters[i] >= state.maxStagnationCounter*5)) {
         state.stagnationCounters[i] = 0;
         subPop.fill(state.iniGuess);
         state.logOutput.write('Subpopulation %s has been wiped due to stagnation. \n'.sprintf(i));
