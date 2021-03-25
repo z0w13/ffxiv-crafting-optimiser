@@ -42,6 +42,7 @@ ALGORITHMS['eaComplex'] = {
     var winningSub = 0;
 
     console.log('---------------gen:%s------------------'.sprintf(state.gen));
+    console.time('gen calculation time')
 
     for (var i = 0; i < popDivider; i++) {
       var subPop = population.slice(i * population.length / popDivider, (i +1) * population.length / popDivider)
@@ -49,7 +50,8 @@ ALGORITHMS['eaComplex'] = {
       // If this subpopulation has stagnated for too long, wipe it back to the starting guess
       // UNLESS they are the current highest, still wipe that one if they're super stuck though.
       var maxFitness = Math.max(...state.lastFitnesses)
-      if(state.stagnationCounters[i] >= state.maxStagnationCounter && (state.lastFitnesses[i] !== maxFitness || state.stagnationCounters[i] >= state.maxStagnationCounter*5)) {
+      // monster statement lmao
+      if(state.stagnationCounters[i] >= state.maxStagnationCounter && (state.lastFitnesses[i] !== maxFitness || state.stagnationCounters[i] >= state.maxStagnationCounter*3)) {
         state.stagnationCounters[i] = 0;
         subPop.fill(state.iniGuess);
         state.logOutput.write('Subpopulation %s has been wiped due to stagnation. \n'.sprintf(i));
@@ -100,9 +102,10 @@ ALGORITHMS['eaComplex'] = {
       
 
     }
-    console.log('Winning subpop: %s'.sprintf(winningSub+1));
+    console.log('Winning subpop: %s at fitness: %s'.sprintf(winningSub+1, state.lastFitnesses[winningSub]));
     console.log('Last fitnesses: %s'.sprintf(state.lastFitnesses));
     console.log('Stagnation incr: %s'.sprintf(state.stagnationCounters));
+    console.timeEnd('gen calculation time')
 
     if (hof !== undefined) {
       hof.update(nextPop);
