@@ -168,7 +168,9 @@ Settings:\n\
     }
   }
 
+  var heuristicGuess = false; // The heuristic guess can be pretty meh, so let's not flood every
   if (sequence.length === 0) {
+    heuristicGuess = true;
     sequence = heuristicSequenceBuilder(synth);
 
     logOutput.write('No initial sequence provided; seeding with the following heuristic sequence:\n\n');
@@ -217,6 +219,9 @@ Settings:\n\
   for (var i = 0; i < settings.solver.population-1; i++) {
     pop.push(iniGuess);
    }
+  if(heuristicGuess) {
+    iniGuess = pop[0]; // If it was heuristically guessed, set iniGuess to 0 so new pops start from scratch in case the guess was bad.
+  }
 
   var hof = new yagal_tools.HallOfFame(1);
 
@@ -261,6 +266,7 @@ Settings:\n\
     maxStagnationCounter: settings.solver.maxStagnationCounter,
     gen: 0,
     lastFitnesses: [],
+    lastLeaderboard: [],
     stagnationCounters: [],
     iniGuess: iniGuess
   };

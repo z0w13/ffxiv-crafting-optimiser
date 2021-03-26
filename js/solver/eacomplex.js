@@ -26,6 +26,9 @@ ALGORITHMS['eaComplex'] = {
   },
   gen: function (population, toolbox, hof, state) {
 
+    console.log('---------------gen:%s------------------'.sprintf(state.gen));
+    console.time('gen calculation time')
+
     function isFitnessInvalid(ind) {
       return !ind.fitness.valid();
     }
@@ -34,24 +37,37 @@ ALGORITHMS['eaComplex'] = {
       return b.fitness.compare(a.fitness);
     }
 
+    function sortWithIndeces(toSort) { // Thanks stackexchange
+      for (var i = 0; i < toSort.length; i++) {
+        toSort[i] = [toSort[i], i];
+      }
+      toSort.sort(function(left, right) {
+        return left[0] < right[0] ? -1 : 1;
+      });
+      toSort.sortIndices = [];
+      for (var j = 0; j < toSort.length; j++) {
+        toSort.sortIndices.push(toSort[j][1]);
+        toSort[j] = toSort[j][0];
+      }
+      return toSort;
+    }
+
     // Split population in 4
     // The population gets divided into this many segments.
     var popDivider = state.subPopulations;
     var nextPop = [];
     var highestFitness = 0;
     var winningSub = 0;
-
-    console.log('---------------gen:%s------------------'.sprintf(state.gen));
-    console.time('gen calculation time')
+    var losingSubs = state.lastLeaderboard.splice(0, Math.floor(state.lastLeaderboard.length / 1.5));
+    console.log(losingSubs);
 
     for (var i = 0; i < popDivider; i++) {
       var subPop = population.slice(i * population.length / popDivider, (i +1) * population.length / popDivider)
 
       // If this subpopulation has stagnated for too long, wipe it back to the starting guess
-      // UNLESS they are the current highest, still wipe that one if they're super stuck though.
-      var maxFitness = Math.max(...state.lastFitnesses)
-      // monster statement lmao
-      if(state.stagnationCounters[i] >= state.maxStagnationCounter && (state.lastFitnesses[i] !== maxFitness || state.stagnationCounters[i] >= state.maxStagnationCounter*3)) {
+      // If they are not in the lowest half of the populations, they get 3x as much time to improve
+      var losingPop = losingSubs.includes(i);
+      if((losingPop && state.stagnationCounters[i] >= state.maxStagnationCounter) || state.stagnationCounters[i] >= state.maxStagnationCounter*3) {
         state.stagnationCounters[i] = 0;
         subPop.fill(state.iniGuess);
         state.logOutput.write('Subpopulation %s has been wiped due to stagnation. \n'.sprintf(i));
@@ -105,11 +121,16 @@ ALGORITHMS['eaComplex'] = {
     console.log('Winning subpop: %s at fitness: %s'.sprintf(winningSub+1, state.lastFitnesses[winningSub]));
     console.log('Last fitnesses: %s'.sprintf(state.lastFitnesses));
     console.log('Stagnation incr: %s'.sprintf(state.stagnationCounters));
-    console.timeEnd('gen calculation time')
-
+    
+    // Set the leaderboard: leading subpops get to stay for longer before wiping due to stagnation
+    // This leaderboard has the indices of subpops sorted by fitness in ascending order
+    var fitnessCopy = state.lastFitnesses.slice();
+    state.lastLeaderboard = sortWithIndeces(fitnessCopy).sortIndices;
+    console.log('Leaderboard: %s'.sprintf(state.lastLeaderboard));
     if (hof !== undefined) {
       hof.update(nextPop);
     }
+    console.timeEnd('gen calculation time')
     return nextPop;
   }
 };
