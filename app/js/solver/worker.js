@@ -266,6 +266,7 @@ Settings:\n\
     maxStagnationCounter: settings.solver.maxStagnationCounter,
     gen: 0,
     lastFitnesses: [],
+    lastLeaderboard: [],
     stagnationCounters: [],
     iniGuess: iniGuess
   };
