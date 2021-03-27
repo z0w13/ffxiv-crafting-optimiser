@@ -133,6 +133,36 @@
                 </div>
               </div>
 
+              <div class="control-group">
+                <div class="controls">
+                  <label class="checkbox" tooltip="Ticking this option makes the solver ignore quality, and instead tried to optimize for finishing progress with as much durability and CP remaining as possible. Actions that normally regenerate or preserve durability (e.g. MM, manipulation) are fitness-penalized." tooltip-placement="right">
+                    <input type="checkbox" ng-model="solver.solveForCompletion"/>Solve for Completion only
+                  </label>
+                </div>
+              </div>
+
+              <div class="control-group" ng-class="{error: solver.solveForCompletion && solver.remainderCPFitnessValue.$invalid}">
+                <label class="control-label">CP remainder fitness value</label>
+
+                <div class="controls">
+                  <input class="input-small" type="number" name="maxLength" ng-model="solver.remainderCPFitnessValue"
+                         ng-disabled="!solver.solveForCompletion" min="1" ng-required="solver.solveForCompletion"
+                         tooltip="The fitness value reward for each remaining point of CP after the craft is completed. Balance this with the fitness reward for remaining durability to optimize for your desired result."
+                         tooltip-placement="right"/>
+                </div>
+              </div>
+
+              <div class="control-group" ng-class="{error: solver.solveForCompletion && solver.remainderDurFitnessValue.$invalid}">
+                <label class="control-label">CP remainder fitness value</label>
+
+                <div class="controls">
+                  <input class="input-small" type="number" name="maxLength" ng-model="solver.remainderDurFitnessValue"
+                         ng-disabled="!solver.solveForCompletion" min="1" ng-required="solver.solveForCompletion"
+                         tooltip="The fitness value reward for each remaining point of durability after the craft is completed. Balance this with the fitness reward for remaining CP to optimize for your desired result."
+                         tooltip-placement="right"/>
+                </div>
+              </div>
+
             </div>
             <div class="span6">
 
