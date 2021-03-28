@@ -62,13 +62,21 @@ function Recipe(baseLevel, level, difficulty, durability, startQuality, maxQuali
     this.suggestedControl = suggestedControl || SuggestedControl[this.level];
 }
 
-function Synth(crafter, recipe, maxTrickUses, reliabilityIndex, useConditions, maxLength) {
+// Extra solver vars that the synth needs to take into account
+function SolverVars(solveForCompletion, remainderCPFitnessValue, remainderDurFitnessValue) {
+    this.solveForCompletion = solveForCompletion;
+    this.remainderCPFitnessValue = remainderCPFitnessValue;
+    this.remainderDurFitnessValue = remainderDurFitnessValue;
+}
+
+function Synth(crafter, recipe, maxTrickUses, reliabilityIndex, useConditions, maxLength, solverVars) {
     this.crafter = crafter;
     this.recipe = recipe;
     this.maxTrickUses = maxTrickUses;
     this.useConditions = useConditions;
     this.reliabilityIndex = reliabilityIndex;
     this.maxLength = maxLength;
+    this.solverVars = solverVars;
 }
 
 Synth.prototype.calculateBaseProgressIncrease = function (levelDifference, craftsmanship) {
@@ -268,7 +276,7 @@ function ApplyModifiers(s, action, condition) {
     successProbability = Math.min(successProbability, 1);
 
     // Add combo bonus following Basic Touch
-     if (isActionEq(action, AllActions.standardTouch)) {
+    if (isActionEq(action, AllActions.standardTouch)) {
         if (s.action === AllActions.basicTouch.shortName) {
             cpCost = 18;
             s.wastedActions -= 0.05;
@@ -276,6 +284,11 @@ function ApplyModifiers(s, action, condition) {
         if (s.action === AllActions.standardTouch.shortName) {
             s.wastedActions += 0.1;
         }
+    }
+
+    // Penalize use of WasteNot during solveforcompletion runs
+    if ((isActionEq(action, AllActions.wasteNot) || isActionEq(action, AllActions.wasteNot2)) && s.synth.solverVars.solveForCompletion) {
+        s.wastedActions += 50;
     }
 
     // Effects modifying durability cost
@@ -415,10 +428,16 @@ function ApplySpecialActionEffects(s, action, condition) {
     // Special Effect Actions
     if (isActionEq(action, AllActions.mastersMend)) {
         s.durabilityState += 30;
+        if (s.synth.solverVars.solveForCompletion) {
+            s.wastedActions += 50; // Bad code, but it works. We don't want dur increase in solveforcompletion.
+        }
     }
 
     if ((AllActions.manipulation.shortName in s.effects.countDowns) && (s.durabilityState > 0) && !isActionEq(action, AllActions.manipulation)) {
         s.durabilityState += 5;
+        if (s.synth.solverVars.solveForCompletion) {
+            s.wastedActions += 50; // Bad code, but it works. We don't want dur increase in solveforcompletion.
+        }
     }
 
     if (isActionEq(action, AllActions.byregotsBlessing)) {
@@ -546,9 +565,11 @@ function UpdateState(s, action, progressGain, qualityGain, durabilityCost, cpCos
     UpdateEffectCounters(s, action, condition, successProbability);
 
     // Sanity checks for state variables
+    /* Removing this for solveForCompletion, hopefully it doesn't cause issues! :)
     if ((s.durabilityState >= -5) && (s.progressState >= s.synth.recipe.difficulty)) {
-        s.durabilityState = 0;
+        //s.durabilityState = 0;
     }
+    */
     s.durabilityState = Math.min(s.durabilityState, s.synth.recipe.durability);
     s.cpState = Math.min(s.cpState, s.synth.crafter.craftPoints + s.bonusMaxCp);
 }
@@ -1304,10 +1325,17 @@ function evalSeq(individual, mySynth, penaltyWeight) {
         }
     }
 
-    fitness += result.qualityState;
+    if (mySynth.solverVars.solveForCompletion) {
+        fitness += result.cpState * mySynth.solverVars.remainderCPFitnessValue;
+        fitness += result.durabilityState * mySynth.solverVars.remainderDurFitnessValue;
+    }
+    else {
+        fitness += result.qualityState;
+    }
+    
     fitness -= penaltyWeight * penalties;
     //fitness -= result.cpState*0.5 // Penalizes wasted CP
-    fitnessProg += result.progressState;
+    //fitnessProg += result.progressState;
 
     return [fitness, fitnessProg, result.cpState, individual.length];
 }
