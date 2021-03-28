@@ -67,7 +67,6 @@ function SolverVars(solveForCompletion, remainderCPFitnessValue, remainderDurFit
     this.solveForCompletion = solveForCompletion;
     this.remainderCPFitnessValue = remainderCPFitnessValue;
     this.remainderDurFitnessValue = remainderDurFitnessValue;
-    this.remainderDur = 0;
 }
 
 function Synth(crafter, recipe, maxTrickUses, reliabilityIndex, useConditions, maxLength, solverVars) {
@@ -288,8 +287,8 @@ function ApplyModifiers(s, action, condition) {
     }
 
     // Penalize use of WasteNot during solveforcompletion runs
-    if ((isActionEq(action, AllActions.wasteNot) || isActionEq(action, AllActions.wasteNot2)) && s.solverVars.solveForCompletion) {
-        s.wastedActions += 5;
+    if ((isActionEq(action, AllActions.wasteNot) || isActionEq(action, AllActions.wasteNot2)) && s.synth.solverVars.solveForCompletion) {
+        s.wastedActions += 50;
     }
 
     // Effects modifying durability cost
@@ -429,15 +428,15 @@ function ApplySpecialActionEffects(s, action, condition) {
     // Special Effect Actions
     if (isActionEq(action, AllActions.mastersMend)) {
         s.durabilityState += 30;
-        if (s.solverVars.solveForCompletion) {
-            s.wastedActions += 5; // Bad code, but it works. We don't want dur increase in solveforcompletion.
+        if (s.synth.solverVars.solveForCompletion) {
+            s.wastedActions += 50; // Bad code, but it works. We don't want dur increase in solveforcompletion.
         }
     }
 
     if ((AllActions.manipulation.shortName in s.effects.countDowns) && (s.durabilityState > 0) && !isActionEq(action, AllActions.manipulation)) {
         s.durabilityState += 5;
-        if (s.solverVars.solveForCompletion) {
-            s.wastedActions += 5; // Bad code, but it works. We don't want dur increase in solveforcompletion.
+        if (s.synth.solverVars.solveForCompletion) {
+            s.wastedActions += 50; // Bad code, but it works. We don't want dur increase in solveforcompletion.
         }
     }
 
@@ -566,10 +565,11 @@ function UpdateState(s, action, progressGain, qualityGain, durabilityCost, cpCos
     UpdateEffectCounters(s, action, condition, successProbability);
 
     // Sanity checks for state variables
+    /* Removing this for solveForCompletion, hopefully it doesn't cause issues! :)
     if ((s.durabilityState >= -5) && (s.progressState >= s.synth.recipe.difficulty)) {
-        s.solverVars.remainderDur = s.durabilityState;
-        s.durabilityState = 0;
+        //s.durabilityState = 0;
     }
+    */
     s.durabilityState = Math.min(s.durabilityState, s.synth.recipe.durability);
     s.cpState = Math.min(s.cpState, s.synth.crafter.craftPoints + s.bonusMaxCp);
 }
@@ -1327,7 +1327,7 @@ function evalSeq(individual, mySynth, penaltyWeight) {
 
     if (mySynth.solverVars.solveForCompletion) {
         fitness += result.cpState * mySynth.solverVars.remainderCPFitnessValue;
-        fitness += mySynth.solverVars.remainderDur * mySynth.solverVars.remainderDurFitnessValue;
+        fitness += result.durabilityState * mySynth.solverVars.remainderDurFitnessValue;
     }
     else {
         fitness += result.qualityState;
@@ -1335,7 +1335,7 @@ function evalSeq(individual, mySynth, penaltyWeight) {
     
     fitness -= penaltyWeight * penalties;
     //fitness -= result.cpState*0.5 // Penalizes wasted CP
-    fitnessProg += result.progressState;
+    //fitnessProg += result.progressState;
 
     return [fitness, fitnessProg, result.cpState, individual.length];
 }

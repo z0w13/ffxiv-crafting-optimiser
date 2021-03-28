@@ -437,7 +437,7 @@
         subPopulations: 6,
         solveForCompletion: false,
         remainderCPFitnessValue: 10,
-        remainderDurFitnessValue: 10,
+        remainderDurFitnessValue: 100,
         maxStagnationCounter: 20,
         generations: 750
       };

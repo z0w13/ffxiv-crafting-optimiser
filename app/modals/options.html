@@ -135,7 +135,7 @@
 
               <div class="control-group">
                 <div class="controls">
-                  <label class="checkbox" tooltip="Ticking this option makes the solver ignore quality, and instead tried to optimize for finishing progress with as much durability and CP remaining as possible. Actions that normally regenerate or preserve durability (e.g. MM, manipulation) are fitness-penalized." tooltip-placement="right">
+                  <label class="checkbox" tooltip="Ticking this option makes the solver ignore quality, and instead tried to optimize for finishing progress with as much durability and CP remaining as possible. Actions that normally regenerate or preserve durability (e.g. MM, manipulation) are practically disabled." tooltip-placement="right">
                     <input type="checkbox" ng-model="solver.solveForCompletion"/>Solve for Completion only
                   </label>
                 </div>
@@ -153,7 +153,7 @@
               </div>
 
               <div class="control-group" ng-class="{error: solver.solveForCompletion && solver.remainderDurFitnessValue.$invalid}">
-                <label class="control-label">CP remainder fitness value</label>
+                <label class="control-label">Durability remainder fitness value</label>
 
                 <div class="controls">
                   <input class="input-small" type="number" name="maxLength" ng-model="solver.remainderDurFitnessValue"

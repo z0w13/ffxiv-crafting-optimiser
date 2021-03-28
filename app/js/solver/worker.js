@@ -147,9 +147,9 @@ Settings:\n\
       settings.recipe.suggestedCraftsmanship, settings.recipe.suggestedControl);
   var solverVars = new SolverVars(settings.solver.solveForCompletion, settings.solver.remainderCPFitnessValue, settings.solver.remainderDurFitnessValue);
   var synth = new Synth(crafter, recipe, settings.maxTricksUses, settings.reliabilityPercent/100.0,
-    settings.useConditions, settings.maxLength, SolverVars);
+    settings.useConditions, settings.maxLength, solverVars);
   var synthNoConditions = new Synth(crafter, recipe, settings.maxTricksUses, settings.reliabilityPercent/100.0, false,
-    settings.maxLength, SolverVars);
+    settings.maxLength, solverVars);
 
   var sequence = [];
 
