@@ -1335,7 +1335,7 @@ function evalSeq(individual, mySynth, penaltyWeight) {
     
     fitness -= penaltyWeight * penalties;
     //fitness -= result.cpState*0.5 // Penalizes wasted CP
-    //fitnessProg += result.progressState;
+    fitnessProg += result.progressState;
 
     return [fitness, fitnessProg, result.cpState, individual.length];
 }
