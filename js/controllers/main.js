@@ -435,6 +435,9 @@
         penaltyWeight: 10000,
         population: 12000,
         subPopulations: 6,
+        solveForCompletion: false,
+        remainderCPFitnessValue: 10,
+        remainderDurFitnessValue: 100,
         maxStagnationCounter: 20,
         generations: 750
       };
