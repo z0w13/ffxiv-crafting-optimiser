@@ -149,9 +149,21 @@ State.prototype.checkViolations = function () {
         cpOk = true;
     }
 
+    /* Ranged edit - original
     // Consider removing sanity check in UpdateState
     if ((this.durabilityState >= 0) && (this.progressState >= this.synth.recipe.difficulty)) {
         durabilityOk = true;
+    }
+    */
+
+    // Ranged edit -- 10 cost actions that bring you to -5 are now valid
+    if ((this.durabilityState >= -5) && (this.progressState >= this.synth.recipe.difficulty)) {
+        if (this.action.durabilityCost === 10) {
+            durabilityOk = true;
+        }
+        if (this.durabilityState >= 0) {
+            durabilityOk = true;
+        }
     }
 
     if (this.trickUses <= this.synth.maxTrickUses) {
