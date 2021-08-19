@@ -97,6 +97,20 @@ function isActionNe(action1, action2) {
     return action1.shortName !== action2.shortName;
 }
 
+// Ranged edit -- Combo actions. Poor coding practice but I'm not too experienced with JS and I wouldn't know how to do it otherwise...
+// This returns the action object matching the name
+function getComboAction(comboName) {
+    var returnAction;
+
+    if(comboName == AllActions.observe.shortName){                  // Observe
+        returnAction = AllActions.observe;
+    } else if(comboName == AllActions.focusedTouch.shortName){      // Focused Touch
+        returnAction = AllActions.focusedTouch;
+    }
+
+    return returnAction;
+}
+
 function EffectTracker() {
     this.countUps = {};
     this.countDowns = {};
@@ -257,7 +271,6 @@ function getEffectiveCrafterLevel(synth) {
 }
 
 function ApplyModifiers(s, action, condition) {
-
     // Effect Modifiers
     //=================
     var craftsmanship = s.synth.crafter.craftsmanship;
@@ -637,71 +650,88 @@ function simSynth(individual, startState, assumeSuccess, verbose, debug, logOutp
     }
 
     for (var i = 0; i < individual.length; i++) {
-        var action = individual[i];
+        // var action = individual[i];
 
-        // Occur regardless of dummy actions
-        //==================================
-        s.step += 1;
+        // Ranged edit -- Combo actions. Basically do everything twice over if there's a combo action. Woo.
+        var actionsArray = [];
 
-        // Condition Calculation
-        var condQualityIncreaseMultiplier = 1;
-        if (!ignoreConditionReq) {
-            condQualityIncreaseMultiplier *= (ppNormal + 1.5 * ppGood * Math.pow(1 - (ppGood + pGood) / 2, s.synth.maxTrickUses) + 4 * ppExcellent + 0.5 * ppPoor);
+        if (individual[i].isCombo){
+            actionsArray[0] = getComboAction(individual[i].comboName1);
+            actionsArray[1] = getComboAction(individual[i].comboName2);
+        } else {
+            actionsArray[0] = individual[i];
         }
+        for (var i = 0; i < actionsArray.length; i++) {
+            console.log(i);
+            var action = actionsArray[i];
 
-        // Calculate Progress, Quality and Durability gains and losses under effect of modifiers
-        var r = ApplyModifiers(s, action, SimCondition);
+                    
+            // Occur regardless of dummy actions
+            //==================================
+            s.step += 1;
 
-        // Calculate final gains / losses
-        var successProbability = r.successProbability;
-        if (assumeSuccess) {
-            successProbability = 1;
-        }
-        var progressGain = r.bProgressGain;
-        if (progressGain > 0) {
-            s.reliability = s.reliability * successProbability;
-        }
-
-        var qualityGain = condQualityIncreaseMultiplier * r.bQualityGain;
-
-        // Floor gains at final stage before calculating expected value
-        progressGain = successProbability * Math.floor(progressGain);
-        qualityGain = successProbability * Math.floor(qualityGain);
-
-        // Occur if a wasted action
-        //==================================
-        if (((s.progressState >= s.synth.recipe.difficulty) || (s.durabilityState <= 0) || (s.cpState < 0)) && (action != AllActions.dummyAction)) {
-            s.wastedActions += 1;
-        }
-
-        // Occur if not a wasted action
-        //==================================
-        else {
-
-            UpdateState(s, action, progressGain, qualityGain, r.durabilityCost, r.cpCost, SimCondition, successProbability);
-
-            // Ending condition update
+            // Condition Calculation
+            var condQualityIncreaseMultiplier = 1;
             if (!ignoreConditionReq) {
-                ppPoor = ppExcellent;
-                ppGood = pGood * ppNormal;
-                ppExcellent = pExcellent * ppNormal;
-                ppNormal = 1 - (ppGood + ppExcellent + ppPoor);
+                condQualityIncreaseMultiplier *= (ppNormal + 1.5 * ppGood * Math.pow(1 - (ppGood + pGood) / 2, s.synth.maxTrickUses) + 4 * ppExcellent + 0.5 * ppPoor);
             }
 
+            // Calculate Progress, Quality and Durability gains and losses under effect of modifiers
+            var r = ApplyModifiers(s, action, SimCondition);
+
+            // Calculate final gains / losses
+            var successProbability = r.successProbability;
+            if (assumeSuccess) {
+                successProbability = 1;
+            }
+            var progressGain = r.bProgressGain;
+            if (progressGain > 0) {
+                s.reliability = s.reliability * successProbability;
+            }
+
+            var qualityGain = condQualityIncreaseMultiplier * r.bQualityGain;
+
+            // Floor gains at final stage before calculating expected value
+            progressGain = successProbability * Math.floor(progressGain);
+            qualityGain = successProbability * Math.floor(qualityGain);
+
+            // Occur if a wasted action
+            //==================================
+            if (((s.progressState >= s.synth.recipe.difficulty) || (s.durabilityState <= 0) || (s.cpState < 0)) && (action != AllActions.dummyAction)) {
+                s.wastedActions += 1;
+            }
+
+            // Occur if not a wasted action
+            //==================================
+            else {
+
+                UpdateState(s, action, progressGain, qualityGain, r.durabilityCost, r.cpCost, SimCondition, successProbability);
+                console.log('stateupdated');
+
+                // Ending condition update
+                if (!ignoreConditionReq) {
+                    ppPoor = ppExcellent;
+                    ppGood = pGood * ppNormal;
+                    ppExcellent = pExcellent * ppNormal;
+                    ppNormal = 1 - (ppGood + ppExcellent + ppPoor);
+                }
+
+            }
+
+            var iqCnt = 0;
+            if (AllActions.innerQuiet.shortName in s.effects.countUps) {
+                iqCnt = s.effects.countUps[AllActions.innerQuiet.shortName];
+            }
+            if (debug) {
+                logger.log('%2d %30s %5.0f %5.0f %8.1f %8.1f %5.1f %8.1f %8.1f %5.0f %5.0f %5.0f', s.step, action.name, s.durabilityState, s.cpState, s.qualityState, s.progressState, iqCnt, r.control, qualityGain, Math.floor(r.bProgressGain), Math.floor(r.bQualityGain), s.wastedActions);
+            }
+            else if (verbose) {
+                logger.log('%2d %30s %5.0f %5.0f %8.1f %8.1f %5.1f', s.step, action.name, s.durabilityState, s.cpState, s.qualityState, s.progressState, iqCnt);
+            }
+
+            s.action = action.shortName
         }
 
-        var iqCnt = 0;
-        if (AllActions.innerQuiet.shortName in s.effects.countUps) {
-            iqCnt = s.effects.countUps[AllActions.innerQuiet.shortName];
-        }
-        if (debug) {
-            logger.log('%2d %30s %5.0f %5.0f %8.1f %8.1f %5.1f %8.1f %8.1f %5.0f %5.0f %5.0f', s.step, action.name, s.durabilityState, s.cpState, s.qualityState, s.progressState, iqCnt, r.control, qualityGain, Math.floor(r.bProgressGain), Math.floor(r.bQualityGain), s.wastedActions);
-        }
-        else if (verbose) {
-            logger.log('%2d %30s %5.0f %5.0f %8.1f %8.1f %5.1f', s.step, action.name, s.durabilityState, s.cpState, s.qualityState, s.progressState, iqCnt);
-        }
-
-        s.action = action.shortName
     }
 
     // Check for feasibility violations
