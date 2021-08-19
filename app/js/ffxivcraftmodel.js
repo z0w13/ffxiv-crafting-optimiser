@@ -585,7 +585,6 @@ function UpdateState(s, action, progressGain, qualityGain, durabilityCost, cpCos
     s.durabilityState -= durabilityCost;
     s.cpState -= cpCost;
     s.lastStep += 1;
-
     ApplySpecialActionEffects(s, action, condition);
     UpdateEffectCounters(s, action, condition, successProbability);
 
@@ -648,11 +647,11 @@ function simSynth(individual, startState, assumeSuccess, verbose, debug, logOutp
         logger.log('%2d %30s %5.0f %5.0f %8.1f %8.1f %5.1f', s.step, '', s.durabilityState, s.cpState, s.qualityState, s.progressState, 0);
 
     }
-
     for (var i = 0; i < individual.length; i++) {
         // var action = individual[i];
 
         // Ranged edit -- Combo actions. Basically do everything twice over if there's a combo action. Woo.
+        // Todo - fix infinite loop death lol idk why it does thatttt
         var actionsArray = [];
 
         if (individual[i].isCombo){
@@ -661,9 +660,8 @@ function simSynth(individual, startState, assumeSuccess, verbose, debug, logOutp
         } else {
             actionsArray[0] = individual[i];
         }
-        for (var i = 0; i < actionsArray.length; i++) {
-            console.log(i);
-            var action = actionsArray[i];
+        for (var j = 0; j < actionsArray.length; j++) {
+            var action = actionsArray[j];
 
                     
             // Occur regardless of dummy actions
@@ -706,7 +704,6 @@ function simSynth(individual, startState, assumeSuccess, verbose, debug, logOutp
             else {
 
                 UpdateState(s, action, progressGain, qualityGain, r.durabilityCost, r.cpCost, SimCondition, successProbability);
-                console.log('stateupdated');
 
                 // Ending condition update
                 if (!ignoreConditionReq) {
@@ -780,61 +777,73 @@ function MonteCarloStep(startState, action, assumeSuccess, verbose, debug, logOu
         }
     };
 
-    // Initialize counters
-    s.step += 1;
+    // Ranged edit - Combo actions please please please just fukcing worksadsd asfdfghdttsas
+    var actionsArray = [];
 
-    // Condition Evaluation
-    var condQualityIncreaseMultiplier = 1;
-    if (s.condition === 'Excellent') {
-        condQualityIncreaseMultiplier *= 4.0;
+    if (action.isCombo){
+        actionsArray[0] = getComboAction(action.comboName1);
+        actionsArray[1] = getComboAction(action.comboName2);
+    } else {
+        actionsArray[0] = action;
     }
-    else if (s.condition === 'Good' ) {
-        condQualityIncreaseMultiplier *= 1.5;
-    }
-    else if (s.condition === 'Poor' ) {
-        condQualityIncreaseMultiplier *= 0.5;
-    }
-    else {
-        condQualityIncreaseMultiplier *= 1.0;
-    }
+    for (var j = 0; j < actionsArray.length; j++) {
+        action = actionsArray[j];
+        // Initialize counters
+        s.step += 1;
 
-    // Calculate Progress, Quality and Durability gains and losses under effect of modifiers
-    var r = ApplyModifiers(s, action, MonteCarloCondition);
+        // Condition Evaluation
+        var condQualityIncreaseMultiplier = 1;
+        if (s.condition === 'Excellent') {
+            condQualityIncreaseMultiplier *= 4.0;
+        }
+        else if (s.condition === 'Good' ) {
+            condQualityIncreaseMultiplier *= 1.5;
+        }
+        else if (s.condition === 'Poor' ) {
+            condQualityIncreaseMultiplier *= 0.5;
+        }
+        else {
+            condQualityIncreaseMultiplier *= 1.0;
+        }
 
-    // Success or Failure
-    var success = 0;
-    var successRand = Math.random();
-    if (0 <= successRand && successRand <= r.successProbability) {
-        success = 1;
+        // Calculate Progress, Quality and Durability gains and losses under effect of modifiers
+        var r = ApplyModifiers(s, action, MonteCarloCondition);
+
+        // Success or Failure
+        var success = 0;
+        var successRand = Math.random();
+        if (0 <= successRand && successRand <= r.successProbability) {
+            success = 1;
+        }
+
+        if (assumeSuccess) {
+            success = 1;
+        }
+
+        // Calculate final gains / losses
+        var progressGain = success * r.bProgressGain;
+        if (progressGain > 0) {
+            s.reliability = s.reliability * r.successProbability;
+        }
+
+        var qualityGain = success * condQualityIncreaseMultiplier * r.bQualityGain;
+
+        // Floor gains at final stage before calculating expected value
+        progressGain = Math.floor(progressGain);
+        qualityGain = Math.floor(qualityGain);
+
+        // Occur if a dummy action
+        //==================================
+        if ((s.progressState >= s.synth.recipe.difficulty || s.durabilityState <= 0 || s.cpState < 0) && action != AllActions.dummyAction) {
+            s.wastedActions += 1;
+        }
+        // Occur if not a dummy action
+        //==================================
+        else {
+            UpdateState(s, action, progressGain, qualityGain, r.durabilityCost, r.cpCost, MonteCarloCondition, success);
+        }
+
     }
-
-    if (assumeSuccess) {
-        success = 1;
-    }
-
-    // Calculate final gains / losses
-    var progressGain = success * r.bProgressGain;
-    if (progressGain > 0) {
-        s.reliability = s.reliability * r.successProbability;
-    }
-
-    var qualityGain = success * condQualityIncreaseMultiplier * r.bQualityGain;
-
-    // Floor gains at final stage before calculating expected value
-    progressGain = Math.floor(progressGain);
-    qualityGain = Math.floor(qualityGain);
-
-    // Occur if a dummy action
-    //==================================
-    if ((s.progressState >= s.synth.recipe.difficulty || s.durabilityState <= 0 || s.cpState < 0) && action != AllActions.dummyAction) {
-        s.wastedActions += 1;
-    }
-    // Occur if not a dummy action
-    //==================================
-    else {
-        UpdateState(s, action, progressGain, qualityGain, r.durabilityCost, r.cpCost, MonteCarloCondition, success);
-    }
-
     // Ending condition update
     if (s.condition === 'Excellent') {
         s.condition = 'Poor';

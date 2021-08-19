@@ -83,7 +83,7 @@ var AllActions = {
     // Combo Actions. Making new combo actions need an image, extraActionInfo, and some code in getComboAction() in ffxivcraftmodel.js
     // The existence of this breaks the montecarlo simulation but idgaf about that
     //                              shortName,              fullName,              dur,     cp, Prob, QIM, PIM, Type,          t,  cls,           lvl,  onGood,     onExcl,      onPoor,    isCombo,    comboName1,     comboName2
-    focusedTouchCombo: new Action(  'focusedTouchCombo',    'Focused Touch Combo',  10,     25, 1.0,  1.5, 0.0, 'immediate',   1,  'All',         68,   false,      false,       false,     true,       'observe',      'focusedTouch'),
+    focusedTouchCombo: new Action(  'focusedTouchCombo',    'Focused Touch Combo',  10,     25, 1.0,  9.5, 0.0, 'immediate',   1,  'All',         68,   false,      false,       false,     true,       'observe',      'focusedTouch'),
 
 
     // Special Actions - not selectable
