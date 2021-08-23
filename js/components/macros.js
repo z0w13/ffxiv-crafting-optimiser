@@ -71,12 +71,32 @@
 
       for (var i = 0; i < sequence.length; i++) {
         var action = sequence[i];
-        var info = _actionsByName[action];
-        if (info) {
-          var actionName = $translate.instant(info.name);
+        var info = _actionsByName[action]; // This is the 'action' object
+        var infoList = [];
+
+
+        if (!info) {
+          lines.push({text: '/echo Error: Unknown action ' + action, time: 0});
+          continue
+        }
+
+        // Ranged edit -- Because combos are 2 actions in one, they need special code for building the macro
+        // I've put the line building in a for loop, to deal with combos
+        if (info.isCombo) {
+          infoList[0] = _actionsByName[info.comboName1];
+          infoList[1] = _actionsByName[info.comboName2];
+        }
+        else {
+          infoList[0] = info;
+        }
+
+        for (var j = 0; j < infoList.length; j++) {
+          var infoFromList = infoList[j];
+          var actionFromList = infoFromList.shortName;
+          var actionName = $translate.instant(infoFromList.name);
           var line = '/ac "' + actionName + '" ';
           var time;
-          if (buffs[action]) {
+          if (buffs[actionFromList]) {
             line += buffWaitString;
             time = options.buffWaitTime;
           }
@@ -85,9 +105,6 @@
             time = options.waitTime
           }
           lines.push({text: line, time: time});
-        }
-        else {
-          lines.push({text: '/echo Error: Unknown action ' + action, time: 0});
         }
       }
 
