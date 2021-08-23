@@ -106,8 +106,9 @@ function getComboAction(comboName) {
         returnAction = AllActions.observe;
     } else if(comboName == AllActions.focusedTouch.shortName){      // Focused Touch
         returnAction = AllActions.focusedTouch;
+    } else if(comboName == AllActions.focusedSynthesis.shortName){   // Focused Synthesis
+        returnAction = AllActions.focusedSynthesis;
     }
-
     return returnAction;
 }
 
@@ -657,6 +658,7 @@ function simSynth(individual, startState, assumeSuccess, verbose, debug, logOutp
         if (individual[i].isCombo){
             actionsArray[0] = getComboAction(individual[i].comboName1);
             actionsArray[1] = getComboAction(individual[i].comboName2);
+            console.log(actionsByName[individual[i].comboName1]);
         } else {
             actionsArray[0] = individual[i];
         }
