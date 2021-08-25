@@ -652,13 +652,11 @@ function simSynth(individual, startState, assumeSuccess, verbose, debug, logOutp
         // var action = individual[i];
 
         // Ranged edit -- Combo actions. Basically do everything twice over if there's a combo action. Woo.
-        // Todo - fix infinite loop death lol idk why it does thatttt
         var actionsArray = [];
 
         if (individual[i].isCombo){
             actionsArray[0] = getComboAction(individual[i].comboName1);
             actionsArray[1] = getComboAction(individual[i].comboName2);
-            console.log(actionsByName[individual[i].comboName1]);
         } else {
             actionsArray[0] = individual[i];
         }
