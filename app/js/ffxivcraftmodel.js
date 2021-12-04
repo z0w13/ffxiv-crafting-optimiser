@@ -336,11 +336,6 @@ function ApplyModifiers(s, action, condition) {
         delete s.effects.countDowns[AllActions.muscleMemory.shortName];
     }
 
-    // Name of the Elements increases Brand of the Element's efficiency by 0-200% based on the inverse of progress.
-    if (isActionEq(action, AllActions.brandOfTheElements) && s.effects.countDowns.hasOwnProperty(AllActions.nameOfTheElements.shortName)) {
-        progressIncreaseMultiplier += calcNameOfElementsBonus(s);
-    }
-
     if (AllActions.veneration.shortName in s.effects.countDowns) {
         progressIncreaseMultiplier += 0.5;
     }
@@ -520,12 +515,7 @@ function UpdateEffectCounters(s, action, condition, successProbability) {
 
     if (AllActions.innerQuiet.shortName in s.effects.countUps) {
         // Increment inner quiet countups that have conditional requirements
-        if (isActionEq(action, AllActions.patientTouch)) {
-            s.effects.countUps[AllActions.innerQuiet.shortName] = //+= 2 * successProbability;
-                ((s.effects.countUps[AllActions.innerQuiet.shortName] * 2) * successProbability) +
-                ((s.effects.countUps[AllActions.innerQuiet.shortName] / 2) * (1 - successProbability));
-        }
-        else if (isActionEq(action, AllActions.preparatoryTouch)) {
+        if (isActionEq(action, AllActions.preparatoryTouch)) {
             s.effects.countUps[AllActions.innerQuiet.shortName] += 2;
         }
         // Increment inner quiet countups that have conditional requirements
