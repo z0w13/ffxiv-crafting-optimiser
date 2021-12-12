@@ -51,7 +51,7 @@ function Crafter(cls, level, craftsmanship, control, craftPoints, specialist, ac
     }
 }
 
-function Recipe(baseLevel, level, difficulty, durability, startQuality, maxQuality, suggestedCraftsmanship, suggestedControl) {
+function Recipe(baseLevel, level, difficulty, durability, startQuality, maxQuality, suggestedCraftsmanship, suggestedControl, progressDivider, progressModifier, qualityDivider, qualityModifier, stars) {
     this.baseLevel = baseLevel;
     this.level = level;
     this.difficulty = difficulty;
@@ -60,6 +60,11 @@ function Recipe(baseLevel, level, difficulty, durability, startQuality, maxQuali
     this.maxQuality = maxQuality;
     this.suggestedCraftsmanship = suggestedCraftsmanship || SuggestedCraftsmanship[this.level];
     this.suggestedControl = suggestedControl || SuggestedControl[this.level];
+    this.progressDivider = progressDivider;
+    this.progressModifier = progressModifier;
+    this.qualityDivider = qualityDivider;
+    this.qualityModifier = qualityModifier;
+    this.stars = stars;
 }
 
 // Extra solver vars that the synth needs to take into account
@@ -79,14 +84,26 @@ function Synth(crafter, recipe, maxTrickUses, reliabilityIndex, useConditions, m
     this.solverVars = solverVars;
 }
 
-Synth.prototype.calculateBaseProgressIncrease = function (levelDifference, craftsmanship) {
-    var levelDifferenceFactor = getLevelDifferenceFactor('craftsmanship', levelDifference);
-    return Math.floor((levelDifferenceFactor * (0.21 * craftsmanship + 2) * (10000 + craftsmanship)) / (10000 + this.recipe.suggestedCraftsmanship))
+Synth.prototype.calculateBaseProgressIncrease = function (effCrafterLevel, craftsmanship) {
+    //var levelDifferenceFactor = getLevelDifferenceFactor('craftsmanship', levelDifference);
+    //return Math.floor((levelDifferenceFactor * (0.21 * craftsmanship + 2) * (10000 + craftsmanship)) / (10000 + this.recipe.suggestedCraftsmanship))
+    // EDIT - endwalker update - taken from ffxivteamcraft simulator.es5.js
+    var baseValue = (craftsmanship * 10) / this.recipe.progressDivider + 2;
+    if (effCrafterLevel <= this.recipe.level){
+        return Math.floor((baseValue * (this.recipe.progressModifier || 100)) / 100);
+    }
+    return baseValue;
+
 };
 
-Synth.prototype.calculateBaseQualityIncrease = function (levelDifference, control) {
-    var levelDifferenceFactor = getLevelDifferenceFactor('control', levelDifference);
-    return Math.floor((levelDifferenceFactor * (0.35 * control + 35) * (10000 + control)) / (10000 + this.recipe.suggestedControl))
+Synth.prototype.calculateBaseQualityIncrease = function (effCrafterLevel, control) {
+    //var levelDifferenceFactor = getLevelDifferenceFactor('control', levelDifference);
+    //return Math.floor((levelDifferenceFactor * (0.35 * control + 35) * (10000 + control)) / (10000 + this.recipe.suggestedControl))
+    var baseValue = (control * 10) / this.recipe.qualityDivider + 35;
+    if (effCrafterLevel <= this.recipe.level){
+        return Math.floor((baseValue * (this.recipe.qualityModifier || 100)) / 100);
+    }
+    return baseValue;
 };
 
 function isActionEq(action1, action2) {
@@ -211,6 +228,10 @@ function NewStateFromSynth(synth) {
     var nameOfElementUses = 0;
     var reliability = 1;
     var effects = new EffectTracker();
+    effects.countUps["innerQuiet"] = -1; // Endwalker: Inner Quiet at the start
+    // We start this at -1 because +1 gets added everywhere
+    // this makes sense because I'm bad at javascript idk
+    // works tho
     var condition = 'Normal';
 
     return new State(synth, step, lastStep, '', durabilityState, cpState, bonusMaxCp, qualityState, progressState, wastedActions, trickUses, nameOfElementUses, reliability, effects, condition);
@@ -278,11 +299,6 @@ function ApplyModifiers(s, action, condition) {
     var control = s.synth.crafter.control;
     var cpCost = action.cpCost;
 
-    // Effects modifying control
-    if (AllActions.innerQuiet.shortName in s.effects.countUps) {
-        control += (0.2 * s.effects.countUps[AllActions.innerQuiet.shortName]) * s.synth.crafter.control;
-    }
-
     // Effects modifying level difference
     var effCrafterLevel = getEffectiveCrafterLevel(s.synth);
     var effRecipeLevel = s.synth.recipe.level;
@@ -336,11 +352,6 @@ function ApplyModifiers(s, action, condition) {
         delete s.effects.countDowns[AllActions.muscleMemory.shortName];
     }
 
-    // Name of the Elements increases Brand of the Element's efficiency by 0-200% based on the inverse of progress.
-    if (isActionEq(action, AllActions.brandOfTheElements) && s.effects.countDowns.hasOwnProperty(AllActions.nameOfTheElements.shortName)) {
-        progressIncreaseMultiplier += calcNameOfElementsBonus(s);
-    }
-
     if (AllActions.veneration.shortName in s.effects.countDowns) {
         progressIncreaseMultiplier += 0.5;
     }
@@ -352,8 +363,10 @@ function ApplyModifiers(s, action, condition) {
             cpCost = 0;
         }
     }
-	if (isActionEq(action, AllActions.groundwork) && s.durabilityState < durabilityCost) {
-        progressIncreaseMultiplier *= 0.5;
+	if (s.durabilityState < durabilityCost) {
+        if (isActionEq(action, AllActions.groundwork) || isActionEq(action, AllActions.groundwork2)) {
+            progressIncreaseMultiplier *= 0.5;
+        }
     }
 
     // Effects modifying quality increase multiplier
@@ -366,32 +379,32 @@ function ApplyModifiers(s, action, condition) {
     if (AllActions.innovation.shortName in s.effects.countDowns) {
         qualityIncreaseMultiplier += 0.5;
     }
+        
+    if (AllActions.innerQuiet.shortName in s.effects.countUps) {
+        qualityIncreaseMultiplier += (0.1 * (s.effects.countUps[AllActions.innerQuiet.shortName] + 1))
+        // +1 because buffs start incrementing from 0
+    }
 
-    // We can only use Byregot actions when we have at least 2 stacks of inner quiet
+    // We can only use Byregot actions when we have at least 1 stacks of inner quiet
     if (isActionEq(action, AllActions.byregotsBlessing)) {
         if ((AllActions.innerQuiet.shortName in s.effects.countUps) && s.effects.countUps[AllActions.innerQuiet.shortName] >= 1) {
-            qualityIncreaseMultiplier *= 1 + (0.2 * s.effects.countUps[AllActions.innerQuiet.shortName]);
+            qualityIncreaseMultiplier *= 1 + Math.min((0.2 * (s.effects.countUps[AllActions.innerQuiet.shortName] + 1)), 3);
         } else {
             qualityIncreaseMultiplier = 0;
         }
     }
 
     // Calculate base and modified progress gain
-    var bProgressGain = s.synth.calculateBaseProgressIncrease(levelDifference, craftsmanship);
-    bProgressGain = bProgressGain * action.progressIncreaseMultiplier * progressIncreaseMultiplier;
+    var bProgressGain = s.synth.calculateBaseProgressIncrease(effCrafterLevel, craftsmanship);
+    bProgressGain = Math.floor(bProgressGain * action.progressIncreaseMultiplier * progressIncreaseMultiplier);
 
     // Calculate base and modified quality gain
-    var bQualityGain = s.synth.calculateBaseQualityIncrease(levelDifference, control);
-    bQualityGain = bQualityGain * action.qualityIncreaseMultiplier * qualityIncreaseMultiplier;
-
-    // Effects modifying progress gain directly
-    if (isActionEq(action, AllActions.flawlessSynthesis)) {
-        bProgressGain = 40;
-    }
+    var bQualityGain = s.synth.calculateBaseQualityIncrease(effCrafterLevel, control);
+    bQualityGain = Math.floor(bQualityGain * action.qualityIncreaseMultiplier * qualityIncreaseMultiplier);
 
     // Effects modifying quality gain directly
     if (isActionEq(action, AllActions.trainedEye)) {
-        if ((s.step === 1) && (pureLevelDifference >= 10))  {
+        if ((s.step === 1) && (pureLevelDifference >= 10) && !s.synth.recipe.stars)  {
             bQualityGain = s.synth.recipe.maxQuality;
         }
         else {
@@ -477,7 +490,7 @@ function ApplySpecialActionEffects(s, action, condition) {
 
     if (isActionEq(action, AllActions.reflect)) {
         if (s.step == 1) {
-            s.effects.countUps[AllActions.innerQuiet.shortName] = 2;
+            s.effects.countUps[AllActions.innerQuiet.shortName] = 1;
         } else {
             s.wastedActions += 1;
         }
@@ -520,12 +533,7 @@ function UpdateEffectCounters(s, action, condition, successProbability) {
 
     if (AllActions.innerQuiet.shortName in s.effects.countUps) {
         // Increment inner quiet countups that have conditional requirements
-        if (isActionEq(action, AllActions.patientTouch)) {
-            s.effects.countUps[AllActions.innerQuiet.shortName] = //+= 2 * successProbability;
-                ((s.effects.countUps[AllActions.innerQuiet.shortName] * 2) * successProbability) +
-                ((s.effects.countUps[AllActions.innerQuiet.shortName] / 2) * (1 - successProbability));
-        }
-        else if (isActionEq(action, AllActions.preparatoryTouch)) {
+        if (isActionEq(action, AllActions.preparatoryTouch)) {
             s.effects.countUps[AllActions.innerQuiet.shortName] += 2;
         }
         // Increment inner quiet countups that have conditional requirements
@@ -537,8 +545,8 @@ function UpdateEffectCounters(s, action, condition, successProbability) {
             s.effects.countUps[AllActions.innerQuiet.shortName] += 1 * successProbability;
         }
 
-        // Cap inner quiet stacks at 10 (11)
-        s.effects.countUps[AllActions.innerQuiet.shortName] = Math.min(s.effects.countUps[AllActions.innerQuiet.shortName], 10);
+        // Cap inner quiet stacks at 9 (10)
+        s.effects.countUps[AllActions.innerQuiet.shortName] = Math.min(s.effects.countUps[AllActions.innerQuiet.shortName], 9);
     }
 
     // Initialize new effects after countdowns are managed to reset them properly
@@ -1458,7 +1466,7 @@ function heuristicSequenceBuilder(synth) {
 
     // Determine base progress
     var levelDifference = effCrafterLevel - effRecipeLevel;
-    var bProgressGain = synth.calculateBaseProgressIncrease(levelDifference, synth.crafter.craftsmanship);
+    var bProgressGain = synth.calculateBaseProgressIncrease(effCrafterLevel, synth.crafter.craftsmanship);
     var progressGain =  bProgressGain;
     progressGain *= aa[preferredAction].progressIncreaseMultiplier;
     progressGain = Math.floor(progressGain);
@@ -1628,16 +1636,16 @@ function clone(x) {
 }
 
 var LevelTable = {
-    51: 120, // 120
-    52: 125, // 125
-    53: 130, // 130
-    54: 133, // 133
-    55: 136, // 136
-    56: 139, // 139
-    57: 142, // 142
-    58: 145, // 145
-    59: 148, // 148
-    60: 150, // 150
+    51: 120,
+    52: 125,
+    53: 130,
+    54: 133,
+    55: 136,
+    56: 139,
+    57: 142,
+    58: 145,
+    59: 148,
+    60: 150,
     61: 260,
     62: 265,
     63: 270,
@@ -1657,7 +1665,17 @@ var LevelTable = {
     77: 412,
     78: 415,
     79: 418,
-    80: 420 
+    80: 420,
+    81: 517,
+    82: 520,
+    83: 525,
+    84: 530,
+    85: 535,
+    86: 540,
+    87: 545,
+    88: 550,
+    89: 555,
+    90: 560,
 };
 
 var Ing1RecipeLevelTable = {

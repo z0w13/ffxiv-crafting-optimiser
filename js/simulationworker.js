@@ -51,7 +51,8 @@ function setupSim(settings) {
     crafterActions);
   var recipe = new Recipe(settings.recipe.baseLevel, settings.recipe.level, settings.recipe.difficulty,
       settings.recipe.durability, settings.recipe.startQuality, settings.recipe.maxQuality,
-      settings.recipe.suggestedCraftsmanship, settings.recipe.suggestedControl);
+      settings.recipe.suggestedCraftsmanship, settings.recipe.suggestedControl,
+      settings.recipe.progressDivider, settings.recipe.progressModifier, settings.recipe.qualityDivider, settings.recipe.qualityModifier, settings.recipe.stars);
   var solverVars = new SolverVars(false, 0, 0);
   var synth = new Synth(crafter, recipe, settings.maxTricksUses, settings.reliabilityPercent / 100.0,
     settings.useConditions, 0, solverVars);
@@ -147,9 +148,9 @@ function calculateBaseValues(id, settings) {
   var sim = setupSim(settings);
 
   var effCrafterLevel = getEffectiveCrafterLevel(sim.synth);
-  var levelDifference = effCrafterLevel - sim.synth.recipe.level;
-  var baseProgress = Math.floor(sim.synth.calculateBaseProgressIncrease(levelDifference, sim.synth.crafter.craftsmanship));
-  var baseQuality = Math.floor(sim.synth.calculateBaseQualityIncrease(levelDifference, sim.synth.crafter.control));
+  //var levelDifference = effCrafterLevel - sim.synth.recipe.level;
+  var baseProgress = Math.floor(sim.synth.calculateBaseProgressIncrease(effCrafterLevel, sim.synth.crafter.craftsmanship));
+  var baseQuality = Math.floor(sim.synth.calculateBaseQualityIncrease(effCrafterLevel, sim.synth.crafter.control));
 
   self.postMessage({
     id: id,

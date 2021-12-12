@@ -12,6 +12,7 @@
     "Weaver"
   ];
 
+  // Seems 'skillID' doesn't even do anything lol
   var extraActionInfo = {
     basicSynth: {                                        skillID: {"Alchemist": 100090, "Armorer": 100030, "Blacksmith": 100015, "Carpenter": 100001, "Culinarian": 100105, "Goldsmith": 100075, "Leatherworker": 100045, "Weaver": 100060} },
     basicSynth2: {                                       skillID: {"Alchemist": 100090, "Armorer": 100030, "Blacksmith": 100015, "Carpenter": 100001, "Culinarian": 100105, "Goldsmith": 100075, "Leatherworker": 100045, "Weaver": 100060} },
@@ -35,12 +36,8 @@
     preciseTouch: {                                      skillID: {"Alchemist": 100134, "Armorer": 100130, "Blacksmith": 100129, "Carpenter": 100128, "Culinarian": 100135, "Goldsmith": 100131, "Leatherworker": 100132, "Weaver": 100133} },
     muscleMemory: {            common: true,             skillID: {"Culinarian": 100136} },
 
-    brandOfTheElements: {      common: true,             skillID: {"Alchemist": 0, "Armorer": 0, "Blacksmith": 0, "Carpenter": 0, "Culinarian": 0, "Goldsmith": 0, "Leatherworker": 0, "Weaver": 0} },
-    nameOfTheElements: {       common: true, buff: true, skillID: {"Alchemist": 0, "Armorer": 0, "Blacksmith": 0, "Carpenter": 0, "Culinarian": 0, "Goldsmith": 0, "Leatherworker": 0, "Weaver": 0} },
-
-    // Stormblood
+   // Stormblood
     rapidSynthesis2: {         common: true,             skillID: {"Alchemist": 100217, "Armorer": 100213, "Blacksmith": 100212, "Carpenter": 100211, "Culinarian": 100218, "Goldsmith": 100214, "Leatherworker": 100215, "Weaver": 100216} },
-    patientTouch: {                                      skillID: {"Alchemist": 100225, "Armorer": 100221, "Blacksmith": 100220, "Carpenter": 100219, "Culinarian": 100226, "Goldsmith": 100222, "Leatherworker": 100223, "Weaver": 100224} },
     prudentTouch: {                                      skillID: {"Alchemist": 100233, "Armorer": 100229, "Blacksmith": 100228, "Carpenter": 100227, "Culinarian": 100234, "Goldsmith": 100230, "Leatherworker": 100231, "Weaver": 100232} },
     focusedSynthesis: {                                  skillID: {"Alchemist": 100241, "Armorer": 100237, "Blacksmith": 100236, "Carpenter": 100235, "Culinarian": 100242, "Goldsmith": 100238, "Leatherworker": 100239, "Weaver": 100240} },
     focusedTouch: {                                      skillID: {"Alchemist": 100249, "Armorer": 100245, "Blacksmith": 100244, "Carpenter": 100243, "Culinarian": 100250, "Goldsmith": 100246, "Leatherworker": 100247, "Weaver": 100248} },
@@ -53,9 +50,13 @@
     intensiveSynthesis: {                                skillID: {"Alchemist": 100321, "Armorer": 100317, "Blacksmith": 100316, "Carpenter": 100315, "Culinarian": 100322, "Goldsmith": 100318, "Leatherworker": 100319, "Weaver": 100320} },
     trainedEye: {              common: true,             skillID: {"Alchemist": 100289, "Armorer": 100285, "Blacksmith": 100284, "Carpenter": 100283, "Culinarian": 100290, "Goldsmith": 100286, "Leatherworker": 100287, "Weaver": 100288} },
 
+    // Endwalker
+    carefulSynthesis2: {        common: true,             skillID: {"Weaver": 100063} },
+    groundwork2: {                                        skillID: {"Alchemist": 100337, "Armorer": 100333, "Blacksmith": 100332, "Carpenter": 100331, "Culinarian": 100338, "Goldsmith": 100334, "Leatherworker": 100335, "Weaver": 100336} },
+    
     // Ranged edit - Combo Actions
     focusedTouchCombo: {       common: true,             skillID: {"Alchemist": 0, "Armorer": 0, "Blacksmith": 0, "Carpenter": 0, "Culinarian": 0, "Goldsmith": 0, "Leatherworker": 0, "Weaver": 0} },
-    focusedSynthesisCombo: {       common: true,             skillID: {"Alchemist": 0, "Armorer": 0, "Blacksmith": 0, "Carpenter": 0, "Culinarian": 0, "Goldsmith": 0, "Leatherworker": 0, "Weaver": 0} },
+    focusedSynthesisCombo: {       common: true,         skillID: {"Alchemist": 0, "Armorer": 0, "Blacksmith": 0, "Carpenter": 0, "Culinarian": 0, "Goldsmith": 0, "Leatherworker": 0, "Weaver": 0} },
     
     observe: {                 common: true,             skillID: {"Alchemist": 100099, "Armorer": 100040, "Blacksmith": 100023, "Carpenter": 100010, "Culinarian": 100113, "Goldsmith": 100082, "Leatherworker": 100053, "Weaver": 100070} }
   };
@@ -121,11 +122,12 @@
         "basicSynth",
         "rapidSynthesis",
         "basicSynth2",
-        "brandOfTheElements",
         "carefulSynthesis",
+        "carefulSynthesis2",
         "rapidSynthesis2",
         "focusedSynthesis",
         "groundwork",
+        "groundwork2",
         "intensiveSynthesis"
       ]
     },
@@ -147,7 +149,6 @@
         "standardTouch",
         "byregotsBlessing",
         "preciseTouch",
-        "patientTouch",
         "prudentTouch",
         "focusedTouch",
         "preparatoryTouch"
@@ -168,11 +169,10 @@
     },
     {
       name: "Buffs", actions: [
-        "innerQuiet",
-	    "veneration",
+        //"innerQuiet",
+	      "veneration",
         "greatStrides",
         "innovation",
-        "nameOfTheElements"
     ]
     },
     {
