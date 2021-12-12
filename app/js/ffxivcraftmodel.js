@@ -51,7 +51,7 @@ function Crafter(cls, level, craftsmanship, control, craftPoints, specialist, ac
     }
 }
 
-function Recipe(baseLevel, level, difficulty, durability, startQuality, maxQuality, suggestedCraftsmanship, suggestedControl, progressDivider, progressModifier, qualityDivider, qualityModifier) {
+function Recipe(baseLevel, level, difficulty, durability, startQuality, maxQuality, suggestedCraftsmanship, suggestedControl, progressDivider, progressModifier, qualityDivider, qualityModifier, stars) {
     this.baseLevel = baseLevel;
     this.level = level;
     this.difficulty = difficulty;
@@ -64,6 +64,7 @@ function Recipe(baseLevel, level, difficulty, durability, startQuality, maxQuali
     this.progressModifier = progressModifier;
     this.qualityDivider = qualityDivider;
     this.qualityModifier = qualityModifier;
+    this.stars = stars;
 }
 
 // Extra solver vars that the synth needs to take into account
@@ -399,7 +400,7 @@ function ApplyModifiers(s, action, condition) {
 
     // Effects modifying quality gain directly
     if (isActionEq(action, AllActions.trainedEye)) {
-        if ((s.step === 1) && (pureLevelDifference >= 10))  {
+        if ((s.step === 1) && (pureLevelDifference >= 10) && !s.synth.recipe.stars)  {
             bQualityGain = s.synth.recipe.maxQuality;
         }
         else {
