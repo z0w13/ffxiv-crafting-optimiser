@@ -372,6 +372,7 @@ function ApplyModifiers(s, action, condition) {
 
     // Effects modifying quality increase multiplier
     var qualityIncreaseMultiplier = 1;
+    var qualityIncreaseMultiplierIQ = 1; // This is calculated seperately because it's multiplicative instead of additive! See: how teamcrafting does it
 
     if ((AllActions.greatStrides.shortName in s.effects.countDowns) && (qualityIncreaseMultiplier > 0)) {
         qualityIncreaseMultiplier += 1;
@@ -382,7 +383,7 @@ function ApplyModifiers(s, action, condition) {
     }
         
     if (AllActions.innerQuiet.shortName in s.effects.countUps) {
-        qualityIncreaseMultiplier += (0.1 * (s.effects.countUps[AllActions.innerQuiet.shortName] + 1))
+        qualityIncreaseMultiplierIQ += (0.1 * (s.effects.countUps[AllActions.innerQuiet.shortName] + 1))
         // +1 because buffs start incrementing from 0
     }
 
@@ -401,7 +402,7 @@ function ApplyModifiers(s, action, condition) {
 
     // Calculate base and modified quality gain
     var bQualityGain = s.synth.calculateBaseQualityIncrease(effCrafterLevel, control);
-    bQualityGain = Math.floor(bQualityGain * action.qualityIncreaseMultiplier * qualityIncreaseMultiplier);
+    bQualityGain = Math.floor(bQualityGain * action.qualityIncreaseMultiplier * qualityIncreaseMultiplier * qualityIncreaseMultiplierIQ);
 
     // Trained finesse
     if (isActionEq(action, AllActions.trainedFinesse)) {
