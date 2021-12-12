@@ -135,7 +135,7 @@ function EffectTracker() {
     this.indefinites = {};
 }
 
-function State(synth, step, lastStep, action, durabilityState, cpState, bonusMaxCp, qualityState, progressState, wastedActions, trickUses, nameOfElementUses, reliability, effects, condition) {
+function State(synth, step, lastStep, action, durabilityState, cpState, bonusMaxCp, qualityState, progressState, wastedActions, trickUses, nameOfElementUses, reliability, effects, condition, touchComboStep) {
     this.synth = synth;
     this.step = step;
     this.lastStep = lastStep;
@@ -152,6 +152,9 @@ function State(synth, step, lastStep, action, durabilityState, cpState, bonusMax
     this.effects = effects;
     this.condition =  condition;
 
+    // Advancedtouch combo stuff
+    this.touchComboStep = touchComboStep;
+
     // Internal state variables set after each step.
     this.iqCnt = 0;
     this.control = 0;
@@ -162,7 +165,7 @@ function State(synth, step, lastStep, action, durabilityState, cpState, bonusMax
 }
 
 State.prototype.clone = function () {
-    return new State(this.synth, this.step, this.lastStep, this.action, this.durabilityState, this.cpState, this.bonusMaxCp, this.qualityState, this.progressState, this.wastedActions, this.trickUses, this.nameOfElementUses, this.reliability, clone(this.effects), this.condition);
+    return new State(this.synth, this.step, this.lastStep, this.action, this.durabilityState, this.cpState, this.bonusMaxCp, this.qualityState, this.progressState, this.wastedActions, this.trickUses, this.nameOfElementUses, this.reliability, clone(this.effects), this.condition, this.touchComboStep);
 };
 
 State.prototype.checkViolations = function () {
@@ -233,8 +236,9 @@ function NewStateFromSynth(synth) {
     // this makes sense because I'm bad at javascript idk
     // works tho
     var condition = 'Normal';
+    var touchComboStep = 0;
 
-    return new State(synth, step, lastStep, '', durabilityState, cpState, bonusMaxCp, qualityState, progressState, wastedActions, trickUses, nameOfElementUses, reliability, effects, condition);
+    return new State(synth, step, lastStep, '', durabilityState, cpState, bonusMaxCp, qualityState, progressState, wastedActions, trickUses, nameOfElementUses, reliability, effects, condition, touchComboStep);
 }
 
 function probGoodForSynth(synth) {
@@ -319,7 +323,8 @@ function ApplyModifiers(s, action, condition) {
 
     // Advancted Touch Combo
     if (isActionEq(action, AllActions.advancedTouch)) {
-        if (s.action === AllActions.standardTouch.shortName) {
+        if (s.action === AllActions.standardTouch.shortName && s.touchComboStep == 1) {
+            s.touchComboStep = 0;
             cpCost = 18;
         }
     }
@@ -328,6 +333,7 @@ function ApplyModifiers(s, action, condition) {
         if (s.action === AllActions.basicTouch.shortName) {
             cpCost = 18;
             s.wastedActions -= 0.05;
+            s.touchComboStep = 1;
         }
         if (s.action === AllActions.standardTouch.shortName) {
             s.wastedActions += 0.1;
