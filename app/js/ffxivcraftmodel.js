@@ -51,7 +51,7 @@ function Crafter(cls, level, craftsmanship, control, craftPoints, specialist, ac
     }
 }
 
-function Recipe(baseLevel, level, difficulty, durability, startQuality, maxQuality, suggestedCraftsmanship, suggestedControl) {
+function Recipe(baseLevel, level, difficulty, durability, startQuality, maxQuality, suggestedCraftsmanship, suggestedControl, progressDivider, progressModifier, qualityDivider, qualityModifier) {
     this.baseLevel = baseLevel;
     this.level = level;
     this.difficulty = difficulty;
@@ -60,6 +60,10 @@ function Recipe(baseLevel, level, difficulty, durability, startQuality, maxQuali
     this.maxQuality = maxQuality;
     this.suggestedCraftsmanship = suggestedCraftsmanship || SuggestedCraftsmanship[this.level];
     this.suggestedControl = suggestedControl || SuggestedControl[this.level];
+    this.progressDivider = progressDivider;
+    this.progressModifier = progressModifier;
+    this.qualityDivider = qualityDivider;
+    this.qualityModifier = qualityModifier;
 }
 
 // Extra solver vars that the synth needs to take into account
@@ -79,14 +83,24 @@ function Synth(crafter, recipe, maxTrickUses, reliabilityIndex, useConditions, m
     this.solverVars = solverVars;
 }
 
-Synth.prototype.calculateBaseProgressIncrease = function (levelDifference, craftsmanship) {
-    var levelDifferenceFactor = getLevelDifferenceFactor('craftsmanship', levelDifference);
-    return Math.floor((levelDifferenceFactor * (0.21 * craftsmanship + 2) * (10000 + craftsmanship)) / (10000 + this.recipe.suggestedCraftsmanship))
+Synth.prototype.calculateBaseProgressIncrease = function (effCrafterLevel, craftsmanship) {
+    //var levelDifferenceFactor = getLevelDifferenceFactor('craftsmanship', levelDifference);
+    //return Math.floor((levelDifferenceFactor * (0.21 * craftsmanship + 2) * (10000 + craftsmanship)) / (10000 + this.recipe.suggestedCraftsmanship))
+    // EDIT - endwalker update - taken from ffxivteamcraft simulator.es5.js
+    var baseValue = (craftsmanship * 10) / this.recipe.progressDivider + 2;
+    if (effCrafterLevel <= this.recipe.level){
+        return (baseValue * (this.recipe.progressModifier || 100)) / 100;
+    }
+
 };
 
-Synth.prototype.calculateBaseQualityIncrease = function (levelDifference, control) {
-    var levelDifferenceFactor = getLevelDifferenceFactor('control', levelDifference);
-    return Math.floor((levelDifferenceFactor * (0.35 * control + 35) * (10000 + control)) / (10000 + this.recipe.suggestedControl))
+Synth.prototype.calculateBaseQualityIncrease = function (effCrafterLevel, control) {
+    //var levelDifferenceFactor = getLevelDifferenceFactor('control', levelDifference);
+    //return Math.floor((levelDifferenceFactor * (0.35 * control + 35) * (10000 + control)) / (10000 + this.recipe.suggestedControl))
+    var baseValue = (control * 10) / this.recipe.qualityDivider + 35;
+    if (effCrafterLevel <= this.recipe.level){
+        return (baseValue * (this.recipe.qualityModifier || 100)) / 100;
+    }
 };
 
 function isActionEq(action1, action2) {
@@ -372,11 +386,11 @@ function ApplyModifiers(s, action, condition) {
     }
 
     // Calculate base and modified progress gain
-    var bProgressGain = s.synth.calculateBaseProgressIncrease(levelDifference, craftsmanship);
+    var bProgressGain = s.synth.calculateBaseProgressIncrease(effCrafterLevel, craftsmanship);
     bProgressGain = bProgressGain * action.progressIncreaseMultiplier * progressIncreaseMultiplier;
 
     // Calculate base and modified quality gain
-    var bQualityGain = s.synth.calculateBaseQualityIncrease(levelDifference, control);
+    var bQualityGain = s.synth.calculateBaseQualityIncrease(effCrafterLevel, control);
     bQualityGain = bQualityGain * action.qualityIncreaseMultiplier * qualityIncreaseMultiplier;
 
     // Effects modifying progress gain directly
@@ -1448,7 +1462,7 @@ function heuristicSequenceBuilder(synth) {
 
     // Determine base progress
     var levelDifference = effCrafterLevel - effRecipeLevel;
-    var bProgressGain = synth.calculateBaseProgressIncrease(levelDifference, synth.crafter.craftsmanship);
+    var bProgressGain = synth.calculateBaseProgressIncrease(effCrafterLevel, synth.crafter.craftsmanship);
     var progressGain =  bProgressGain;
     progressGain *= aa[preferredAction].progressIncreaseMultiplier;
     progressGain = Math.floor(progressGain);
