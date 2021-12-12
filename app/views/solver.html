@@ -41,11 +41,11 @@
             </div>
           </div>
           <div class="my-dropdown-menu">
-            <input class="input-medium search my-dropdown-focus" type="text" name="name"
+            <input class="input-medium search my-dropdown-focus" type="search" name="name"
                    ng-model="recipeSearch.text"
                    placeholder="{{ 'RECIPE_SEARCH' | translate }}" select-on-focus stop-click-propogation
                    ng-keypress="onSearchKeyPress($event)" ng-keydown="onSearchKeyDown($event)"
-                   id="recipe-search-text"/>
+                   id="recipe-search-text" autocomplete="off"/>
             <ul class="recipe-menu-scrollable" isolate-scrolling>
               <li class="loading" ng-show="recipeSearch.loading"><i class="fa fa-spinner fa-spin"></i> {{'LOADING' | translate}}
               </li>
