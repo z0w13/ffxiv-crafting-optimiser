@@ -89,8 +89,9 @@ Synth.prototype.calculateBaseProgressIncrease = function (effCrafterLevel, craft
     // EDIT - endwalker update - taken from ffxivteamcraft simulator.es5.js
     var baseValue = (craftsmanship * 10) / this.recipe.progressDivider + 2;
     if (effCrafterLevel <= this.recipe.level){
-        return (baseValue * (this.recipe.progressModifier || 100)) / 100;
+        return Math.floor((baseValue * (this.recipe.progressModifier || 100)) / 100);
     }
+    return baseValue;
 
 };
 
@@ -99,8 +100,9 @@ Synth.prototype.calculateBaseQualityIncrease = function (effCrafterLevel, contro
     //return Math.floor((levelDifferenceFactor * (0.35 * control + 35) * (10000 + control)) / (10000 + this.recipe.suggestedControl))
     var baseValue = (control * 10) / this.recipe.qualityDivider + 35;
     if (effCrafterLevel <= this.recipe.level){
-        return (baseValue * (this.recipe.qualityModifier || 100)) / 100;
+        return Math.floor((baseValue * (this.recipe.qualityModifier || 100)) / 100);
     }
+    return baseValue;
 };
 
 function isActionEq(action1, action2) {
@@ -387,16 +389,11 @@ function ApplyModifiers(s, action, condition) {
 
     // Calculate base and modified progress gain
     var bProgressGain = s.synth.calculateBaseProgressIncrease(effCrafterLevel, craftsmanship);
-    bProgressGain = bProgressGain * action.progressIncreaseMultiplier * progressIncreaseMultiplier;
+    bProgressGain = Math.floor(bProgressGain * action.progressIncreaseMultiplier * progressIncreaseMultiplier);
 
     // Calculate base and modified quality gain
     var bQualityGain = s.synth.calculateBaseQualityIncrease(effCrafterLevel, control);
-    bQualityGain = bQualityGain * action.qualityIncreaseMultiplier * qualityIncreaseMultiplier;
-
-    // Effects modifying progress gain directly
-    if (isActionEq(action, AllActions.flawlessSynthesis)) {
-        bProgressGain = 40;
-    }
+    bQualityGain = Math.floor(bQualityGain * action.qualityIncreaseMultiplier * qualityIncreaseMultiplier);
 
     // Effects modifying quality gain directly
     if (isActionEq(action, AllActions.trainedEye)) {
