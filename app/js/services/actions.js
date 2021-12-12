@@ -12,6 +12,7 @@
     "Weaver"
   ];
 
+  // Seems 'skillID' doesn't even do anything lol
   var extraActionInfo = {
     basicSynth: {                                        skillID: {"Alchemist": 100090, "Armorer": 100030, "Blacksmith": 100015, "Carpenter": 100001, "Culinarian": 100105, "Goldsmith": 100075, "Leatherworker": 100045, "Weaver": 100060} },
     basicSynth2: {                                       skillID: {"Alchemist": 100090, "Armorer": 100030, "Blacksmith": 100015, "Carpenter": 100001, "Culinarian": 100105, "Goldsmith": 100075, "Leatherworker": 100045, "Weaver": 100060} },
@@ -49,9 +50,13 @@
     intensiveSynthesis: {                                skillID: {"Alchemist": 100321, "Armorer": 100317, "Blacksmith": 100316, "Carpenter": 100315, "Culinarian": 100322, "Goldsmith": 100318, "Leatherworker": 100319, "Weaver": 100320} },
     trainedEye: {              common: true,             skillID: {"Alchemist": 100289, "Armorer": 100285, "Blacksmith": 100284, "Carpenter": 100283, "Culinarian": 100290, "Goldsmith": 100286, "Leatherworker": 100287, "Weaver": 100288} },
 
+    // Endwalker
+    carefulSynthesis2: {        common: true,             skillID: {"Weaver": 100063} },
+    groundwork2: {                                        skillID: {"Alchemist": 100337, "Armorer": 100333, "Blacksmith": 100332, "Carpenter": 100331, "Culinarian": 100338, "Goldsmith": 100334, "Leatherworker": 100335, "Weaver": 100336} },
+    
     // Ranged edit - Combo Actions
     focusedTouchCombo: {       common: true,             skillID: {"Alchemist": 0, "Armorer": 0, "Blacksmith": 0, "Carpenter": 0, "Culinarian": 0, "Goldsmith": 0, "Leatherworker": 0, "Weaver": 0} },
-    focusedSynthesisCombo: {       common: true,             skillID: {"Alchemist": 0, "Armorer": 0, "Blacksmith": 0, "Carpenter": 0, "Culinarian": 0, "Goldsmith": 0, "Leatherworker": 0, "Weaver": 0} },
+    focusedSynthesisCombo: {       common: true,         skillID: {"Alchemist": 0, "Armorer": 0, "Blacksmith": 0, "Carpenter": 0, "Culinarian": 0, "Goldsmith": 0, "Leatherworker": 0, "Weaver": 0} },
     
     observe: {                 common: true,             skillID: {"Alchemist": 100099, "Armorer": 100040, "Blacksmith": 100023, "Carpenter": 100010, "Culinarian": 100113, "Goldsmith": 100082, "Leatherworker": 100053, "Weaver": 100070} }
   };
@@ -118,9 +123,11 @@
         "rapidSynthesis",
         "basicSynth2",
         "carefulSynthesis",
+        "carefulSynthesis2",
         "rapidSynthesis2",
         "focusedSynthesis",
         "groundwork",
+        "groundwork2",
         "intensiveSynthesis"
       ]
     },

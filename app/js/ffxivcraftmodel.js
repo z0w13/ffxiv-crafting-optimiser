@@ -363,8 +363,10 @@ function ApplyModifiers(s, action, condition) {
             cpCost = 0;
         }
     }
-	if (isActionEq(action, AllActions.groundwork) && s.durabilityState < durabilityCost) {
-        progressIncreaseMultiplier *= 0.5;
+	if (s.durabilityState < durabilityCost) {
+        if (isActionEq(action, AllActions.groundwork) || isActionEq(action, AllActions.groundwork2)) {
+            progressIncreaseMultiplier *= 0.5;
+        }
     }
 
     // Effects modifying quality increase multiplier
