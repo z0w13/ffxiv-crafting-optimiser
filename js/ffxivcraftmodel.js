@@ -317,6 +317,12 @@ function ApplyModifiers(s, action, condition) {
     }
     successProbability = Math.min(successProbability, 1);
 
+    // Advancted Touch Combo
+    if (isActionEq(action, AllActions.advancedTouch)) {
+        if (s.action === AllActions.standardTouch.shortName) {
+            cpCost = 18;
+        }
+    }
     // Add combo bonus following Basic Touch
     if (isActionEq(action, AllActions.standardTouch)) {
         if (s.action === AllActions.basicTouch.shortName) {
@@ -331,17 +337,6 @@ function ApplyModifiers(s, action, condition) {
     // Penalize use of WasteNot during solveforcompletion runs
     if ((isActionEq(action, AllActions.wasteNot) || isActionEq(action, AllActions.wasteNot2)) && s.synth.solverVars.solveForCompletion) {
         s.wastedActions += 50;
-    }
-
-    // Effects modifying durability cost
-    var durabilityCost = action.durabilityCost;
-    if ((AllActions.wasteNot.shortName in s.effects.countDowns) || (AllActions.wasteNot2.shortName in s.effects.countDowns)) {
-        if (isActionEq(action, AllActions.prudentTouch)) {
-            bQualityGain = 0;
-        }
-        else {
-            durabilityCost *= 0.5;
-        }
     }
 
     // Effects modifying progress increase multiplier
@@ -401,6 +396,31 @@ function ApplyModifiers(s, action, condition) {
     // Calculate base and modified quality gain
     var bQualityGain = s.synth.calculateBaseQualityIncrease(effCrafterLevel, control);
     bQualityGain = Math.floor(bQualityGain * action.qualityIncreaseMultiplier * qualityIncreaseMultiplier);
+
+    // Trained finesse
+    if (isActionEq(action, AllActions.trainedFinesse)) {
+        // Not at 10 stacks of IQ -> wasted action
+        if (!(AllActions.innerQuiet.shortName in s.effects.countUps) || s.effects.countUps[AllActions.innerQuiet.shortName] != 9) {
+            s.wastedActions += 1;
+            bQualityGain = 0;
+        }
+    }
+
+    // Effects modifying durability cost
+    var durabilityCost = action.durabilityCost;
+    if ((AllActions.wasteNot.shortName in s.effects.countDowns) || (AllActions.wasteNot2.shortName in s.effects.countDowns)) {
+        if (isActionEq(action, AllActions.prudentTouch)) {
+            bQualityGain = 0;
+            s.wastedActions += 1;
+        }
+        else if (isActionEq(action, AllActions.prudentSynthesis)) {
+            bProgressGain = 0;
+            s.wastedActions += 1;
+        }
+        else {
+            durabilityCost *= 0.5;
+        }
+    }
 
     // Effects modifying quality gain directly
     if (isActionEq(action, AllActions.trainedEye)) {
@@ -541,7 +561,7 @@ function UpdateEffectCounters(s, action, condition, successProbability) {
             s.effects.countUps[AllActions.innerQuiet.shortName] += 2 * successProbability * condition.pGoodOrExcellent();
         }
         // Increment all other inner quiet count ups
-        else if (action.qualityIncreaseMultiplier > 0 && !isActionEq(action, AllActions.reflect)) {
+        else if (action.qualityIncreaseMultiplier > 0 && !isActionEq(action, AllActions.reflect) && !isActionEq(action, AllActions.trainedFinesse)) {
             s.effects.countUps[AllActions.innerQuiet.shortName] += 1 * successProbability;
         }
 

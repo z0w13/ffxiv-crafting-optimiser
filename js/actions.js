@@ -76,6 +76,9 @@ var AllActions = {
     // Endwalker
     carefulSynthesis2: new Action(   'carefulSynthesis2',     'Careful Synthesis',  10,      7,  1.0, 0.0, 1.8, 'immediate',   1,  'All',          82),
     groundwork2: new Action(         'groundwork2',           'Groundwork',         20,     18,  1.0, 0.0, 3.6, 'immediate',   1,  'All',          86),
+    advancedTouch: new Action(       'advancedTouch',        'Advanced Touch',      10,     46,  1.0, 1.5, 0.0, 'immediate',   1,  'All',          84),
+    prudentSynthesis: new Action(    'prudentSynthesis',     'Prudent Synthesis',   5,      18,  1.0, 0.0, 1.8, 'immediate',   1,  'All',          88),
+    trainedFinesse: new Action(       'trainedFinesse',       'Trained Finesse',    0,      32,  1.0, 1.0, 0.0, 'immediate',   1,  'All',          90),
 
     // Ranged edit: special combo'd actions that are handled differently
     // Combo Actions. Making new combo actions need an image, extraActionInfo, and some code in getComboAction() in ffxivcraftmodel.js
@@ -83,7 +86,7 @@ var AllActions = {
     //                              shortName,              fullName,              dur,     cp, Prob, QIM, PIM, Type,          t,  cls,           lvl,  onGood,     onExcl,      onPoor,    isCombo,    comboName1,     comboName2
     focusedTouchCombo: new Action(  'focusedTouchCombo',    'Focused Touch Combo',  10,     25, 1.0,  1.5, 0.0, 'immediate',   1,  'All',         68,   false,      false,       false,     true,       'observe',      'focusedTouch'),
     focusedSynthesisCombo: new Action(  'focusedSynthesisCombo',    'Focused Synthesis Combo',  10, 12, 1.0,  0.0, 2.0, 'immediate',   1,  'All',         67,   false,      false,       false,     true,       'observe',      'focusedSynthesis'),
-
+    
 
     // Special Actions - not selectable
     dummyAction: new Action(        'dummyAction',          '______________',        0,      0,  1.0, 0.0, 0.0, 'immediate',   1,  'All',           1)
