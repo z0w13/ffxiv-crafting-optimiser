@@ -339,17 +339,6 @@ function ApplyModifiers(s, action, condition) {
         s.wastedActions += 50;
     }
 
-    // Effects modifying durability cost
-    var durabilityCost = action.durabilityCost;
-    if ((AllActions.wasteNot.shortName in s.effects.countDowns) || (AllActions.wasteNot2.shortName in s.effects.countDowns)) {
-        if (isActionEq(action, AllActions.prudentTouch)) {
-            bQualityGain = 0;
-        }
-        else {
-            durabilityCost *= 0.5;
-        }
-    }
-
     // Effects modifying progress increase multiplier
     var progressIncreaseMultiplier = 1;
 
@@ -407,6 +396,20 @@ function ApplyModifiers(s, action, condition) {
     // Calculate base and modified quality gain
     var bQualityGain = s.synth.calculateBaseQualityIncrease(effCrafterLevel, control);
     bQualityGain = Math.floor(bQualityGain * action.qualityIncreaseMultiplier * qualityIncreaseMultiplier);
+
+    // Effects modifying durability cost
+    var durabilityCost = action.durabilityCost;
+    if ((AllActions.wasteNot.shortName in s.effects.countDowns) || (AllActions.wasteNot2.shortName in s.effects.countDowns)) {
+        if (isActionEq(action, AllActions.prudentTouch)) {
+            bQualityGain = 0;
+        }
+        else if (isActionEq(action, AllActions.prudentSynthesis)) {
+            bProgressGain = 0;
+        }
+        else {
+            durabilityCost *= 0.5;
+        }
+    }
 
     // Effects modifying quality gain directly
     if (isActionEq(action, AllActions.trainedEye)) {
