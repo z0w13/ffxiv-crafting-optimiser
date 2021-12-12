@@ -228,6 +228,10 @@ function NewStateFromSynth(synth) {
     var nameOfElementUses = 0;
     var reliability = 1;
     var effects = new EffectTracker();
+    effects.countUps["innerQuiet"] = -1; // Endwalker: Inner Quiet at the start
+    // We start this at -1 because +1 gets added everywhere
+    // this makes sense because I'm bad at javascript idk
+    // works tho
     var condition = 'Normal';
 
     return new State(synth, step, lastStep, '', durabilityState, cpState, bonusMaxCp, qualityState, progressState, wastedActions, trickUses, nameOfElementUses, reliability, effects, condition);
@@ -294,11 +298,6 @@ function ApplyModifiers(s, action, condition) {
     var craftsmanship = s.synth.crafter.craftsmanship;
     var control = s.synth.crafter.control;
     var cpCost = action.cpCost;
-
-    // Effects modifying control
-    if (AllActions.innerQuiet.shortName in s.effects.countUps) {
-        control += (0.2 * s.effects.countUps[AllActions.innerQuiet.shortName]) * s.synth.crafter.control;
-    }
 
     // Effects modifying level difference
     var effCrafterLevel = getEffectiveCrafterLevel(s.synth);
@@ -380,11 +379,16 @@ function ApplyModifiers(s, action, condition) {
     if (AllActions.innovation.shortName in s.effects.countDowns) {
         qualityIncreaseMultiplier += 0.5;
     }
+        
+    if (AllActions.innerQuiet.shortName in s.effects.countUps) {
+        qualityIncreaseMultiplier += (0.1 * (s.effects.countUps[AllActions.innerQuiet.shortName] + 1))
+        // +1 because buffs start incrementing from 0
+    }
 
-    // We can only use Byregot actions when we have at least 2 stacks of inner quiet
+    // We can only use Byregot actions when we have at least 1 stacks of inner quiet
     if (isActionEq(action, AllActions.byregotsBlessing)) {
         if ((AllActions.innerQuiet.shortName in s.effects.countUps) && s.effects.countUps[AllActions.innerQuiet.shortName] >= 1) {
-            qualityIncreaseMultiplier *= 1 + (0.2 * s.effects.countUps[AllActions.innerQuiet.shortName]);
+            qualityIncreaseMultiplier *= 1 + Math.min((0.2 * (s.effects.countUps[AllActions.innerQuiet.shortName] + 1)), 3);
         } else {
             qualityIncreaseMultiplier = 0;
         }
@@ -486,7 +490,7 @@ function ApplySpecialActionEffects(s, action, condition) {
 
     if (isActionEq(action, AllActions.reflect)) {
         if (s.step == 1) {
-            s.effects.countUps[AllActions.innerQuiet.shortName] = 2;
+            s.effects.countUps[AllActions.innerQuiet.shortName] = 1;
         } else {
             s.wastedActions += 1;
         }
@@ -541,8 +545,8 @@ function UpdateEffectCounters(s, action, condition, successProbability) {
             s.effects.countUps[AllActions.innerQuiet.shortName] += 1 * successProbability;
         }
 
-        // Cap inner quiet stacks at 10 (11)
-        s.effects.countUps[AllActions.innerQuiet.shortName] = Math.min(s.effects.countUps[AllActions.innerQuiet.shortName], 10);
+        // Cap inner quiet stacks at 9 (10)
+        s.effects.countUps[AllActions.innerQuiet.shortName] = Math.min(s.effects.countUps[AllActions.innerQuiet.shortName], 9);
     }
 
     // Initialize new effects after countdowns are managed to reset them properly

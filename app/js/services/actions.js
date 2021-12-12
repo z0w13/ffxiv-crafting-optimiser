@@ -169,8 +169,8 @@
     },
     {
       name: "Buffs", actions: [
-        "innerQuiet",
-	    "veneration",
+        //"innerQuiet",
+	      "veneration",
         "greatStrides",
         "innovation",
     ]
