@@ -317,6 +317,12 @@ function ApplyModifiers(s, action, condition) {
     }
     successProbability = Math.min(successProbability, 1);
 
+    // Advancted Touch Combo
+    if (isActionEq(action, AllActions.advancedTouch)) {
+        if (s.action === AllActions.standardTouch.shortName) {
+            cpCost = 18;
+        }
+    }
     // Add combo bonus following Basic Touch
     if (isActionEq(action, AllActions.standardTouch)) {
         if (s.action === AllActions.basicTouch.shortName) {
