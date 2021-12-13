@@ -1405,7 +1405,7 @@ function evalSeq(individual, mySynth, penaltyWeight) {
     }
 
     if (mySynth.maxLength > 0) {
-        var maxActionsExceeded = individual.length - mySynth.maxLength;
+        var maxActionsExceeded = result.step - mySynth.maxLength;
         if (maxActionsExceeded > 0) {
             penalties += 0.1 * maxActionsExceeded;
         }
@@ -1416,10 +1416,14 @@ function evalSeq(individual, mySynth, penaltyWeight) {
         fitness += result.durabilityState * mySynth.solverVars.remainderDurFitnessValue;
     }
     else {
-        fitness += result.qualityState;
+        fitness += Math.min(mySynth.recipe.maxQuality*1.1, result.qualityState);
     }
     
     fitness -= penaltyWeight * penalties;
+    if (chk.progressOk && result.qualityState >= mySynth.recipe.maxQuality*1.1) {
+        // This if statement rewards a smaller synth length so long as conditions are met
+        fitness *= (1 + 4 / result.step);
+    }
     //fitness -= result.cpState*0.5 // Penalizes wasted CP
     fitnessProg += result.progressState;
 

@@ -433,13 +433,13 @@
       $scope.solver = {
         algorithm: 'eaComplex',
         penaltyWeight: 10000,
-        population: 12000,
-        subPopulations: 6,
+        population: 10000,
+        subPopulations: 10,
         solveForCompletion: false,
         remainderCPFitnessValue: 10,
         remainderDurFitnessValue: 100,
-        maxStagnationCounter: 20,
-        generations: 750
+        maxStagnationCounter: 25,
+        generations: 1000
       };
 
       $scope.macroOptions = {
