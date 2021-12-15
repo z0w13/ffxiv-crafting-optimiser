@@ -1003,7 +1003,7 @@ function MonteCarloSequence(individual, startState, assumeSuccess, conditionalAc
             actionsArray.push(individual[i]);
         }
         for (var j = 0; j < actionsArray.length; j++) {
-            var action = actionsArray[i];
+            var action = actionsArray[j];
 
             // Determine if action is usable
             var usable = action.onExcellent && s.condition === 'Excellent' ||
