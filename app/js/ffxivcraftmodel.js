@@ -689,11 +689,12 @@ function simSynth(individual, startState, assumeSuccess, verbose, debug, logOutp
         // Ranged edit -- Combo actions. Basically do everything twice over if there's a combo action. Woo.
         var actionsArray = [];
 
-        if (individual[i].isCombo){
-            actionsArray[0] = getComboAction(individual[i].comboName1);
-            actionsArray[1] = getComboAction(individual[i].comboName2);
+        if (individual[i].isCombo) {
+            for (var comboNumber = 0; comboNumber < individual[i].comboActions.length; comboNumber++) {
+                actionsArray.push(getComboAction(individual[i].comboActions[comboNumber]));
+            } 
         } else {
-            actionsArray[0] = individual[i];
+            actionsArray.push(individual[i]);
         }
         for (var j = 0; j < actionsArray.length; j++) {
             var action = actionsArray[j];
@@ -815,11 +816,12 @@ function MonteCarloStep(startState, action, assumeSuccess, verbose, debug, logOu
     // Ranged edit - Combo actions please please please just fukcing worksadsd asfdfghdttsas
     var actionsArray = [];
 
-    if (action.isCombo){
-        actionsArray[0] = getComboAction(action.comboName1);
-        actionsArray[1] = getComboAction(action.comboName2);
+    if (action.isCombo) {
+        for (var comboNumber = 0; comboNumber < action.comboActions.length; comboNumber++) {
+            actionsArray.push(getComboAction(action.comboActions[comboNumber]));
+        } 
     } else {
-        actionsArray[0] = action;
+        actionsArray.push(action);
     }
     for (var j = 0; j < actionsArray.length; j++) {
         action = actionsArray[j];
