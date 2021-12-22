@@ -168,6 +168,7 @@ function State(synth, step, lastStep, action, durabilityState, cpState, bonusMax
     this.bProgressGain = 0;
     this.bQualityGain = 0;
     this.success = 0;
+    this.lastDurabilityCost = 0;
 }
 
 State.prototype.clone = function () {
@@ -198,10 +199,16 @@ State.prototype.checkViolations = function () {
     */
 
     // Ranged edit -- 10 cost actions that bring you to -5 are now valid
-    if ((this.durabilityState >= -5) && (this.progressState >= this.synth.recipe.difficulty)) {
-        if (this.action.durabilityCost === 10) {
+    if ((this.durabilityState >= -15) && (this.progressState >= this.synth.recipe.difficulty)) {
+        // Special allowed cases that bring it to the negatives:
+        // This should really be condensed into a single if statement but lol lmao
+        if (this.lastDurabilityCost === 10 && this.durabilityState === -5) {
             durabilityOk = true;
         }
+        if (this.lastDurabilityCost === 20 && (this.durabilityState === -5) || this.durabilityState === -10 || this.durabilityState === -15) {
+            durabilityOk = true;
+        }
+        // All other cases:
         if (this.durabilityState >= 0) {
             durabilityOk = true;
         }
@@ -317,6 +324,7 @@ function ApplyModifiers(s, action, condition) {
     var pureLevelDifference = s.synth.crafter.level - s.synth.recipe.baseLevel;
     var recipeLevel = effRecipeLevel;
     var stars = s.synth.recipe.stars;
+    var durabilityCost = action.durabilityCost;
 
     // Effects modfiying probability
     var successProbability = action.successProbability;
@@ -370,6 +378,22 @@ function ApplyModifiers(s, action, condition) {
             cpCost = 0;
         }
     }
+
+    // Effects modifying durability cost
+    if ((AllActions.wasteNot.shortName in s.effects.countDowns) || (AllActions.wasteNot2.shortName in s.effects.countDowns)) {
+        if (isActionEq(action, AllActions.prudentTouch)) {
+            bQualityGain = 0;
+            s.wastedActions += 1;
+        }
+        else if (isActionEq(action, AllActions.prudentSynthesis)) {
+            bProgressGain = 0;
+            s.wastedActions += 1;
+        }
+        else {
+            durabilityCost *= 0.5;
+        }
+    }
+
 	if (s.durabilityState < durabilityCost) {
         if (isActionEq(action, AllActions.groundwork) || isActionEq(action, AllActions.groundwork2)) {
             progressIncreaseMultiplier *= 0.5;
@@ -416,22 +440,6 @@ function ApplyModifiers(s, action, condition) {
         if (!(AllActions.innerQuiet.shortName in s.effects.countUps) || s.effects.countUps[AllActions.innerQuiet.shortName] != 9) {
             s.wastedActions += 1;
             bQualityGain = 0;
-        }
-    }
-
-    // Effects modifying durability cost
-    var durabilityCost = action.durabilityCost;
-    if ((AllActions.wasteNot.shortName in s.effects.countDowns) || (AllActions.wasteNot2.shortName in s.effects.countDowns)) {
-        if (isActionEq(action, AllActions.prudentTouch)) {
-            bQualityGain = 0;
-            s.wastedActions += 1;
-        }
-        else if (isActionEq(action, AllActions.prudentSynthesis)) {
-            bProgressGain = 0;
-            s.wastedActions += 1;
-        }
-        else {
-            durabilityCost *= 0.5;
         }
     }
 
@@ -625,6 +633,7 @@ function UpdateState(s, action, progressGain, qualityGain, durabilityCost, cpCos
     s.progressState += progressGain;
     s.qualityState += qualityGain;
     s.durabilityState -= durabilityCost;
+    s.lastDurabilityCost = durabilityCost;
     s.cpState -= cpCost;
     s.lastStep += 1;
     ApplySpecialActionEffects(s, action, condition);
