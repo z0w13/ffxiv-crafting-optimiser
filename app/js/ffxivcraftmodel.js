@@ -205,7 +205,7 @@ State.prototype.checkViolations = function () {
         if (this.lastDurabilityCost === 10 && this.durabilityState === -5) {
             durabilityOk = true;
         }
-        if (this.lastDurabilityCost === 20 && (this.durabilityState === -5) || this.durabilityState === -10 || this.durabilityState === -15) {
+        if (this.lastDurabilityCost === 20 && (this.durabilityState === -5 || this.durabilityState === -10 || this.durabilityState === -15)) {
             durabilityOk = true;
         }
         // All other cases:
