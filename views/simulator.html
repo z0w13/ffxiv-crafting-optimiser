@@ -1,9 +1,8 @@
 <div>
-  <center><h1>Endwalker update status: NOW.</h1>
-  <p1>The crafting tool is functional again.</p1><br></center>
-  <h3>To-do list:</h3>
-  <p1>Add the weird new specialist stuf: []</p1><br>
-  <p1>Re-write the 'about' and 'instructions' page and publish this tool somewhere: []</p1>
+  <center><h1>This tool has been updated for FFXIV - Endwalker.</h1>
+  <p1>All actions and items have been added. The results of the algorith have been tested and verified. Regardless, if you don't trust the result, you can always run a Trial Synthesis in-game before putting money on the line.</p1><br>
+  <p1>1-1-2022: The 'About' and 'Instructions' pages under 'More...' have been updated with new info!</p1><br>
+  <p1><a href="https://www.strawpoll.me/45911190">Quick poll re: interest in a discord server.</a></p1></center>
   <div class="row-fluid ">
     <div class="recipe-search-control" ng-controller="RecipeSearchController">
       <form class="form-inline">
@@ -146,11 +145,13 @@
 
   <div class="row-fluid">
     <tabset>
+      <!--  (useless) Monte Carlo Solver removed to reduce confusion with this tool.
       <tab active="logTabs.monteCarlo.active">
         <tab-heading>{{ 'MONTE_CARLO_SIM' | translate}} &nbsp;<i class="fa fa-refresh flat-button"
                                                ng-click="$emit('simulation.needs.update')"></i></tab-heading>
         <pre>{{simulatorStatus.monteCarlo.logText}}</pre>
       </tab>
+      -->
       <tab active="logTabs.probabilistic.active">
         <tab-heading>{{ 'PROBABILISTIC_SIM' | translate}}</tab-heading>
         <pre>{{simulatorStatus.probabilistic.logText}}</pre>
