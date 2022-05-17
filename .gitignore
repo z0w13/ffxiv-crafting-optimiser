@@ -9,3 +9,5 @@ Thumbs.db
 /app/.vs
 package-lock.json
 *.zip
+.prettierignore
+css/
