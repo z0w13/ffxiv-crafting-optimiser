@@ -428,7 +428,7 @@
         useConditions: false,
         conditionalActionHandling: 'skipUnusable',
         debug: true,
-        darkMode: 'light',
+        darkMode: 'dark',
       };
 
       $scope.solver = {
