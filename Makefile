@@ -18,3 +18,4 @@ build:
 recipes:
 	cd scripts/recipe-extractor && pdm run python3 main_scraper.py
 	cp -rvf scripts/recipe-extractor/out/*.json app/data/recipedb
+	rm -rf scripts/recipe-extractor/out
