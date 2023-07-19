@@ -786,9 +786,12 @@
 }
 .dark .macro-import-modal textarea.macro-text {
   width: 100%;
-  box-sizing: border-box; /* For IE and modern versions of Chrome */
-  -moz-box-sizing: border-box; /* For Firefox                          */
-  -webkit-box-sizing: border-box; /* For Safari                           */
+  box-sizing: border-box;
+  /* For IE and modern versions of Chrome */
+  -moz-box-sizing: border-box;
+  /* For Firefox                          */
+  -webkit-box-sizing: border-box;
+  /* For Safari                           */
 }
 .dark body {
   padding-top: 60px;
@@ -990,6 +993,7 @@ legend small > .light {
     width: 100%;
     margin-top: 0;
   }
+
   .recipe-search-control .recipe-menu-scrollable {
     max-height: 100%;
     overflow-y: auto;
@@ -1005,10 +1009,12 @@ legend small > .light {
     width: 100%;
     margin-top: 0;
   }
+
   .recipe-search-control .recipe-menu-scrollable {
     max-height: 100%;
     overflow-y: auto;
   }
+
   .recipe-search-control .search {
     display: none;
   }
@@ -1335,6 +1341,7 @@ div[content*="actiontooltip"] div.tooltip-arrow {
     display: block;
     text-align: center;
   }
+
   .class-selector-group-right {
     width: 100%;
     margin-left: 0;
@@ -1601,27 +1608,32 @@ legend + .control-group {
 }
 
 /* Modals */
-@media (max-height: 533px) { /* Samsung Galaxy S portrait */
+@media (max-height: 533px) {
+  /* Samsung Galaxy S portrait */
   .modal-body {
     max-height: 353px;
   }
 }
-@media (max-height: 480px) { /* iPhone 4 portrait */
+@media (max-height: 480px) {
+  /* iPhone 4 portrait */
   .modal-body {
     max-height: 300px;
   }
 }
-@media (max-height: 414px) { /* iPhone 6+ landscape */
+@media (max-height: 414px) {
+  /* iPhone 6+ landscape */
   .modal-body {
     max-height: 234px;
   }
 }
-@media (max-height: 375px) { /* iPhone 6 landscape */
+@media (max-height: 375px) {
+  /* iPhone 6 landscape */
   .modal-body {
     max-height: 195px;
   }
 }
-@media (max-height: 320px) { /* iPhone 4 / Samsung Galaxy S landscape */
+@media (max-height: 320px) {
+  /* iPhone 4 / Samsung Galaxy S landscape */
   .modal-body {
     max-height: 140px;
   }
@@ -1797,9 +1809,12 @@ label.disabled {
 
 .macro-import-modal textarea.macro-text {
   width: 100%;
-  box-sizing: border-box; /* For IE and modern versions of Chrome */
-  -moz-box-sizing: border-box; /* For Firefox                          */
-  -webkit-box-sizing: border-box; /* For Safari                           */
+  box-sizing: border-box;
+  /* For IE and modern versions of Chrome */
+  -moz-box-sizing: border-box;
+  /* For Firefox                          */
+  -webkit-box-sizing: border-box;
+  /* For Safari                           */
 }
 
 body {
@@ -1818,6 +1833,7 @@ body {
     padding-left: 5px;
     padding-right: 5px;
   }
+
   body {
     padding-top: 0px;
   }
