@@ -1,3 +1,6 @@
+.PHONY: all
+all: build recipes buffs gh-pages clean
+
 .PHONY: browsersync
 browsersync:
 	npx browser-sync start --server app --files app/**
@@ -19,6 +22,11 @@ recipes:
 	cd scripts/recipe-extractor && pdm run python3 main_scraper.py
 	cp -rvf scripts/recipe-extractor/out/*.json app/data/recipedb
 
+.PHONY: buffs
+buffs:
+	cd scripts/recipe-extractor && pdm run python3 buff_scraper.py
+	cp -vf scripts/recipe-extractor/{Meal,Medicine}.json app/data/buffs
+
 .PHONY: gh-pages
 gh-pages:
 	mkdir -p _build
@@ -34,5 +42,5 @@ gh-pages:
 
 .PHONY: clean
 clean:
-	rm -rf scripts/recipe-extractor/out
+	rm -rf scripts/recipe-extractor/out scripts/recipe-extractor/{Meal,Medicine}.json
 	rm -rf _build
