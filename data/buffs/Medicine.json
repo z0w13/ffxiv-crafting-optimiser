@@ -1,218 +1,218 @@
 [
   {
-    "control_percent": 2,
-    "control_value": 40,
+    "id": 36115,
     "hq": false,
-    "id": "95ea832259a",
     "name": {
-      "de": "Fachkenntnis-Kräuterwein",
+      "de": "Fachkenntnis-Kr\u00e4uterwein",
       "en": "Commanding Craftsman's Draught",
-      "fr": "Potion spiritueuse de maîtrise",
-      "ja": "巨匠の薬酒"
-    }
+      "fr": "Potion spiritueuse de ma\u00eetrise",
+      "ja": "\u5de8\u5320\u306e\u85ac\u9152"
+    },
+    "control_percent": 2,
+    "control_value": 40
   },
   {
-    "control_percent": 3,
-    "control_value": 50,
+    "id": 36115,
     "hq": true,
-    "id": "95ea832259a",
     "name": {
-      "de": "Fachkenntnis-Kräuterwein",
+      "de": "Fachkenntnis-Kr\u00e4uterwein",
       "en": "Commanding Craftsman's Draught",
-      "fr": "Potion spiritueuse de maîtrise",
-      "ja": "巨匠の薬酒"
-    }
+      "fr": "Potion spiritueuse de ma\u00eetrise",
+      "ja": "\u5de8\u5320\u306e\u85ac\u9152"
+    },
+    "control_percent": 3,
+    "control_value": 50
   },
   {
-    "control_percent": 2,
-    "control_value": 34,
+    "id": 27958,
     "hq": false,
-    "id": "99c8f8f8de2",
     "name": {
       "de": "Artisanentrank der Fachkenntnis",
       "en": "Commanding Craftsman's Syrup",
-      "fr": "Potion de maîtrise",
-      "ja": "巨匠の水薬"
-    }
+      "fr": "Potion de ma\u00eetrise",
+      "ja": "\u5de8\u5320\u306e\u6c34\u85ac"
+    },
+    "control_percent": 2,
+    "control_value": 34
   },
   {
-    "control_percent": 3,
-    "control_value": 42,
+    "id": 27958,
     "hq": true,
-    "id": "99c8f8f8de2",
     "name": {
       "de": "Artisanentrank der Fachkenntnis",
       "en": "Commanding Craftsman's Syrup",
-      "fr": "Potion de maîtrise",
-      "ja": "巨匠の水薬"
-    }
-  },
-  {
-    "control_percent": 2,
-    "control_value": 20,
-    "hq": false,
-    "id": "3574f8c53d8",
-    "name": {
-      "de": "Handwerkerlegenden-Tee",
-      "en": "Commanding Craftsman's Tea",
-      "fr": "Infusion de maîtrise",
-      "ja": "巨匠の薬茶"
-    }
-  },
-  {
+      "fr": "Potion de ma\u00eetrise",
+      "ja": "\u5de8\u5320\u306e\u6c34\u85ac"
+    },
     "control_percent": 3,
-    "control_value": 25,
-    "hq": true,
-    "id": "3574f8c53d8",
+    "control_value": 42
+  },
+  {
+    "id": 19883,
+    "hq": false,
     "name": {
       "de": "Handwerkerlegenden-Tee",
       "en": "Commanding Craftsman's Tea",
-      "fr": "Infusion de maîtrise",
-      "ja": "巨匠の薬茶"
-    }
+      "fr": "Infusion de ma\u00eetrise",
+      "ja": "\u5de8\u5320\u306e\u85ac\u8336"
+    },
+    "control_percent": 2,
+    "control_value": 20
   },
   {
-    "craftsmanship_percent": 2,
-    "craftsmanship_value": 40,
-    "hq": false,
-    "id": "f7bfd7f60b2",
-    "name": {
-      "de": "Facharbeiter-Kräuterwein",
-      "en": "Competent Craftsman's Draught",
-      "fr": "Potion spiritueuse de virtuosité",
-      "ja": "名匠の薬酒"
-    }
-  },
-  {
-    "craftsmanship_percent": 3,
-    "craftsmanship_value": 50,
+    "id": 19883,
     "hq": true,
-    "id": "f7bfd7f60b2",
     "name": {
-      "de": "Facharbeiter-Kräuterwein",
-      "en": "Competent Craftsman's Draught",
-      "fr": "Potion spiritueuse de virtuosité",
-      "ja": "名匠の薬酒"
-    }
+      "de": "Handwerkerlegenden-Tee",
+      "en": "Commanding Craftsman's Tea",
+      "fr": "Infusion de ma\u00eetrise",
+      "ja": "\u5de8\u5320\u306e\u85ac\u8336"
+    },
+    "control_percent": 3,
+    "control_value": 25
   },
   {
-    "craftsmanship_percent": 2,
-    "craftsmanship_value": 33,
+    "id": 36114,
     "hq": false,
-    "id": "92d3ba5a6d6",
+    "name": {
+      "de": "Facharbeiter-Kr\u00e4uterwein",
+      "en": "Competent Craftsman's Draught",
+      "fr": "Potion spiritueuse de virtuosit\u00e9",
+      "ja": "\u540d\u5320\u306e\u85ac\u9152"
+    },
+    "craftsmanship_percent": 2,
+    "craftsmanship_value": 40
+  },
+  {
+    "id": 36114,
+    "hq": true,
+    "name": {
+      "de": "Facharbeiter-Kr\u00e4uterwein",
+      "en": "Competent Craftsman's Draught",
+      "fr": "Potion spiritueuse de virtuosit\u00e9",
+      "ja": "\u540d\u5320\u306e\u85ac\u9152"
+    },
+    "craftsmanship_percent": 3,
+    "craftsmanship_value": 50
+  },
+  {
+    "id": 27957,
+    "hq": false,
     "name": {
       "de": "Artisanentrank der Effizienz",
       "en": "Competent Craftsman's Syrup",
-      "fr": "Potion de virtuosité",
-      "ja": "名匠の水薬"
-    }
+      "fr": "Potion de virtuosit\u00e9",
+      "ja": "\u540d\u5320\u306e\u6c34\u85ac"
+    },
+    "craftsmanship_percent": 2,
+    "craftsmanship_value": 33
   },
   {
-    "craftsmanship_percent": 3,
-    "craftsmanship_value": 41,
+    "id": 27957,
     "hq": true,
-    "id": "92d3ba5a6d6",
     "name": {
       "de": "Artisanentrank der Effizienz",
       "en": "Competent Craftsman's Syrup",
-      "fr": "Potion de virtuosité",
-      "ja": "名匠の水薬"
-    }
-  },
-  {
-    "craftsmanship_percent": 2,
-    "craftsmanship_value": 20,
-    "hq": false,
-    "id": "373c88c80d3",
-    "name": {
-      "de": "Handwerkermeister-Tee",
-      "en": "Competent Craftsman's Tea",
-      "fr": "Infusion de virtuosité",
-      "ja": "名匠の薬茶"
-    }
-  },
-  {
+      "fr": "Potion de virtuosit\u00e9",
+      "ja": "\u540d\u5320\u306e\u6c34\u85ac"
+    },
     "craftsmanship_percent": 3,
-    "craftsmanship_value": 25,
-    "hq": true,
-    "id": "373c88c80d3",
+    "craftsmanship_value": 41
+  },
+  {
+    "id": 19882,
+    "hq": false,
     "name": {
       "de": "Handwerkermeister-Tee",
       "en": "Competent Craftsman's Tea",
-      "fr": "Infusion de virtuosité",
-      "ja": "名匠の薬茶"
-    }
+      "fr": "Infusion de virtuosit\u00e9",
+      "ja": "\u540d\u5320\u306e\u85ac\u8336"
+    },
+    "craftsmanship_percent": 2,
+    "craftsmanship_value": 20
   },
   {
-    "cp_percent": 5,
-    "cp_value": 17,
-    "hq": false,
-    "id": "cc9aeb31e48",
-    "name": {
-      "de": "Fachwissen-Kräuterwein",
-      "en": "Cunning Craftsman's Draught",
-      "fr": "Potion spiritueuse de capacité",
-      "ja": "魔匠の薬酒"
-    }
-  },
-  {
-    "cp_percent": 6,
-    "cp_value": 21,
+    "id": 19882,
     "hq": true,
-    "id": "cc9aeb31e48",
     "name": {
-      "de": "Fachwissen-Kräuterwein",
-      "en": "Cunning Craftsman's Draught",
-      "fr": "Potion spiritueuse de capacité",
-      "ja": "魔匠の薬酒"
-    }
+      "de": "Handwerkermeister-Tee",
+      "en": "Competent Craftsman's Tea",
+      "fr": "Infusion de virtuosit\u00e9",
+      "ja": "\u540d\u5320\u306e\u85ac\u8336"
+    },
+    "craftsmanship_percent": 3,
+    "craftsmanship_value": 25
   },
   {
-    "cp_percent": 5,
-    "cp_value": 13,
+    "id": 36116,
     "hq": false,
-    "id": "4fe710c87f9",
+    "name": {
+      "de": "Fachwissen-Kr\u00e4uterwein",
+      "en": "Cunning Craftsman's Draught",
+      "fr": "Potion spiritueuse de capacit\u00e9",
+      "ja": "\u9b54\u5320\u306e\u85ac\u9152"
+    },
+    "cp_percent": 5,
+    "cp_value": 17
+  },
+  {
+    "id": 36116,
+    "hq": true,
+    "name": {
+      "de": "Fachwissen-Kr\u00e4uterwein",
+      "en": "Cunning Craftsman's Draught",
+      "fr": "Potion spiritueuse de capacit\u00e9",
+      "ja": "\u9b54\u5320\u306e\u85ac\u9152"
+    },
+    "cp_percent": 6,
+    "cp_value": 21
+  },
+  {
+    "id": 27959,
+    "hq": false,
     "name": {
       "de": "Artisanentrank des Fachwissens",
       "en": "Cunning Craftsman's Syrup",
-      "fr": "Potion de capacité",
-      "ja": "魔匠の水薬"
-    }
+      "fr": "Potion de capacit\u00e9",
+      "ja": "\u9b54\u5320\u306e\u6c34\u85ac"
+    },
+    "cp_percent": 5,
+    "cp_value": 13
   },
   {
-    "cp_percent": 6,
-    "cp_value": 16,
+    "id": 27959,
     "hq": true,
-    "id": "4fe710c87f9",
     "name": {
       "de": "Artisanentrank des Fachwissens",
       "en": "Cunning Craftsman's Syrup",
-      "fr": "Potion de capacité",
-      "ja": "魔匠の水薬"
-    }
+      "fr": "Potion de capacit\u00e9",
+      "ja": "\u9b54\u5320\u306e\u6c34\u85ac"
+    },
+    "cp_percent": 6,
+    "cp_value": 16
   },
   {
+    "id": 19884,
+    "hq": false,
+    "name": {
+      "de": "Handwerkerkoryph\u00e4en-Tee",
+      "en": "Cunning Craftsman's Tea",
+      "fr": "Infusion de capacit\u00e9",
+      "ja": "\u9b54\u5320\u306e\u85ac\u8336"
+    },
     "cp_percent": 4,
-    "cp_value": 10,
-    "hq": false,
-    "id": "e01fa653061",
-    "name": {
-      "de": "Handwerkerkoryphäen-Tee",
-      "en": "Cunning Craftsman's Tea",
-      "fr": "Infusion de capacité",
-      "ja": "魔匠の薬茶"
-    }
+    "cp_value": 10
   },
   {
-    "cp_percent": 5,
-    "cp_value": 13,
+    "id": 19884,
     "hq": true,
-    "id": "e01fa653061",
     "name": {
-      "de": "Handwerkerkoryphäen-Tee",
+      "de": "Handwerkerkoryph\u00e4en-Tee",
       "en": "Cunning Craftsman's Tea",
-      "fr": "Infusion de capacité",
-      "ja": "魔匠の薬茶"
-    }
+      "fr": "Infusion de capacit\u00e9",
+      "ja": "\u9b54\u5320\u306e\u85ac\u8336"
+    },
+    "cp_percent": 5,
+    "cp_value": 13
   }
 ]

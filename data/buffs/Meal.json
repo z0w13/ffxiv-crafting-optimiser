@@ -1,1152 +1,1182 @@
 [
   {
-    "cp_percent": 10,
-    "cp_value": 38,
+    "id": 12861,
+    "hq": false,
+    "name": {
+      "de": "\u00dcberbackene Zwiebelsuppe",
+      "en": "Baked Onion Soup",
+      "fr": "Soupe \u00e0 l'oignon",
+      "ja": "\u30aa\u30cb\u30aa\u30f3\u30b0\u30e9\u30bf\u30f3\u30b9\u30fc\u30d7"
+    },
     "craftsmanship_percent": 4,
     "craftsmanship_value": 22,
-    "hq": false,
-    "id": "6b218c327b8",
-    "name": {
-      "de": "Überbackene Zwiebelsuppe",
-      "en": "Baked Onion Soup",
-      "fr": "Soupe à l'oignon",
-      "ja": "オニオングラタンスープ"
-    }
+    "cp_percent": 10,
+    "cp_value": 38
   },
   {
-    "cp_percent": 13,
-    "cp_value": 48,
+    "id": 12861,
+    "hq": true,
+    "name": {
+      "de": "\u00dcberbackene Zwiebelsuppe",
+      "en": "Baked Onion Soup",
+      "fr": "Soupe \u00e0 l'oignon",
+      "ja": "\u30aa\u30cb\u30aa\u30f3\u30b0\u30e9\u30bf\u30f3\u30b9\u30fc\u30d7"
+    },
     "craftsmanship_percent": 5,
     "craftsmanship_value": 28,
-    "hq": true,
-    "id": "6b218c327b8",
-    "name": {
-      "de": "Überbackene Zwiebelsuppe",
-      "en": "Baked Onion Soup",
-      "fr": "Soupe à l'oignon",
-      "ja": "オニオングラタンスープ"
-    }
+    "cp_percent": 13,
+    "cp_value": 48
   },
   {
-    "control_percent": 8,
-    "control_value": 14,
+    "id": 4669,
     "hq": false,
-    "id": "166c5a80d72",
     "name": {
       "de": "Gebratene Seezunge",
       "en": "Baked Sole",
       "fr": "Sole au four",
-      "ja": "ベイクドソール"
-    }
+      "ja": "\u30d9\u30a4\u30af\u30c9\u30bd\u30fc\u30eb"
+    },
+    "control_percent": 8,
+    "control_value": 14
   },
   {
-    "control_percent": 10,
-    "control_value": 17,
+    "id": 4669,
     "hq": true,
-    "id": "166c5a80d72",
     "name": {
       "de": "Gebratene Seezunge",
       "en": "Baked Sole",
       "fr": "Sole au four",
-      "ja": "ベイクドソール"
-    }
+      "ja": "\u30d9\u30a4\u30af\u30c9\u30bd\u30fc\u30eb"
+    },
+    "control_percent": 10,
+    "control_value": 17
   },
   {
-    "control_percent": 10,
-    "control_value": 54,
+    "id": 12862,
+    "hq": false,
+    "name": {
+      "de": "Purpurrote Bete-Suppe",
+      "en": "Beet Soup",
+      "fr": "Soupe pourpre",
+      "ja": "\u30af\u30ea\u30e0\u30be\u30f3\u30b9\u30fc\u30d7"
+    },
     "craftsmanship_percent": 4,
     "craftsmanship_value": 23,
-    "hq": false,
-    "id": "c22fc7acb1d",
+    "control_percent": 10,
+    "control_value": 54
+  },
+  {
+    "id": 12862,
+    "hq": true,
     "name": {
       "de": "Purpurrote Bete-Suppe",
       "en": "Beet Soup",
       "fr": "Soupe pourpre",
-      "ja": "クリムゾンスープ"
-    }
-  },
-  {
-    "control_percent": 12,
-    "control_value": 68,
+      "ja": "\u30af\u30ea\u30e0\u30be\u30f3\u30b9\u30fc\u30d7"
+    },
     "craftsmanship_percent": 5,
     "craftsmanship_value": 29,
-    "hq": true,
-    "id": "c22fc7acb1d",
-    "name": {
-      "de": "Purpurrote Bete-Suppe",
-      "en": "Beet Soup",
-      "fr": "Soupe pourpre",
-      "ja": "クリムゾンスープ"
-    }
+    "control_percent": 12,
+    "control_value": 68
   },
   {
-    "control_percent": 8,
-    "control_value": 38,
+    "id": 10146,
     "hq": false,
-    "id": "2bf6dd0284f",
     "name": {
-      "de": "Königskuchen",
+      "de": "K\u00f6nigskuchen",
       "en": "Better Crowned Pie",
-      "fr": "Galette des rois spéciale",
-      "ja": "秘製ガレット・デ・ロワ"
-    }
+      "fr": "Galette des rois sp\u00e9ciale",
+      "ja": "\u79d8\u88fd\u30ac\u30ec\u30c3\u30c8\u30fb\u30c7\u30fb\u30ed\u30ef"
+    },
+    "control_percent": 8,
+    "control_value": 38
   },
   {
+    "id": 10146,
     "hq": true,
-    "id": "2bf6dd0284f",
     "name": {
-      "de": "Königskuchen",
+      "de": "K\u00f6nigskuchen",
       "en": "Better Crowned Pie",
-      "fr": "Galette des rois spéciale",
-      "ja": "秘製ガレット・デ・ロワ"
-    }
+      "fr": "Galette des rois sp\u00e9ciale",
+      "ja": "\u79d8\u88fd\u30ac\u30ec\u30c3\u30c8\u30fb\u30c7\u30fb\u30ed\u30ef"
+    },
+    "control_percent": 10,
+    "control_value": 48
   },
   {
+    "id": 27876,
+    "hq": false,
+    "name": {
+      "de": "Blut-Bouillabaisse",
+      "en": "Blood Bouillabaisse",
+      "fr": "Bouillabaisse sanguine",
+      "ja": "\u30d6\u30e9\u30c3\u30c9\u30d6\u30a4\u30e4\u30d9\u30fc\u30b9"
+    },
     "control_percent": 4,
     "control_value": 51,
     "cp_percent": 21,
-    "cp_value": 53,
-    "hq": false,
-    "id": "3a08e09ab95",
+    "cp_value": 53
+  },
+  {
+    "id": 27876,
+    "hq": true,
     "name": {
       "de": "Blut-Bouillabaisse",
       "en": "Blood Bouillabaisse",
       "fr": "Bouillabaisse sanguine",
-      "ja": "ブラッドブイヤベース"
-    }
-  },
-  {
+      "ja": "\u30d6\u30e9\u30c3\u30c9\u30d6\u30a4\u30e4\u30d9\u30fc\u30b9"
+    },
     "control_percent": 5,
     "control_value": 64,
     "cp_percent": 26,
-    "cp_value": 66,
-    "hq": true,
-    "id": "3a08e09ab95",
-    "name": {
-      "de": "Blut-Bouillabaisse",
-      "en": "Blood Bouillabaisse",
-      "fr": "Bouillabaisse sanguine",
-      "ja": "ブラッドブイヤベース"
-    }
+    "cp_value": 66
   },
   {
-    "cp_percent": 8,
-    "cp_value": 22,
+    "id": 27864,
+    "hq": false,
+    "name": {
+      "de": "Bluttomatensalat",
+      "en": "Blood Tomato Salad",
+      "fr": "Salade de tomates sanguines",
+      "ja": "\u30d6\u30e9\u30c3\u30c9\u30c8\u30de\u30c8\u30b5\u30e9\u30c0"
+    },
     "craftsmanship_percent": 7,
     "craftsmanship_value": 122,
-    "hq": false,
-    "id": "f83b072073c",
+    "cp_percent": 8,
+    "cp_value": 22
+  },
+  {
+    "id": 27864,
+    "hq": true,
     "name": {
       "de": "Bluttomatensalat",
       "en": "Blood Tomato Salad",
       "fr": "Salade de tomates sanguines",
-      "ja": "ブラッドトマトサラダ"
-    }
-  },
-  {
-    "cp_percent": 10,
-    "cp_value": 27,
+      "ja": "\u30d6\u30e9\u30c3\u30c9\u30c8\u30de\u30c8\u30b5\u30e9\u30c0"
+    },
     "craftsmanship_percent": 9,
     "craftsmanship_value": 153,
-    "hq": true,
-    "id": "f83b072073c",
-    "name": {
-      "de": "Bluttomatensalat",
-      "en": "Blood Tomato Salad",
-      "fr": "Salade de tomates sanguines",
-      "ja": "ブラッドトマトサラダ"
-    }
-  },
-  {
-    "control_percent": 8,
-    "control_value": 12,
-    "hq": false,
-    "id": "c04b7b50243",
-    "name": {
-      "de": "Gekochte Brasse",
-      "en": "Boiled Bream",
-      "fr": "Brème bouillie",
-      "ja": "ボイルドブリーム"
-    }
-  },
-  {
-    "control_percent": 10,
-    "control_value": 15,
-    "hq": true,
-    "id": "c04b7b50243",
-    "name": {
-      "de": "Gekochte Brasse",
-      "en": "Boiled Bream",
-      "fr": "Brème bouillie",
-      "ja": "ボイルドブリーム"
-    }
-  },
-  {
     "cp_percent": 10,
-    "cp_value": 34,
+    "cp_value": 27
+  },
+  {
+    "id": 4668,
     "hq": false,
-    "id": "4eb57fadd27",
     "name": {
-      "de": "Bouillabaisse",
-      "en": "Bouillabaisse",
-      "fr": "Bouillabaisse",
-      "ja": "ブイヤベース"
-    }
+      "de": "Gekochte Brasse",
+      "en": "Boiled Bream",
+      "fr": "Br\u00e8me bouillie",
+      "ja": "\u30dc\u30a4\u30eb\u30c9\u30d6\u30ea\u30fc\u30e0"
+    },
+    "control_percent": 8,
+    "control_value": 12
   },
   {
-    "cp_percent": 13,
-    "cp_value": 43,
+    "id": 4668,
     "hq": true,
-    "id": "4eb57fadd27",
+    "name": {
+      "de": "Gekochte Brasse",
+      "en": "Boiled Bream",
+      "fr": "Br\u00e8me bouillie",
+      "ja": "\u30dc\u30a4\u30eb\u30c9\u30d6\u30ea\u30fc\u30e0"
+    },
+    "control_percent": 10,
+    "control_value": 15
+  },
+  {
+    "id": 4721,
+    "hq": false,
     "name": {
       "de": "Bouillabaisse",
       "en": "Bouillabaisse",
       "fr": "Bouillabaisse",
-      "ja": "ブイヤベース"
-    }
+      "ja": "\u30d6\u30a4\u30e4\u30d9\u30fc\u30b9"
+    },
+    "cp_percent": 10,
+    "cp_value": 34
   },
   {
-    "cp_percent": 21,
-    "cp_value": 66,
+    "id": 4721,
+    "hq": true,
+    "name": {
+      "de": "Bouillabaisse",
+      "en": "Bouillabaisse",
+      "fr": "Bouillabaisse",
+      "ja": "\u30d6\u30a4\u30e4\u30d9\u30fc\u30b9"
+    },
+    "cp_percent": 13,
+    "cp_value": 43
+  },
+  {
+    "id": 37282,
+    "hq": false,
+    "name": {
+      "de": "Calamari Ripieni",
+      "en": "Calamari Ripieni",
+      "fr": "Khalamar ripieni",
+      "ja": "\u30ab\u30e9\u30de\u30ea\u30fb\u30ea\u30d4\u30a8\u30fc\u30cb"
+    },
     "craftsmanship_percent": 4,
     "craftsmanship_value": 96,
-    "hq": false,
-    "id": "cf193e54034",
+    "cp_percent": 21,
+    "cp_value": 66
+  },
+  {
+    "id": 37282,
+    "hq": true,
     "name": {
       "de": "Calamari Ripieni",
       "en": "Calamari Ripieni",
       "fr": "Khalamar ripieni",
-      "ja": "カラマリ・リピエーニ"
-    }
-  },
-  {
-    "cp_percent": 26,
-    "cp_value": 82,
+      "ja": "\u30ab\u30e9\u30de\u30ea\u30fb\u30ea\u30d4\u30a8\u30fc\u30cb"
+    },
     "craftsmanship_percent": 5,
     "craftsmanship_value": 120,
-    "hq": true,
-    "id": "cf193e54034",
-    "name": {
-      "de": "Calamari Ripieni",
-      "en": "Calamari Ripieni",
-      "fr": "Khalamar ripieni",
-      "ja": "カラマリ・リピエーニ"
-    }
+    "cp_percent": 26,
+    "cp_value": 82
   },
   {
+    "id": 4719,
+    "hq": false,
+    "name": {
+      "de": "Cawl Cennin",
+      "en": "Cawl Cennin",
+      "fr": "Bouillon de poireaux",
+      "ja": "\u30ab\u30a6\u30eb\u30b1\u30cb\u30f3"
+    },
     "cp_percent": 10,
-    "cp_value": 24,
-    "hq": false,
-    "id": "b31080aad5b",
+    "cp_value": 24
+  },
+  {
+    "id": 4719,
+    "hq": true,
     "name": {
       "de": "Cawl Cennin",
       "en": "Cawl Cennin",
       "fr": "Bouillon de poireaux",
-      "ja": "カウルケニン"
-    }
-  },
-  {
+      "ja": "\u30ab\u30a6\u30eb\u30b1\u30cb\u30f3"
+    },
     "cp_percent": 13,
-    "cp_value": 30,
-    "hq": true,
-    "id": "b31080aad5b",
-    "name": {
-      "de": "Cawl Cennin",
-      "en": "Cawl Cennin",
-      "fr": "Bouillon de poireaux",
-      "ja": "カウルケニン"
-    }
+    "cp_value": 30
   },
   {
-    "craftsmanship_percent": 12,
-    "craftsmanship_value": 16,
+    "id": 4723,
     "hq": false,
-    "id": "779099a25cb",
     "name": {
-      "de": "Käserisotto",
+      "de": "K\u00e4serisotto",
       "en": "Cheese Risotto",
       "fr": "Risotto au fromage",
-      "ja": "チーズリゾット"
-    }
+      "ja": "\u30c1\u30fc\u30ba\u30ea\u30be\u30c3\u30c8"
+    },
+    "craftsmanship_percent": 12,
+    "craftsmanship_value": 16
   },
   {
-    "craftsmanship_percent": 15,
-    "craftsmanship_value": 20,
+    "id": 4723,
     "hq": true,
-    "id": "779099a25cb",
     "name": {
-      "de": "Käserisotto",
+      "de": "K\u00e4serisotto",
       "en": "Cheese Risotto",
       "fr": "Risotto au fromage",
-      "ja": "チーズリゾット"
-    }
-  },
-  {
-    "craftsmanship_percent": 12,
-    "craftsmanship_value": 20,
-    "hq": false,
-    "id": "45ece82148b",
-    "name": {
-      "de": "Käseauflauf",
-      "en": "Cheese Souffle",
-      "fr": "Soufflé au fromage",
-      "ja": "チーズスフレ"
-    }
-  },
-  {
+      "ja": "\u30c1\u30fc\u30ba\u30ea\u30be\u30c3\u30c8"
+    },
     "craftsmanship_percent": 15,
-    "craftsmanship_value": 25,
-    "hq": true,
-    "id": "45ece82148b",
-    "name": {
-      "de": "Käseauflauf",
-      "en": "Cheese Souffle",
-      "fr": "Soufflé au fromage",
-      "ja": "チーズスフレ"
-    }
+    "craftsmanship_value": 20
   },
   {
+    "id": 4724,
+    "hq": false,
+    "name": {
+      "de": "K\u00e4seauflauf",
+      "en": "Cheese Souffle",
+      "fr": "Souffl\u00e9 au fromage",
+      "ja": "\u30c1\u30fc\u30ba\u30b9\u30d5\u30ec"
+    },
+    "craftsmanship_percent": 12,
+    "craftsmanship_value": 20
+  },
+  {
+    "id": 4724,
+    "hq": true,
+    "name": {
+      "de": "K\u00e4seauflauf",
+      "en": "Cheese Souffle",
+      "fr": "Souffl\u00e9 au fromage",
+      "ja": "\u30c1\u30fc\u30ba\u30b9\u30d5\u30ec"
+    },
+    "craftsmanship_percent": 15,
+    "craftsmanship_value": 25
+  },
+  {
+    "id": 30482,
+    "hq": false,
+    "name": {
+      "de": "Chili-Krabbengericht",
+      "en": "Chili Crab",
+      "fr": "Chili de crabe",
+      "ja": "\u30c1\u30ea\u30af\u30e9\u30d6"
+    },
     "control_percent": 5,
     "control_value": 56,
     "cp_percent": 21,
-    "cp_value": 57,
-    "hq": false,
-    "id": "395fc8416a2",
+    "cp_value": 57
+  },
+  {
+    "id": 30482,
+    "hq": true,
     "name": {
       "de": "Chili-Krabbengericht",
       "en": "Chili Crab",
       "fr": "Chili de crabe",
-      "ja": "チリクラブ"
-    }
-  },
-  {
+      "ja": "\u30c1\u30ea\u30af\u30e9\u30d6"
+    },
     "control_percent": 6,
     "control_value": 70,
     "cp_percent": 26,
-    "cp_value": 72,
-    "hq": true,
-    "id": "395fc8416a2",
-    "name": {
-      "de": "Chili-Krabbengericht",
-      "en": "Chili Crab",
-      "fr": "Chili de crabe",
-      "ja": "チリクラブ"
-    }
+    "cp_value": 72
   },
   {
-    "cp_percent": 4,
-    "cp_value": 14,
+    "id": 7574,
+    "hq": false,
+    "name": {
+      "de": "Kalte Toffelsuppe",
+      "en": "Chilled Popoto Soup",
+      "fr": "Soupe de popotos glac\u00e9e",
+      "ja": "\u51b7\u88fd\u30dd\u30dd\u30c8\u30b9\u30fc\u30d7"
+    },
     "craftsmanship_percent": 10,
     "craftsmanship_value": 38,
-    "hq": false,
-    "id": "858982437ec",
+    "cp_percent": 4,
+    "cp_value": 14
+  },
+  {
+    "id": 7574,
+    "hq": true,
     "name": {
       "de": "Kalte Toffelsuppe",
       "en": "Chilled Popoto Soup",
-      "fr": "Soupe de popotos glacée",
-      "ja": "冷製ポポトスープ"
-    }
-  },
-  {
-    "cp_percent": 5,
-    "cp_value": 17,
+      "fr": "Soupe de popotos glac\u00e9e",
+      "ja": "\u51b7\u88fd\u30dd\u30dd\u30c8\u30b9\u30fc\u30d7"
+    },
     "craftsmanship_percent": 12,
     "craftsmanship_value": 47,
-    "hq": true,
-    "id": "858982437ec",
-    "name": {
-      "de": "Kalte Toffelsuppe",
-      "en": "Chilled Popoto Soup",
-      "fr": "Soupe de popotos glacée",
-      "ja": "冷製ポポトスープ"
-    }
+    "cp_percent": 5,
+    "cp_value": 17
   },
   {
+    "id": 12864,
+    "hq": false,
+    "name": {
+      "de": "Muschelsuppe",
+      "en": "Clam Chowder",
+      "fr": "Chaudr\u00e9e de palourdes",
+      "ja": "\u30af\u30e9\u30e0\u30c1\u30e3\u30a6\u30c0\u30fc"
+    },
     "control_percent": 10,
     "control_value": 58,
     "cp_percent": 4,
-    "cp_value": 15,
-    "hq": false,
-    "id": "f2adb9b5e98",
+    "cp_value": 15
+  },
+  {
+    "id": 12864,
+    "hq": true,
     "name": {
       "de": "Muschelsuppe",
       "en": "Clam Chowder",
-      "fr": "Chaudrée de palourdes",
-      "ja": "クラムチャウダー"
-    }
-  },
-  {
+      "fr": "Chaudr\u00e9e de palourdes",
+      "ja": "\u30af\u30e9\u30e0\u30c1\u30e3\u30a6\u30c0\u30fc"
+    },
     "control_percent": 12,
     "control_value": 73,
     "cp_percent": 5,
-    "cp_value": 19,
-    "hq": true,
-    "id": "f2adb9b5e98",
-    "name": {
-      "de": "Muschelsuppe",
-      "en": "Clam Chowder",
-      "fr": "Chaudrée de palourdes",
-      "ja": "クラムチャウダー"
-    }
+    "cp_value": 19
   },
   {
-    "control_percent": 8,
-    "control_value": 22,
+    "id": 6144,
     "hq": false,
-    "id": "398c2529c7e",
     "name": {
       "de": "Dolchfisch-Suppe",
       "en": "Dagger Soup",
       "fr": "Soupe de dagues",
-      "ja": "ダガースープ"
-    }
+      "ja": "\u30c0\u30ac\u30fc\u30b9\u30fc\u30d7"
+    },
+    "control_percent": 8,
+    "control_value": 22
   },
   {
-    "control_percent": 10,
-    "control_value": 27,
+    "id": 6144,
     "hq": true,
-    "id": "398c2529c7e",
     "name": {
       "de": "Dolchfisch-Suppe",
       "en": "Dagger Soup",
       "fr": "Soupe de dagues",
-      "ja": "ダガースープ"
-    }
+      "ja": "\u30c0\u30ac\u30fc\u30b9\u30fc\u30d7"
+    },
+    "control_percent": 10,
+    "control_value": 27
   },
   {
-    "cp_percent": 4,
-    "cp_value": 15,
+    "id": 12863,
+    "hq": false,
+    "name": {
+      "de": "Emeraldgr\u00fcne Bohnensuppe",
+      "en": "Emerald Soup",
+      "fr": "Soupe \u00e9meraude",
+      "ja": "\u30a8\u30e1\u30e9\u30eb\u30c9\u30b9\u30fc\u30d7"
+    },
     "craftsmanship_percent": 10,
     "craftsmanship_value": 60,
-    "hq": false,
-    "id": "6062a095615",
-    "name": {
-      "de": "Emeraldgrüne Bohnensuppe",
-      "en": "Emerald Soup",
-      "fr": "Soupe émeraude",
-      "ja": "エメラルドスープ"
-    }
+    "cp_percent": 4,
+    "cp_value": 15
   },
   {
-    "cp_percent": 5,
-    "cp_value": 19,
+    "id": 12863,
+    "hq": true,
+    "name": {
+      "de": "Emeraldgr\u00fcne Bohnensuppe",
+      "en": "Emerald Soup",
+      "fr": "Soupe \u00e9meraude",
+      "ja": "\u30a8\u30e1\u30e9\u30eb\u30c9\u30b9\u30fc\u30d7"
+    },
     "craftsmanship_percent": 12,
     "craftsmanship_value": 75,
-    "hq": true,
-    "id": "6062a095615",
-    "name": {
-      "de": "Emeraldgrüne Bohnensuppe",
-      "en": "Emerald Soup",
-      "fr": "Soupe émeraude",
-      "ja": "エメラルドスープ"
-    }
+    "cp_percent": 5,
+    "cp_value": 19
   },
   {
-    "cp_percent": 10,
-    "cp_value": 26,
+    "id": 4720,
     "hq": false,
-    "id": "655e06195ec",
     "name": {
       "de": "Fischsuppe",
       "en": "Fish Soup",
       "fr": "Soupe de poisson",
-      "ja": "フィッシュスープ"
-    }
+      "ja": "\u30d5\u30a3\u30c3\u30b7\u30e5\u30b9\u30fc\u30d7"
+    },
+    "cp_percent": 10,
+    "cp_value": 26
   },
   {
-    "cp_percent": 13,
-    "cp_value": 33,
+    "id": 4720,
     "hq": true,
-    "id": "655e06195ec",
     "name": {
       "de": "Fischsuppe",
       "en": "Fish Soup",
       "fr": "Soupe de poisson",
-      "ja": "フィッシュスープ"
-    }
-  },
-  {
-    "cp_percent": 10,
-    "cp_value": 10,
-    "hq": false,
-    "id": "f24646aedfc",
-    "name": {
-      "de": "Frumenty",
-      "en": "Frumenty",
-      "fr": "Fromentée",
-      "ja": "フルメンティ"
-    }
-  },
-  {
+      "ja": "\u30d5\u30a3\u30c3\u30b7\u30e5\u30b9\u30fc\u30d7"
+    },
     "cp_percent": 13,
-    "cp_value": 12,
-    "hq": true,
-    "id": "f24646aedfc",
+    "cp_value": 33
+  },
+  {
+    "id": 4716,
+    "hq": false,
     "name": {
       "de": "Frumenty",
       "en": "Frumenty",
-      "fr": "Fromentée",
-      "ja": "フルメンティ"
-    }
+      "fr": "Froment\u00e9e",
+      "ja": "\u30d5\u30eb\u30e1\u30f3\u30c6\u30a3"
+    },
+    "cp_percent": 10,
+    "cp_value": 10
   },
   {
-    "control_percent": 7,
-    "control_value": 132,
+    "id": 4716,
+    "hq": true,
+    "name": {
+      "de": "Frumenty",
+      "en": "Frumenty",
+      "fr": "Froment\u00e9e",
+      "ja": "\u30d5\u30eb\u30e1\u30f3\u30c6\u30a3"
+    },
+    "cp_percent": 13,
+    "cp_value": 12
+  },
+  {
+    "id": 36053,
+    "hq": false,
+    "name": {
+      "de": "Riesentaramosalata",
+      "en": "Giant Haddock Dip",
+      "fr": "Tarama g\u00e9ant",
+      "ja": "\u30b8\u30e3\u30a4\u30a2\u30f3\u30c8\u30bf\u30e9\u30e2\u30b5\u30e9\u30fc\u30bf"
+    },
     "craftsmanship_percent": 4,
     "craftsmanship_value": 62,
-    "hq": false,
-    "id": "0742f46674b",
+    "control_percent": 7,
+    "control_value": 132
+  },
+  {
+    "id": 36053,
+    "hq": true,
     "name": {
       "de": "Riesentaramosalata",
       "en": "Giant Haddock Dip",
-      "fr": "Tarama géant",
-      "ja": "ジャイアントタラモサラータ"
-    }
-  },
-  {
-    "control_percent": 9,
-    "control_value": 165,
+      "fr": "Tarama g\u00e9ant",
+      "ja": "\u30b8\u30e3\u30a4\u30a2\u30f3\u30c8\u30bf\u30e9\u30e2\u30b5\u30e9\u30fc\u30bf"
+    },
     "craftsmanship_percent": 5,
     "craftsmanship_value": 77,
-    "hq": true,
-    "id": "0742f46674b",
-    "name": {
-      "de": "Riesentaramosalata",
-      "en": "Giant Haddock Dip",
-      "fr": "Tarama géant",
-      "ja": "ジャイアントタラモサラータ"
-    }
+    "control_percent": 9,
+    "control_value": 165
   },
   {
-    "cp_percent": 8,
-    "cp_value": 26,
+    "id": 36046,
+    "hq": false,
+    "name": {
+      "de": "Gl\u00fcckskarottensaft",
+      "en": "Happiness Juice",
+      "fr": "Jus de bonheur",
+      "ja": "\u30cf\u30d4\u30cd\u30b9\u30b8\u30e5\u30fc\u30b9"
+    },
     "craftsmanship_percent": 7,
     "craftsmanship_value": 146,
-    "hq": false,
-    "id": "5239a5ab87e",
-    "name": {
-      "de": "Glückskarottensaft",
-      "en": "Happiness Juice",
-      "fr": "Jus de bonheur",
-      "ja": "ハピネスジュース"
-    }
+    "cp_percent": 8,
+    "cp_value": 26
   },
   {
-    "cp_percent": 10,
-    "cp_value": 32,
+    "id": 36046,
+    "hq": true,
+    "name": {
+      "de": "Gl\u00fcckskarottensaft",
+      "en": "Happiness Juice",
+      "fr": "Jus de bonheur",
+      "ja": "\u30cf\u30d4\u30cd\u30b9\u30b8\u30e5\u30fc\u30b9"
+    },
     "craftsmanship_percent": 9,
     "craftsmanship_value": 183,
-    "hq": true,
-    "id": "5239a5ab87e",
-    "name": {
-      "de": "Glückskarottensaft",
-      "en": "Happiness Juice",
-      "fr": "Jus de bonheur",
-      "ja": "ハピネスジュース"
-    }
+    "cp_percent": 10,
+    "cp_value": 32
   },
   {
+    "id": 15650,
+    "hq": false,
+    "name": {
+      "de": "Himmelseier-Suppe",
+      "en": "Heavensegg Soup",
+      "fr": "Soupe aux c\u00e9lest\u0153ufs",
+      "ja": "\u30d8\u30f4\u30f3\u30b9\u30a8\u30c3\u30b0\u30b9\u30fc\u30d7"
+    },
+    "craftsmanship_percent": 5,
+    "craftsmanship_value": 42,
     "control_percent": 7,
     "control_value": 62,
     "cp_percent": 3,
-    "cp_value": 8,
-    "craftsmanship_percent": 5,
-    "craftsmanship_value": 42,
-    "hq": false,
-    "id": "7a6821b2a7e",
+    "cp_value": 8
+  },
+  {
+    "id": 15650,
+    "hq": true,
     "name": {
       "de": "Himmelseier-Suppe",
       "en": "Heavensegg Soup",
-      "fr": "Soupe aux célestœufs",
-      "ja": "ヘヴンスエッグスープ"
-    }
-  },
-  {
+      "fr": "Soupe aux c\u00e9lest\u0153ufs",
+      "ja": "\u30d8\u30f4\u30f3\u30b9\u30a8\u30c3\u30b0\u30b9\u30fc\u30d7"
+    },
+    "craftsmanship_percent": 6,
+    "craftsmanship_value": 53,
     "control_percent": 9,
     "control_value": 77,
     "cp_percent": 4,
-    "cp_value": 10,
-    "craftsmanship_percent": 6,
-    "craftsmanship_value": 53,
-    "hq": true,
-    "id": "7a6821b2a7e",
-    "name": {
-      "de": "Himmelseier-Suppe",
-      "en": "Heavensegg Soup",
-      "fr": "Soupe aux célestœufs",
-      "ja": "ヘヴンスエッグスープ"
-    }
+    "cp_value": 10
   },
   {
-    "craftsmanship_percent": 12,
-    "craftsmanship_value": 12,
+    "id": 38929,
     "hq": false,
-    "id": "7f665fc7bef",
     "name": {
-      "de": "Toffelbrei",
-      "en": "Mashed Popotoes",
-      "fr": "Purée de popotos",
-      "ja": "マッシュポポト"
-    }
+      "de": "Zingarnelen-Biryani",
+      "en": "Jhinga Biryani",
+      "fr": "Biryani aux crevettes jhingas",
+      "ja": "\u30b8\u30f3\u30ac\u30d3\u30ea\u30e4\u30cb"
+    },
+    "control_percent": 4,
+    "control_value": 72,
+    "cp_percent": 21,
+    "cp_value": 69
   },
   {
-    "craftsmanship_percent": 15,
-    "craftsmanship_value": 15,
+    "id": 38929,
     "hq": true,
-    "id": "7f665fc7bef",
+    "name": {
+      "de": "Zingarnelen-Biryani",
+      "en": "Jhinga Biryani",
+      "fr": "Biryani aux crevettes jhingas",
+      "ja": "\u30b8\u30f3\u30ac\u30d3\u30ea\u30e4\u30cb"
+    },
+    "control_percent": 5,
+    "control_value": 90,
+    "cp_percent": 26,
+    "cp_value": 86
+  },
+  {
+    "id": 4722,
+    "hq": false,
     "name": {
       "de": "Toffelbrei",
       "en": "Mashed Popotoes",
-      "fr": "Purée de popotos",
-      "ja": "マッシュポポト"
-    }
+      "fr": "Pur\u00e9e de popotos",
+      "ja": "\u30de\u30c3\u30b7\u30e5\u30dd\u30dd\u30c8"
+    },
+    "craftsmanship_percent": 12,
+    "craftsmanship_value": 12
   },
   {
+    "id": 4722,
+    "hq": true,
+    "name": {
+      "de": "Toffelbrei",
+      "en": "Mashed Popotoes",
+      "fr": "Pur\u00e9e de popotos",
+      "ja": "\u30de\u30c3\u30b7\u30e5\u30dd\u30dd\u30c8"
+    },
+    "craftsmanship_percent": 15,
+    "craftsmanship_value": 15
+  },
+  {
+    "id": 23187,
+    "hq": false,
+    "name": {
+      "de": "Matcha-Tee",
+      "en": "Matcha",
+      "fr": "Matcha",
+      "ja": "\u62b9\u8336"
+    },
     "control_percent": 4,
     "control_value": 49,
     "cp_percent": 12,
-    "cp_value": 45,
-    "hq": false,
-    "id": "aef54cb5a5e",
+    "cp_value": 45
+  },
+  {
+    "id": 23187,
+    "hq": true,
     "name": {
       "de": "Matcha-Tee",
       "en": "Matcha",
       "fr": "Matcha",
-      "ja": "抹茶"
-    }
-  },
-  {
+      "ja": "\u62b9\u8336"
+    },
     "control_percent": 5,
     "control_value": 61,
     "cp_percent": 15,
-    "cp_value": 56,
-    "hq": true,
-    "id": "aef54cb5a5e",
-    "name": {
-      "de": "Matcha-Tee",
-      "en": "Matcha",
-      "fr": "Matcha",
-      "ja": "抹茶"
-    }
+    "cp_value": 56
   },
   {
-    "cp_percent": 21,
-    "cp_value": 56,
+    "id": 28720,
+    "hq": false,
+    "name": {
+      "de": "Miserabelmuscheln al Ajillo",
+      "en": "Mejillones al Ajillo",
+      "fr": "Moules al ajillo",
+      "ja": "\u30e0\u30bb\u30eb\u30a2\u30d2\u30fc\u30b8\u30e7"
+    },
     "craftsmanship_percent": 5,
     "craftsmanship_value": 84,
-    "hq": false,
-    "id": "8dd8ec5598b",
+    "cp_percent": 21,
+    "cp_value": 56
+  },
+  {
+    "id": 28720,
+    "hq": true,
     "name": {
       "de": "Miserabelmuscheln al Ajillo",
       "en": "Mejillones al Ajillo",
       "fr": "Moules al ajillo",
-      "ja": "ムセルアヒージョ"
-    }
-  },
-  {
-    "cp_percent": 26,
-    "cp_value": 70,
+      "ja": "\u30e0\u30bb\u30eb\u30a2\u30d2\u30fc\u30b8\u30e7"
+    },
     "craftsmanship_percent": 6,
     "craftsmanship_value": 105,
-    "hq": true,
-    "id": "8dd8ec5598b",
-    "name": {
-      "de": "Miserabelmuscheln al Ajillo",
-      "en": "Mejillones al Ajillo",
-      "fr": "Moules al ajillo",
-      "ja": "ムセルアヒージョ"
-    }
+    "cp_percent": 26,
+    "cp_value": 70
   },
   {
-    "craftsmanship_percent": 12,
-    "craftsmanship_value": 8,
+    "id": 4726,
     "hq": false,
-    "id": "7942793c374",
     "name": {
       "de": "Minz-Lassi",
       "en": "Mint Lassi",
-      "fr": "Lassi à la menthe",
-      "ja": "ミントラッシー"
-    }
+      "fr": "Lassi \u00e0 la menthe",
+      "ja": "\u30df\u30f3\u30c8\u30e9\u30c3\u30b7\u30fc"
+    },
+    "craftsmanship_percent": 12,
+    "craftsmanship_value": 8
   },
   {
-    "craftsmanship_percent": 15,
-    "craftsmanship_value": 10,
+    "id": 4726,
     "hq": true,
-    "id": "7942793c374",
     "name": {
       "de": "Minz-Lassi",
       "en": "Mint Lassi",
-      "fr": "Lassi à la menthe",
-      "ja": "ミントラッシー"
-    }
+      "fr": "Lassi \u00e0 la menthe",
+      "ja": "\u30df\u30f3\u30c8\u30e9\u30c3\u30b7\u30fc"
+    },
+    "craftsmanship_percent": 15,
+    "craftsmanship_value": 10
   },
   {
-    "control_percent": 4,
-    "control_value": 39,
+    "id": 19834,
+    "hq": false,
+    "name": {
+      "de": "Miso-Suppe mit Tofu",
+      "en": "Miso Soup with Tofu",
+      "fr": "Soupe miso au t\u00f4fu",
+      "ja": "\u8c46\u8150\u306e\u5473\u564c\u6c41"
+    },
     "craftsmanship_percent": 10,
     "craftsmanship_value": 104,
-    "hq": false,
-    "id": "85a71b7bdac",
+    "control_percent": 4,
+    "control_value": 39
+  },
+  {
+    "id": 19834,
+    "hq": true,
     "name": {
       "de": "Miso-Suppe mit Tofu",
       "en": "Miso Soup with Tofu",
-      "fr": "Soupe miso au tôfu",
-      "ja": "豆腐の味噌汁"
-    }
-  },
-  {
-    "control_percent": 5,
-    "control_value": 49,
+      "fr": "Soupe miso au t\u00f4fu",
+      "ja": "\u8c46\u8150\u306e\u5473\u564c\u6c41"
+    },
     "craftsmanship_percent": 12,
     "craftsmanship_value": 130,
-    "hq": true,
-    "id": "85a71b7bdac",
-    "name": {
-      "de": "Miso-Suppe mit Tofu",
-      "en": "Miso Soup with Tofu",
-      "fr": "Soupe miso au tôfu",
-      "ja": "豆腐の味噌汁"
-    }
+    "control_percent": 5,
+    "control_value": 49
   },
   {
-    "control_percent": 10,
-    "control_value": 70,
-    "craftsmanship_percent": 4,
-    "craftsmanship_value": 30,
+    "id": 14139,
     "hq": false,
-    "id": "de776de7c43",
     "name": {
       "de": "Austern-Confit",
       "en": "Oyster Confit",
-      "fr": "Huîtres confites",
-      "ja": "オイスターコンフィ"
-    }
+      "fr": "Hu\u00eetres confites",
+      "ja": "\u30aa\u30a4\u30b9\u30bf\u30fc\u30b3\u30f3\u30d5\u30a3"
+    },
+    "craftsmanship_percent": 4,
+    "craftsmanship_value": 30,
+    "control_percent": 10,
+    "control_value": 70
   },
   {
-    "control_percent": 12,
-    "control_value": 88,
+    "id": 14139,
+    "hq": true,
+    "name": {
+      "de": "Austern-Confit",
+      "en": "Oyster Confit",
+      "fr": "Hu\u00eetres confites",
+      "ja": "\u30aa\u30a4\u30b9\u30bf\u30fc\u30b3\u30f3\u30d5\u30a3"
+    },
     "craftsmanship_percent": 5,
     "craftsmanship_value": 37,
-    "hq": true,
-    "id": "de776de7c43",
-    "name": {
-      "de": "Austern-Confit",
-      "en": "Oyster Confit",
-      "fr": "Huîtres confites",
-      "ja": "オイスターコンフィ"
-    }
+    "control_percent": 12,
+    "control_value": 88
   },
   {
+    "id": 4672,
+    "hq": false,
+    "name": {
+      "de": "Gebratener Mahi-Mahi",
+      "en": "Pan-fried Mahi-mahi",
+      "fr": "Mahi-mahi frit",
+      "ja": "\u30de\u30d2\u30de\u30d2\u306e\u63da\u3052\u713c\u304d"
+    },
     "control_percent": 8,
-    "control_value": 25,
-    "hq": false,
-    "id": "3a02d54d0ad",
+    "control_value": 25
+  },
+  {
+    "id": 4672,
+    "hq": true,
     "name": {
       "de": "Gebratener Mahi-Mahi",
       "en": "Pan-fried Mahi-mahi",
       "fr": "Mahi-mahi frit",
-      "ja": "マヒマヒの揚げ焼き"
-    }
-  },
-  {
+      "ja": "\u30de\u30d2\u30de\u30d2\u306e\u63da\u3052\u713c\u304d"
+    },
     "control_percent": 10,
-    "control_value": 31,
-    "hq": true,
-    "id": "3a02d54d0ad",
-    "name": {
-      "de": "Gebratener Mahi-Mahi",
-      "en": "Pan-fried Mahi-mahi",
-      "fr": "Mahi-mahi frit",
-      "ja": "マヒマヒの揚げ焼き"
-    }
+    "control_value": 31
   },
   {
-    "cp_percent": 10,
-    "cp_value": 21,
+    "id": 4718,
     "hq": false,
-    "id": "3392f405565",
     "name": {
       "de": "Erbsensuppe",
       "en": "Pea Soup",
       "fr": "Soupe de pois",
-      "ja": "ピースープ"
-    }
+      "ja": "\u30d4\u30fc\u30b9\u30fc\u30d7"
+    },
+    "cp_percent": 10,
+    "cp_value": 21
   },
   {
-    "cp_percent": 13,
-    "cp_value": 26,
+    "id": 4718,
     "hq": true,
-    "id": "3392f405565",
     "name": {
       "de": "Erbsensuppe",
       "en": "Pea Soup",
       "fr": "Soupe de pois",
-      "ja": "ピースープ"
-    }
+      "ja": "\u30d4\u30fc\u30b9\u30fc\u30d7"
+    },
+    "cp_percent": 13,
+    "cp_value": 26
   },
   {
-    "control_percent": 7,
-    "control_value": 118,
+    "id": 27871,
+    "hq": false,
+    "name": {
+      "de": "Ockertoffel-Gratin",
+      "en": "Popotoes au Gratin",
+      "fr": "Gratin de popotos brunes",
+      "ja": "\u30e9\u30bb\u30c3\u30c8\u30dd\u30dd\u30c8\u30b0\u30e9\u30bf\u30f3"
+    },
     "craftsmanship_percent": 4,
     "craftsmanship_value": 53,
-    "hq": false,
-    "id": "900ab2afcbe",
+    "control_percent": 7,
+    "control_value": 118
+  },
+  {
+    "id": 27871,
+    "hq": true,
     "name": {
       "de": "Ockertoffel-Gratin",
       "en": "Popotoes au Gratin",
       "fr": "Gratin de popotos brunes",
-      "ja": "ラセットポポトグラタン"
-    }
-  },
-  {
-    "control_percent": 9,
-    "control_value": 147,
+      "ja": "\u30e9\u30bb\u30c3\u30c8\u30dd\u30dd\u30c8\u30b0\u30e9\u30bf\u30f3"
+    },
     "craftsmanship_percent": 5,
     "craftsmanship_value": 66,
-    "hq": true,
-    "id": "900ab2afcbe",
-    "name": {
-      "de": "Ockertoffel-Gratin",
-      "en": "Popotoes au Gratin",
-      "fr": "Gratin de popotos brunes",
-      "ja": "ラセットポポトグラタン"
-    }
+    "control_percent": 9,
+    "control_value": 147
   },
   {
-    "control_percent": 8,
-    "control_value": 8,
+    "id": 4667,
     "hq": false,
-    "id": "b86eaf4c272",
     "name": {
       "de": "Rohe Auster",
       "en": "Raw Oyster",
-      "fr": "Huître crue",
-      "ja": "ローオイスター"
-    }
+      "fr": "Hu\u00eetre crue",
+      "ja": "\u30ed\u30fc\u30aa\u30a4\u30b9\u30bf\u30fc"
+    },
+    "control_percent": 8,
+    "control_value": 8
   },
   {
-    "control_percent": 10,
-    "control_value": 10,
+    "id": 4667,
     "hq": true,
-    "id": "b86eaf4c272",
     "name": {
       "de": "Rohe Auster",
       "en": "Raw Oyster",
-      "fr": "Huître crue",
-      "ja": "ローオイスター"
-    }
+      "fr": "Hu\u00eetre crue",
+      "ja": "\u30ed\u30fc\u30aa\u30a4\u30b9\u30bf\u30fc"
+    },
+    "control_percent": 10,
+    "control_value": 10
   },
   {
-    "craftsmanship_percent": 12,
-    "craftsmanship_value": 32,
+    "id": 4725,
     "hq": false,
-    "id": "2d9f0fd48d9",
     "name": {
-      "de": "Rolanbeeren-Käsekuchen",
+      "de": "Rolanbeeren-K\u00e4sekuchen",
       "en": "Rolanberry Cheesecake",
-      "fr": "Gâteau au fromage à la rolanbaie",
-      "ja": "ロランベリーチーズケーキ"
-    }
+      "fr": "G\u00e2teau au fromage \u00e0 la rolanbaie",
+      "ja": "\u30ed\u30e9\u30f3\u30d9\u30ea\u30fc\u30c1\u30fc\u30ba\u30b1\u30fc\u30ad"
+    },
+    "craftsmanship_percent": 12,
+    "craftsmanship_value": 32
   },
   {
-    "craftsmanship_percent": 15,
-    "craftsmanship_value": 40,
+    "id": 4725,
     "hq": true,
-    "id": "2d9f0fd48d9",
     "name": {
-      "de": "Rolanbeeren-Käsekuchen",
+      "de": "Rolanbeeren-K\u00e4sekuchen",
       "en": "Rolanberry Cheesecake",
-      "fr": "Gâteau au fromage à la rolanbaie",
-      "ja": "ロランベリーチーズケーキ"
-    }
+      "fr": "G\u00e2teau au fromage \u00e0 la rolanbaie",
+      "ja": "\u30ed\u30e9\u30f3\u30d9\u30ea\u30fc\u30c1\u30fc\u30ba\u30b1\u30fc\u30ad"
+    },
+    "craftsmanship_percent": 15,
+    "craftsmanship_value": 40
   },
   {
-    "craftsmanship_percent": 12,
-    "craftsmanship_value": 24,
+    "id": 4727,
     "hq": false,
-    "id": "b31af4caa5b",
     "name": {
       "de": "Rolanbeeren-Lassi",
       "en": "Rolanberry Lassi",
-      "fr": "Lassi à la rolanbaie",
-      "ja": "ロランベリーラッシー"
-    }
+      "fr": "Lassi \u00e0 la rolanbaie",
+      "ja": "\u30ed\u30e9\u30f3\u30d9\u30ea\u30fc\u30e9\u30c3\u30b7\u30fc"
+    },
+    "craftsmanship_percent": 12,
+    "craftsmanship_value": 24
   },
   {
-    "craftsmanship_percent": 15,
-    "craftsmanship_value": 30,
+    "id": 4727,
     "hq": true,
-    "id": "b31af4caa5b",
     "name": {
       "de": "Rolanbeeren-Lassi",
       "en": "Rolanberry Lassi",
-      "fr": "Lassi à la rolanbaie",
-      "ja": "ロランベリーラッシー"
-    }
+      "fr": "Lassi \u00e0 la rolanbaie",
+      "ja": "\u30ed\u30e9\u30f3\u30d9\u30ea\u30fc\u30e9\u30c3\u30b7\u30fc"
+    },
+    "craftsmanship_percent": 15,
+    "craftsmanship_value": 30
   },
   {
-    "control_percent": 8,
-    "control_value": 4,
+    "id": 4666,
     "hq": false,
-    "id": "6c59a4e96cd",
     "name": {
       "de": "Salzdorsch",
       "en": "Salt Cod",
-      "fr": "Morue salée",
-      "ja": "ソルトコッド"
-    }
+      "fr": "Morue sal\u00e9e",
+      "ja": "\u30bd\u30eb\u30c8\u30b3\u30c3\u30c9"
+    },
+    "control_percent": 8,
+    "control_value": 4
   },
   {
-    "control_percent": 10,
-    "control_value": 5,
+    "id": 4666,
     "hq": true,
-    "id": "6c59a4e96cd",
     "name": {
       "de": "Salzdorsch",
       "en": "Salt Cod",
-      "fr": "Morue salée",
-      "ja": "ソルトコッド"
-    }
-  },
-  {
-    "control_percent": 8,
-    "control_value": 18,
-    "hq": false,
-    "id": "66ae81c008d",
-    "name": {
-      "de": "Dorsch im Schlafrock",
-      "en": "Salt Cod Puffs",
-      "fr": "Choux à la morue salée",
-      "ja": "ソルトコッドパフ"
-    }
-  },
-  {
+      "fr": "Morue sal\u00e9e",
+      "ja": "\u30bd\u30eb\u30c8\u30b3\u30c3\u30c9"
+    },
     "control_percent": 10,
-    "control_value": 23,
-    "hq": true,
-    "id": "66ae81c008d",
+    "control_value": 5
+  },
+  {
+    "id": 4671,
+    "hq": false,
     "name": {
       "de": "Dorsch im Schlafrock",
       "en": "Salt Cod Puffs",
-      "fr": "Choux à la morue salée",
-      "ja": "ソルトコッドパフ"
-    }
+      "fr": "Choux \u00e0 la morue sal\u00e9e",
+      "ja": "\u30bd\u30eb\u30c8\u30b3\u30c3\u30c9\u30d1\u30d5"
+    },
+    "control_percent": 8,
+    "control_value": 18
   },
   {
-    "control_percent": 4,
-    "control_value": 25,
-    "cp_percent": 12,
-    "cp_value": 40,
+    "id": 4671,
+    "hq": true,
+    "name": {
+      "de": "Dorsch im Schlafrock",
+      "en": "Salt Cod Puffs",
+      "fr": "Choux \u00e0 la morue sal\u00e9e",
+      "ja": "\u30bd\u30eb\u30c8\u30b3\u30c3\u30c9\u30d1\u30d5"
+    },
+    "control_percent": 10,
+    "control_value": 23
+  },
+  {
+    "id": 12865,
     "hq": false,
-    "id": "825524aa839",
     "name": {
       "de": "Ishgarder Fischtopf",
       "en": "Seafood Stew",
-      "fr": "Ragoût du pêcheur",
-      "ja": "トマトシチュー"
-    }
+      "fr": "Rago\u00fbt du p\u00eacheur",
+      "ja": "\u30c8\u30de\u30c8\u30b7\u30c1\u30e5\u30fc"
+    },
+    "control_percent": 4,
+    "control_value": 25,
+    "cp_percent": 12,
+    "cp_value": 40
   },
   {
+    "id": 12865,
+    "hq": true,
+    "name": {
+      "de": "Ishgarder Fischtopf",
+      "en": "Seafood Stew",
+      "fr": "Rago\u00fbt du p\u00eacheur",
+      "ja": "\u30c8\u30de\u30c8\u30b7\u30c1\u30e5\u30fc"
+    },
     "control_percent": 5,
     "control_value": 31,
     "cp_percent": 15,
-    "cp_value": 50,
-    "hq": true,
-    "id": "825524aa839",
-    "name": {
-      "de": "Ishgarder Fischtopf",
-      "en": "Seafood Stew",
-      "fr": "Ragoût du pêcheur",
-      "ja": "トマトシチュー"
-    }
+    "cp_value": 50
   },
   {
-    "cp_percent": 4,
-    "cp_value": 14,
+    "id": 9333,
+    "hq": false,
+    "name": {
+      "de": "Haifischflossensuppe",
+      "en": "Shark Fin Soup",
+      "fr": "Soupe d'aileron",
+      "ja": "\u30d5\u30ab\u30d2\u30ec\u30b9\u30fc\u30d7"
+    },
     "craftsmanship_percent": 10,
     "craftsmanship_value": 49,
-    "hq": false,
-    "id": "5dd7114e7c8",
+    "cp_percent": 4,
+    "cp_value": 14
+  },
+  {
+    "id": 9333,
+    "hq": true,
     "name": {
       "de": "Haifischflossensuppe",
       "en": "Shark Fin Soup",
       "fr": "Soupe d'aileron",
-      "ja": "フカヒレスープ"
-    }
-  },
-  {
-    "cp_percent": 5,
-    "cp_value": 18,
+      "ja": "\u30d5\u30ab\u30d2\u30ec\u30b9\u30fc\u30d7"
+    },
     "craftsmanship_percent": 12,
     "craftsmanship_value": 61,
-    "hq": true,
-    "id": "5dd7114e7c8",
-    "name": {
-      "de": "Haifischflossensuppe",
-      "en": "Shark Fin Soup",
-      "fr": "Soupe d'aileron",
-      "ja": "フカヒレスープ"
-    }
+    "cp_percent": 5,
+    "cp_value": 18
   },
   {
-    "cp_percent": 4,
-    "cp_value": 16,
+    "id": 19824,
+    "hq": false,
+    "name": {
+      "de": "Ged\u00fcnsteter Zackenbarsch",
+      "en": "Steamed Grouper",
+      "fr": "Garoupa \u00e0 l'\u00e9tuv\u00e9e",
+      "ja": "\u30ad\u30b8\u30cf\u30bf\u306e\u6e05\u84b8"
+    },
     "craftsmanship_percent": 10,
     "craftsmanship_value": 109,
-    "hq": false,
-    "id": "4d26f0bdfc5",
-    "name": {
-      "de": "Gedünsteter Zackenbarsch",
-      "en": "Steamed Grouper",
-      "fr": "Garoupa à l'étuvée",
-      "ja": "キジハタの清蒸"
-    }
+    "cp_percent": 4,
+    "cp_value": 16
   },
   {
-    "cp_percent": 5,
-    "cp_value": 20,
+    "id": 19824,
+    "hq": true,
+    "name": {
+      "de": "Ged\u00fcnsteter Zackenbarsch",
+      "en": "Steamed Grouper",
+      "fr": "Garoupa \u00e0 l'\u00e9tuv\u00e9e",
+      "ja": "\u30ad\u30b8\u30cf\u30bf\u306e\u6e05\u84b8"
+    },
     "craftsmanship_percent": 12,
     "craftsmanship_value": 136,
-    "hq": true,
-    "id": "4d26f0bdfc5",
-    "name": {
-      "de": "Gedünsteter Zackenbarsch",
-      "en": "Steamed Grouper",
-      "fr": "Garoupa à l'étuvée",
-      "ja": "キジハタの清蒸"
-    }
+    "cp_percent": 5,
+    "cp_value": 20
   },
   {
-    "cp_percent": 10,
-    "cp_value": 17,
+    "id": 4717,
     "hq": false,
-    "id": "feeca4582b4",
     "name": {
       "de": "Steinsuppe",
       "en": "Stone Soup",
       "fr": "Soupe de pierre",
-      "ja": "ストーンスープ"
-    }
+      "ja": "\u30b9\u30c8\u30fc\u30f3\u30b9\u30fc\u30d7"
+    },
+    "cp_percent": 10,
+    "cp_value": 17
   },
   {
-    "cp_percent": 13,
-    "cp_value": 21,
+    "id": 4717,
     "hq": true,
-    "id": "feeca4582b4",
     "name": {
       "de": "Steinsuppe",
       "en": "Stone Soup",
       "fr": "Soupe de pierre",
-      "ja": "ストーンスープ"
-    }
+      "ja": "\u30b9\u30c8\u30fc\u30f3\u30b9\u30fc\u30d7"
+    },
+    "cp_percent": 13,
+    "cp_value": 21
   },
   {
-    "cp_percent": 12,
-    "cp_value": 43,
+    "id": 19826,
+    "hq": false,
+    "name": {
+      "de": "Tempura-Platte",
+      "en": "Tempura Platter",
+      "fr": "Assortiment de tenpura",
+      "ja": "\u5929\u3077\u3089\u76db\u308a\u5408\u308f\u305b"
+    },
     "craftsmanship_percent": 4,
     "craftsmanship_value": 42,
-    "hq": false,
-    "id": "0f84d86d2b8",
+    "cp_percent": 12,
+    "cp_value": 43
+  },
+  {
+    "id": 19826,
+    "hq": true,
     "name": {
       "de": "Tempura-Platte",
       "en": "Tempura Platter",
       "fr": "Assortiment de tenpura",
-      "ja": "天ぷら盛り合わせ"
-    }
-  },
-  {
-    "cp_percent": 15,
-    "cp_value": 54,
+      "ja": "\u5929\u3077\u3089\u76db\u308a\u5408\u308f\u305b"
+    },
     "craftsmanship_percent": 5,
     "craftsmanship_value": 53,
-    "hq": true,
-    "id": "0f84d86d2b8",
-    "name": {
-      "de": "Tempura-Platte",
-      "en": "Tempura Platter",
-      "fr": "Assortiment de tenpura",
-      "ja": "天ぷら盛り合わせ"
-    }
+    "cp_percent": 15,
+    "cp_value": 54
   },
   {
-    "control_percent": 4,
-    "control_value": 61,
-    "cp_percent": 21,
-    "cp_value": 62,
+    "id": 36060,
     "hq": false,
-    "id": "84fd8d880fd",
     "name": {
       "de": "Tsai Tou Vounou",
       "en": "Tsai tou Vounou",
       "fr": "Chai tou vounou",
-      "ja": "チャイ・トゥ・ヴヌー"
-    }
+      "ja": "\u30c1\u30e3\u30a4\u30fb\u30c8\u30a5\u30fb\u30f4\u30cc\u30fc"
+    },
+    "control_percent": 4,
+    "control_value": 61,
+    "cp_percent": 21,
+    "cp_value": 62
   },
   {
+    "id": 36060,
+    "hq": true,
+    "name": {
+      "de": "Tsai Tou Vounou",
+      "en": "Tsai tou Vounou",
+      "fr": "Chai tou vounou",
+      "ja": "\u30c1\u30e3\u30a4\u30fb\u30c8\u30a5\u30fb\u30f4\u30cc\u30fc"
+    },
     "control_percent": 5,
     "control_value": 76,
     "cp_percent": 26,
-    "cp_value": 78,
-    "hq": true,
-    "id": "84fd8d880fd",
-    "name": {
-      "de": "Tsai Tou Vounou",
-      "en": "Tsai tou Vounou",
-      "fr": "Chai tou vounou",
-      "ja": "チャイ・トゥ・ヴヌー"
-    }
+    "cp_value": 78
   },
   {
-    "control_percent": 8,
-    "control_value": 16,
+    "id": 4670,
     "hq": false,
-    "id": "9b515fcfa0f",
     "name": {
       "de": "Thunfisch-Miqo'Kebab",
       "en": "Tuna Miq'abob",
       "fr": "Miqo-brochette de thon",
-      "ja": "ミコッテ風海の幸串焼"
-    }
+      "ja": "\u30df\u30b3\u30c3\u30c6\u98a8\u6d77\u306e\u5e78\u4e32\u713c"
+    },
+    "control_percent": 8,
+    "control_value": 16
   },
   {
-    "control_percent": 10,
-    "control_value": 20,
+    "id": 4670,
     "hq": true,
-    "id": "9b515fcfa0f",
     "name": {
       "de": "Thunfisch-Miqo'Kebab",
       "en": "Tuna Miq'abob",
       "fr": "Miqo-brochette de thon",
-      "ja": "ミコッテ風海の幸串焼"
-    }
+      "ja": "\u30df\u30b3\u30c3\u30c6\u98a8\u6d77\u306e\u5e78\u4e32\u713c"
+    },
+    "control_percent": 10,
+    "control_value": 20
   },
   {
-    "control_percent": 10,
-    "control_value": 99,
+    "id": 19837,
+    "hq": false,
+    "name": {
+      "de": "Kriegereintopf",
+      "en": "Warrior's Stew",
+      "fr": "Nogootoj shol",
+      "ja": "\u30bc\u30e9\u30b9\u30fc\u30d7"
+    },
     "craftsmanship_percent": 4,
     "craftsmanship_value": 42,
-    "hq": false,
-    "id": "7b9dfabf229",
-    "name": {
-      "de": "Kriegereintopf",
-      "en": "Warrior's Stew",
-      "fr": "Nogootoj shol",
-      "ja": "ゼラスープ"
-    }
+    "control_percent": 10,
+    "control_value": 99
   },
   {
-    "control_percent": 12,
-    "control_value": 124,
-    "craftsmanship_percent": 5,
-    "craftsmanship_value": 53,
+    "id": 19837,
     "hq": true,
-    "id": "7b9dfabf229",
     "name": {
       "de": "Kriegereintopf",
       "en": "Warrior's Stew",
       "fr": "Nogootoj shol",
-      "ja": "ゼラスープ"
-    }
+      "ja": "\u30bc\u30e9\u30b9\u30fc\u30d7"
+    },
+    "craftsmanship_percent": 5,
+    "craftsmanship_value": 53,
+    "control_percent": 12,
+    "control_value": 124
   }
 ]
